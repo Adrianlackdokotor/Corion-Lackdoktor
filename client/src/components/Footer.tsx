@@ -107,8 +107,15 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Service Areas */}
+        <div className="mt-8 pt-8 border-t">
+          <p className="text-sm text-center text-muted-foreground" data-testid="text-service-areas">
+            <span className="font-heading font-semibold">Servicegebiete:</span> Hofheim · Wiesbaden · Mainz-Kastel · Frankfurt Umgebung
+          </p>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+        <div className="border-t mt-6 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} +1 Corion Lackdoktor. Alle Rechte vorbehalten.</p>
           <div className="flex gap-4">
             {legal.map((item) => (
