@@ -1,107 +1,140 @@
 import { Link } from "wouter";
-import { Phone, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Phone, Camera } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
-import { useState, useEffect } from "react";
 
 export default function Hero() {
-  const rotatingServices = [
-    "Unfallschäden",
-    "Lackschäden",
-    "Smart Repair",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % rotatingServices.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative h-[600px] md:h-[700px] flex items-center">
+    <div className="relative h-[700px] md:h-[800px] flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
           alt="Professional Lackdoktor Workshop" 
           className="w-full h-full object-cover"
+          loading="eager"
         />
-        {/* Dark overlay gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+        {/* Enhanced dark overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/60" />
+        
+        {/* Shimmer effect overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6" data-testid="heading-hero">
-            Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel
-          </h1>
+        <div className="max-w-4xl">
+          {/* Main Title with Poppins ExtraBold and highlighted keywords */}
+          <motion.h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            data-testid="heading-hero"
+          >
+            <span className="text-primary">Präzision</span> trifft{" "}
+            <span className="text-primary">Leidenschaft</span>
+          </motion.h1>
           
-          <p className="text-2xl md:text-3xl font-heading text-white mb-4" data-testid="text-hero-subtitle">
-            Ihr Auto in besten Händen – schnell, fair und mit Leidenschaft lackiert.
-          </p>
+          <motion.p 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            data-testid="text-hero-subtitle"
+          >
+            Ihr <span className="text-primary">Lackdoktor</span> seit <span className="text-primary">12 Jahren</span>
+          </motion.p>
           
-          <p className="text-lg md:text-xl text-white/90 mb-4" data-testid="text-hero-experience">
-            Seit über 12 Jahren Lackdoktor-Erfahrung in Wiesbaden & Hofheim.
-          </p>
+          <motion.p 
+            className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            data-testid="text-hero-experience"
+          >
+            Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel – 
+            Ihr Auto in besten Händen, schnell und fair lackiert.
+          </motion.p>
 
-          {/* Rotating Services Text */}
-          <div className="flex items-center gap-2 text-lg md:text-xl text-white/90 mb-8 h-8" data-testid="container-rotating-services">
-            <span>Unsere Expertise:</span>
-            <div className="relative w-48 overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentIndex}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute left-0 font-heading font-bold text-primary"
-                  data-testid={`text-rotating-service-${currentIndex}`}
+          {/* Dual-CTA Layout with enhanced styling */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
+            {/* Primary CTA - Red button with camera icon */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <a href="https://wa.me/4917683458274" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  className="w-full sm:w-auto font-heading font-bold text-lg px-8 py-6 shadow-cta hover:shadow-xl transition-all duration-300" 
+                  data-testid="button-hero-photo"
                 >
-                  {rotatingServices[currentIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-          </div>
+                  <Camera className="mr-2 w-5 h-5" />
+                  Foto schicken für Angebot
+                </Button>
+              </a>
+            </motion.div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <Link href="/kontakt">
-              <Button size="lg" className="w-full sm:w-auto" data-testid="button-hero-quote">
-                Kostenvoranschlag erhalten
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <a href="tel:017683458274" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-background/30" data-testid="button-hero-call">
-                <Phone className="mr-2 w-5 h-5" />
-                Jetzt Anrufen
-              </Button>
-            </a>
-          </div>
+            {/* Secondary CTA - Outlined button with phone */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <a href="tel:017683458274" className="block w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60 font-heading font-bold text-lg px-8 py-6 transition-all duration-300" 
+                  data-testid="button-hero-call"
+                >
+                  <Phone className="mr-2 w-5 h-5" />
+                  Jetzt Anrufen
+                </Button>
+              </a>
+            </motion.div>
+          </motion.div>
 
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-3 gap-4 md:gap-8 text-white/90">
-            <div>
-              <div className="text-2xl md:text-3xl font-bold font-heading text-white">20+</div>
-              <div className="text-sm md:text-base">Jahre Erfahrung</div>
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold font-heading text-white">4.6/5</div>
-              <div className="text-sm md:text-base">642 Bewertungen</div>
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold font-heading text-white">100%</div>
-              <div className="text-sm md:text-base">Garantie</div>
-            </div>
-          </div>
+          {/* Trust Indicators with enhanced animations */}
+          <motion.div 
+            className="grid grid-cols-3 gap-6 md:gap-12 text-white/90"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="text-center"
+            >
+              <div className="text-3xl md:text-5xl font-extrabold font-heading text-primary mb-2">20+</div>
+              <div className="text-sm md:text-base font-medium">Jahre Erfahrung</div>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="text-center"
+            >
+              <div className="text-3xl md:text-5xl font-extrabold font-heading text-primary mb-2">4.6/5</div>
+              <div className="text-sm md:text-base font-medium">642 Bewertungen</div>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="text-center"
+            >
+              <div className="text-3xl md:text-5xl font-extrabold font-heading text-primary mb-2">100%</div>
+              <div className="text-sm md:text-base font-medium">Garantie</div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Subtle light beam effect at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none" />
     </div>
   );
 }
