@@ -12,12 +12,14 @@ export function registerAIRoutes(app: Express) {
     try {
       const { prompt, agentType, userContext } = aiRequestSchema.parse(req.body);
 
-      const openaiApiKey = process.env.OPENAI_API_KEY;
+      const openaiApiKey = process.env.OPENAI_API_KEY_CORIONLACKDOKTOR || process.env.OPENAI_API_KEY;
 
       if (!openaiApiKey) {
         console.warn('OpenAI API key not configured, using fallback responses');
         return res.json(getFallbackResponse(prompt, agentType));
       }
+      
+      console.log('✅ OpenAI API key found, using GPT-4o-mini for responses');
 
       const systemPrompts = {
         assistant: `Du bist ein freundlicher AI-Assistent für +1 Corion Lackdoktor, eine professionelle Autoreparatur-Werkstatt in Wiesbaden, Hofheim und Mainz-Kastel.
