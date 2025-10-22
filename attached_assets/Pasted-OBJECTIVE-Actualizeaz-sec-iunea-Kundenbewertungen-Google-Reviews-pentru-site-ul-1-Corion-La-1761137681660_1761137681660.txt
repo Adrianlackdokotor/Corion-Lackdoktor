@@ -1,0 +1,106 @@
+OBJECTIVE:
+Actualizează secțiunea **Kundenbewertungen (Google Reviews)** pentru site-ul +1 Corion Lackdoktor astfel încât:
+- recenziile să ruleze automat într-un **slider orizontal** (de la dreapta la stânga)
+- designul să fie complet **dark mode**: fundal negru, text alb, accente roșii (#C00020)
+- animația să fie fluentă, fără opriri bruște (loop infinit)
+- layout-ul să rămână responsive (mobil și desktop)
+
+---
+
+### 🔧 INSTRUCȚIUNI TEHNICE
+
+#### 1. Actualizează componentul `GoogleReviews.tsx`
+
+**Design general:**
+- Fundal: `bg-black`
+- Text: `text-white`
+- Titlu: `text-3xl font-heading text-primary text-center mb-8`
+- Stele (rating): galben auriu `#FFD700`
+- Cardurile recenziilor:
+  - `bg-neutral-900`
+  - `rounded-2xl`
+  - `shadow-md shadow-red-900/30`
+  - `p-6`
+  - `mx-3`
+  - Font: `Open Sans`
+- Rating global (4,6/5) afișat sus în roșu accentuat.
+
+#### 2. Adaugă funcționalitatea de slider/carousel
+
+Folosește **Framer Motion** pentru mișcarea continuă sau alternativ **React Slick / Embla Carousel**.  
+Simplu exemplu cu `Framer Motion`:
+
+```tsx
+import { motion } from "framer-motion";
+
+const reviews = [ ... ]; // din reviews.json
+
+<motion.div
+  className="flex space-x-6 overflow-hidden"
+  animate={{ x: ["0%", "-100%"] }}
+  transition={{
+    repeat: Infinity,
+    duration: 40,
+    ease: "linear",
+  }}
+>
+  {reviews.concat(reviews).map((review, i) => (
+    <div key={i} className="min-w-[320px] max-w-sm bg-neutral-900 rounded-2xl p-6">
+      <h3 className="text-lg font-semibold text-primary">{review.name}</h3>
+      <p className="text-sm text-gray-300 mt-2">{review.text}</p>
+      <p className="text-xs text-gray-500 mt-3">{review.date}</p>
+      <div className="text-yellow-400 mt-2">{"★".repeat(review.rating)}</div>
+    </div>
+  ))}
+</motion.div>
+```
+
+#### 3. Responsivitate
+- Pe mobil: 1 card vizibil
+- Pe tabletă: 2 carduri
+- Pe desktop: 3–4 carduri
+- Ajustează viteza în funcție de ecran (mai lent pe mobil)
+
+#### 4. Dark mode styling complet
+
+Înlocuiește tot fundalul secțiunii:
+```tsx
+<section className="bg-black py-16 text-white">
+  <div className="container mx-auto px-6">
+    <h2 className="text-center text-3xl font-heading text-primary mb-8">
+      ⭐ Kundenbewertungen
+    </h2>
+    {/* slider goes here */}
+  </div>
+</section>
+```
+
+#### 5. Buton Google (CTA)
+Menține butonul „Mehr auf Google ansehen” dar adaptează designul:
+```tsx
+<a
+  href="https://www.google.com/search?q=+1%20Corion%20Lackdoktor%20Recenzii..."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-10 block mx-auto text-center bg-primary text-white font-heading px-6 py-3 rounded-2xl hover:bg-red-700 transition"
+>
+  Mehr auf Google ansehen →
+</a>
+```
+
+#### 6. SEO și accesibilitate
+- Păstrează schema JSON-LD `AggregateRating` neschimbată.
+- Adaugă tag `<meta name="theme-color" content="#000000" />`.
+- Asigură contrastul textului (AAA compliance).
+
+---
+
+### ✅ OUTPUT FINAL
+- Secțiune **dark mode** cu fundal negru și text alb.  
+- Slider automat cu mișcare continuă **dreapta → stânga**.  
+- Complet responsive (mobil/tabletă/desktop).  
+- Buton Google vizibil și coerent cu tema dark.  
+- Animație fluidă, performantă și elegantă.  
+
+🎯 **Rezultat dorit:**  
+O secțiune modernă de recenzii tip “motion carousel”, care adaugă dinamism, păstrează brandingul roșu Corion și oferă vizitatorilor o experiență captivantă și profesionistă în dark mode.

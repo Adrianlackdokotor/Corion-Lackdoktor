@@ -1,5 +1,5 @@
 import { Star, ExternalLink } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import reviewsData from "../../../data/reviews.json";
 
@@ -17,7 +17,7 @@ interface GoogleReviewsProps {
 }
 
 export default function GoogleReviews({ 
-  maxReviews = 10, 
+  maxReviews = 9, 
   averageRating = 4.6, 
   totalReviews = 642 
 }: GoogleReviewsProps) {
@@ -47,71 +47,87 @@ export default function GoogleReviews({
     return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
   };
 
+  const duplicatedReviews = [...reviews, ...reviews];
+
   return (
-    <div className="py-12 md:py-16 bg-[#F2F2F2]">
+    <section className="bg-black py-12 md:py-16 text-white overflow-hidden" data-testid="section-google-reviews">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading text-primary mb-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-heading text-primary mb-4" data-testid="heading-reviews">
             Kundenbewertungen
           </h2>
-          <div className="flex items-center justify-center gap-2 text-lg md:text-xl">
-            <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-            <span className="font-heading font-bold">{averageRating} / 5</span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-muted-foreground">
+          <div className="flex items-center justify-center gap-2 text-lg md:text-xl" data-testid="rating-summary">
+            <Star className="w-6 h-6 fill-[#FFD700] text-[#FFD700]" />
+            <span className="font-heading font-bold text-primary">{averageRating} / 5</span>
+            <span className="text-gray-400">·</span>
+            <span className="text-gray-300">
               Basierend auf über {totalReviews} Google-Bewertungen
             </span>
           </div>
         </div>
 
-        {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {reviews.map((review, index) => (
-            <Card 
-              key={index} 
-              className="bg-white rounded-2xl shadow-md hover-elevate hover:scale-105 transform transition-all duration-300 h-full"
-              data-testid={`card-google-review-${index}`}
-            >
-              <CardContent className="p-6">
+        {/* Horizontal Slider */}
+        <div className="relative mb-10 overflow-hidden">
+          <motion.div
+            className="flex gap-6"
+            animate={{
+              x: [0, -100 * reviews.length],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 60,
+                ease: "linear",
+              },
+            }}
+            style={{ width: "max-content" }}
+          >
+            {duplicatedReviews.map((review, index) => (
+              <div
+                key={`review-${index}`}
+                className="min-w-[320px] max-w-[380px] bg-neutral-900 rounded-2xl shadow-md shadow-red-900/30 p-6 flex-shrink-0"
+                data-testid={`card-review-slider-${index % reviews.length}`}
+              >
                 {/* Avatar and Name */}
                 <div className="flex items-start gap-4 mb-4">
-                  <Avatar className="w-12 h-12">
-                    <AvatarFallback className="bg-primary/10 text-primary font-heading font-bold">
+                  <Avatar className="w-12 h-12 flex-shrink-0">
+                    <AvatarFallback className="bg-primary/20 text-primary font-heading font-bold">
                       {getInitials(review.name)}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
-                    <div className="font-heading font-bold text-base truncate" data-testid={`text-reviewer-name-${index}`}>
+                    <div className="font-heading font-bold text-base text-white truncate" data-testid={`text-reviewer-name-${index % reviews.length}`}>
                       {review.name}
                     </div>
-                    <div className="text-xs text-muted-foreground" data-testid={`text-review-date-${index}`}>
+                    <div className="text-xs text-gray-400" data-testid={`text-review-date-${index % reviews.length}`}>
                       {formatDate(review.date)}
                     </div>
                   </div>
                 </div>
                 
                 {/* Rating Stars */}
-                <div className="flex gap-1 mb-3" data-testid={`rating-stars-${index}`}>
+                <div className="flex gap-1 mb-3" data-testid={`rating-stars-${index % reviews.length}`}>
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={`w-4 h-4 ${
                         i < review.rating 
-                          ? 'fill-yellow-400 text-yellow-400' 
-                          : 'fill-gray-200 text-gray-200'
+                          ? 'fill-[#FFD700] text-[#FFD700]' 
+                          : 'fill-gray-700 text-gray-700'
                       }`}
                     />
                   ))}
                 </div>
                 
                 {/* Review Text */}
-                <p className="text-sm font-sans text-muted-foreground leading-relaxed" data-testid={`text-review-content-${index}`}>
+                <p className="text-sm font-sans text-gray-300 leading-relaxed" data-testid={`text-review-content-${index % reviews.length}`}>
                   "{review.text}"
                 </p>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Google CTA Button */}
@@ -120,7 +136,7 @@ export default function GoogleReviews({
             href="https://www.google.com/search?q=+1%20Corion%20Lackdoktor%20Recenzii&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLGwsDA0NLIwNDM1MTY2MLM0MdnAyPiKUVbbUME5vygzP0_BJzE5OyU_uyS_SCEoNTk1ryozcxErfnkAcTddblsAAAA&rldimm=14888112816543306944&tbm=lcl&hl=ro&sa=X#lkt=LocalPoiReviews"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-2xl font-heading font-semibold hover-elevate active-elevate-2 transition-all duration-300 text-lg"
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-2xl font-heading font-semibold hover:bg-red-700 transition-all duration-300 text-lg"
             data-testid="button-view-google-reviews"
           >
             Mehr auf Google ansehen
@@ -128,6 +144,6 @@ export default function GoogleReviews({
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
