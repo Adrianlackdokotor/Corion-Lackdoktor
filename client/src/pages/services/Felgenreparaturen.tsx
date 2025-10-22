@@ -27,7 +27,7 @@ export default function Felgenreparaturen() {
       image={wheelImage}
       benefits={benefits}
       process={process}
-      pricing="ab 89€ pro Felge"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

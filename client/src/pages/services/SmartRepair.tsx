@@ -29,7 +29,7 @@ export default function SmartRepair() {
       image={paintImage}
       benefits={benefits}
       process={process}
-      pricing="ab 89€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

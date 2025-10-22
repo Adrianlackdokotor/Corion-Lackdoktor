@@ -27,7 +27,7 @@ export default function Sonderlackierung() {
       image={paintImage}
       benefits={benefits}
       process={process}
-      pricing="ab 3.999€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

@@ -27,7 +27,7 @@ export default function Baulackierung() {
       image={paintImage}
       benefits={benefits}
       process={process}
-      pricing="ab 2.499€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

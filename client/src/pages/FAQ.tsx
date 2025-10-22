@@ -34,7 +34,7 @@ export default function FAQ() {
     },
     {
       question: "Was kostet eine Smart Repair?",
-      answer: "Smart Repair beginnt ab 89€ für kleinere Lackschäden. Der genaue Preis hängt von Größe und Umfang des Schadens ab. Wir erstellen Ihnen gerne einen kostenlosen Kostenvoranschlag.",
+      answer: "Der Preis für Smart Repair hängt von Größe und Umfang des Schadens ab. Senden Sie uns einfach ein Foto vom Schaden per WhatsApp, Formular oder E-Mail und wir erstellen Ihnen ein kostenloses, individuelles Angebot.",
     },
     {
       question: "Bieten Sie auch einen Abhol- und Bringservice an?",

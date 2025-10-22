@@ -27,7 +27,7 @@ export default function Autoglas() {
       image={paintImage}
       benefits={benefits}
       process={process}
-      pricing="ab 79€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

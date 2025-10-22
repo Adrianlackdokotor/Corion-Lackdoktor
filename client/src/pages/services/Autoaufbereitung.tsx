@@ -27,7 +27,7 @@ export default function Autoaufbereitung() {
       image={detailImage}
       benefits={benefits}
       process={process}
-      pricing="ab 149€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

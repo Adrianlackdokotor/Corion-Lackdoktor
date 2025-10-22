@@ -27,7 +27,7 @@ export default function Plastikreparatur() {
       image={paintImage}
       benefits={benefits}
       process={process}
-      pricing="ab 199€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }

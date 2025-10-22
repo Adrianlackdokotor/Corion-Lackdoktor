@@ -27,7 +27,7 @@ export default function DellenEntfernen() {
       image={dentImage}
       benefits={benefits}
       process={process}
-      pricing="ab 69€"
+      pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
     />
   );
 }
