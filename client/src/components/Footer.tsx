@@ -84,7 +84,7 @@ export default function Footer() {
             <h3 className="font-semibold font-heading mb-4">Standorte</h3>
             <div className="space-y-4 text-sm">
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=50.0780,8.4450" 
+                href="https://www.google.com/maps/place/%2B1+Corion+Lackdoktor/@50.0722447,8.3788688,622m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47bda31d6038322b:0xce9d33b9de0114c0!8m2!3d50.0722447!4d8.3814437!16s%2Fg%2F11ptz_8kfg?authuser=0&entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex gap-2 hover:text-foreground transition-colors"
