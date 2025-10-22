@@ -1,0 +1,82 @@
+OBJECTIVE:  
+Creează o secțiune nouă **„Jetzt Angebot einholen”** pe website-ul +1 Corion Lackdoktor și actualizează toate paginile pentru a elimina mențiunile de tip „ab 399 €” sau alte prețuri fixe.  
+Secțiunea va încuraja utilizatorii să trimită poze cu daunele auto pentru o ofertă gratuită, prin WhatsApp, formular sau e-mail.
+
+---
+
+### 🔧 TASK DETAILS
+
+#### 1. Creează componentul React
+Fișier: `components/AngebotEinholen.tsx`
+
+**Cerințe de design:**
+- Fundal: gri deschis `#F2F2F2`  
+- Conținut centrat, margini generoase `py-20 px-6`  
+- Animație cu un **smartphone** care afișează o fotografie cu o daună auto (folosește Framer Motion pentru efect de mișcare lentă stânga-dreapta sau zoom-in).  
+  - Text alt pentru imagine: `Smartphone mit Lackschaden-Foto`  
+- Text principal:
+  ```
+  📸 Senden Sie uns einfach ein Foto vom Schaden!
+  Wir erstellen Ihnen ein kostenloses Angebot – schnell und unverbindlich.
+  ```
+- Sub text: trei butoane CTA, fiecare cu icon și text:
+  - **📱 WhatsApp senden** → link: `https://wa.me/4917683458274`
+  - **📩 Formular ausfüllen** → scroll către secțiunea formularului de contact (ancoră `#kontakt`)
+  - **✉️ E-Mail senden** → `mailto:info@corion-lackdoktor.de`
+- Butoanele vor avea:
+  - `bg-primary` (#C00020), text alb, `rounded-2xl`, `shadow-cta`
+  - Efect hover: `scale-105 brightness-110 transition-transform duration-300`
+  - Font: `Montserrat Bold`
+  - Spațiere: `gap-3 mt-6 flex flex-wrap justify-center`
+
+#### 2. Integrează componentul
+- Include secțiunea **sub Hero Banner**, înainte de recenzii (Kundenbewertungen).  
+  În `Home.tsx`, adaugă:
+  ```jsx
+  import AngebotEinholen from "@/components/AngebotEinholen";
+  ...
+  <AngebotEinholen />
+  ```
+
+#### 3. Elimină prețurile fixe
+- Caută în întreg proiectul expresii precum:
+  - `"ab "`  
+  - `"€"`  
+  - `"ab 399"`  
+  și elimină-le din paginile serviciilor (`Leistungen`).
+- Înlocuiește-le cu:
+  ```
+  Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot.
+  ```
+- Ajustează CTA-urile pentru a trimite către noua secțiune „Jetzt Angebot einholen”.
+
+#### 4. Responsivitate
+- Imaginea/telefonul animat: centrat și redimensionat corect pe mobil.  
+- Butoanele CTA devin verticale pe ecrane <640 px.
+
+#### 5. SEO & Accessibilitate
+Adaugă în head meta-description:
+```html
+<meta name="description" content="Jetzt Angebot einholen – senden Sie uns ein Foto vom Schaden und erhalten Sie ein kostenloses, unverbindliches Angebot für Lack- und Karosseriearbeiten in Wiesbaden, Hofheim & Mainz."/>
+```
+
+#### 6. Tailwind Setup
+Adaugă în `tailwind.config.ts`:
+```js
+extend: {
+  boxShadow: { 'cta': '0 4px 10px rgba(192, 0, 32, 0.3)' },
+}
+```
+
+#### 7. Output Final
+- ✅ Fișier nou: `components/AngebotEinholen.tsx`
+- ✅ Integrare în `Home.tsx`
+- ✅ Eliminare prețuri fixe de pe toate paginile
+- ✅ CTA-uri funcționale: WhatsApp, Formular, Email
+- ✅ Animație smartphone responsive
+- ✅ Meta SEO actualizată
+
+---
+
+🎯 **Rezultat final:**  
+O secțiune modernă, animată și interactivă care invită clienții să trimită rapid poze pentru o ofertă gratuită, eliminând prețurile statice și aducând un flux de conversie elegant și profesionist pentru +1 Corion Lackdoktor.
