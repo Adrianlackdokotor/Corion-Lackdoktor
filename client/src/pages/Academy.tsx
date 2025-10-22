@@ -1,9 +1,23 @@
-import { GraduationCap, Award, BookOpen, Users, Clock, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { GraduationCap, Award, BookOpen, Users, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import paintMasterBanner from "@assets/generated_images/AI_PaintMaster_GPT_avatar_0d76b779.png";
 
 export default function Academy() {
+  const [promptText, setPromptText] = useState("");
+
+  const handleAskPaintMaster = () => {
+    const baseUrl = "https://chat.openai.com/g/g-OyZuqL3BE-paintmaster";
+    if (promptText.trim()) {
+      window.open(`${baseUrl}?q=${encodeURIComponent(promptText)}`, "_blank", "noopener,noreferrer");
+    } else {
+      window.open(baseUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   const courses = [
     {
       icon: GraduationCap,
@@ -41,9 +55,102 @@ export default function Academy() {
     <div className="min-h-screen">
       <SEO
         title="Academy | Corion Lackdoktor - Professionelle KFZ Ausbildung"
-        description="Professionelle Weiterbildung für Lackierer, Smart Repair Techniker und KFZ-Gutachter. Praxisnahe Kurse von erfahrenen Profis in Hofheim."
+        description="Professionelle Weiterbildung für Lackierer, Smart Repair Techniker und KFZ-Gutachter. Praxisnahe Kurse von erfahrenen Profis in Hofheim. Jetzt mit AI PaintMeister – dein persönlicher AI-Tutor."
         canonical="https://www.corion-lackdoktor.de/academy"
       />
+      
+      {/* PaintMaster GPT Section */}
+      <section className="w-full bg-background border-b py-8 md:py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-6">
+          {/* Clickable Banner Image */}
+          <motion.a
+            href="https://chat.openai.com/g/g-OyZuqL3BE-paintmaster"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            data-testid="link-paintmaster-banner"
+          >
+            <img
+              src={paintMasterBanner}
+              alt="AI PaintMaster - Ihr persönlicher AI-Tutor für Smart Repair & Lackierung"
+              className="w-full max-w-2xl rounded-xl shadow-lg cursor-pointer transition-shadow duration-300 hover:shadow-2xl"
+            />
+          </motion.a>
+
+          {/* Headline */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-center text-xl md:text-2xl font-medium"
+            data-testid="text-paintmaster-headline"
+          >
+            💬 Frag den <span className="text-primary font-bold">AI PaintMeister</span> – schreibe einen Prompt!
+          </motion.p>
+
+          {/* Interactive Prompt Input */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-col md:flex-row gap-3 w-full max-w-3xl"
+          >
+            <input
+              type="text"
+              value={promptText}
+              onChange={(e) => setPromptText(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleAskPaintMaster();
+                }
+              }}
+              placeholder="z. B. Wie lackiere ich Metallic-Flächen richtig?"
+              className="flex-1 p-3 rounded-md bg-card border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              data-testid="input-paintmaster-prompt"
+            />
+            <Button
+              size="lg"
+              onClick={handleAskPaintMaster}
+              className="font-semibold"
+              data-testid="button-ask-paintmaster"
+            >
+              Mit AI besprechen
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </motion.div>
+
+          {/* Quick Questions */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-wrap gap-2 justify-center"
+          >
+            {[
+              "Smart Repair Basics",
+              "Farbmischung Tipps",
+              "Lackfehler vermeiden",
+              "Polieren & Finish"
+            ].map((question, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setPromptText(question);
+                  setTimeout(() => handleAskPaintMaster(), 100);
+                }}
+                className="text-sm px-3 py-1.5 rounded-full bg-card border border-border hover-elevate active-elevate-2 text-muted-foreground hover:text-foreground transition-colors"
+                data-testid={`button-quick-question-${index}`}
+              >
+                {question}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+      </section>
       
       {/* Header */}
       <div className="bg-card border-b">
