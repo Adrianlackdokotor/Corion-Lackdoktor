@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
+import AngebotEinholen from "@/components/AngebotEinholen";
 import GoogleReviews from "@/components/GoogleReviews";
 import StatsDisplay from "@/components/StatsDisplay";
 import { Button } from "@/components/ui/button";
@@ -135,6 +136,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Angebot Einholen Section */}
+      <AngebotEinholen />
 
       {/* Google Reviews */}
       <GoogleReviews maxReviews={9} averageRating={4.6} totalReviews={642} />
