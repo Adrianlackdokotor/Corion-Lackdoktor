@@ -99,6 +99,123 @@ Three locations configured:
 ### Gallery with Filters
 Categories: Alle, Lackierung, Unfallschäden, Smart Repair, Oldtimer, Felgen, Aufbereitung
 
+### Google Reviews Integration
+- **Live Google Reviews Link**: Direct link to Google Business Profile
+- **SEO-Optimized**: JSON-LD structured data for rich snippets
+- **Responsive Design**: 1 card on mobile, 3 on desktop
+- **Auto-Updated**: Simple JSON file for easy manual updates
+
+---
+
+## ⭐ Google Reviews Management
+
+### Overview
+The website features an integrated Google Reviews section that displays customer testimonials from the Google Business Profile. The section includes:
+- Display of latest 10 reviews from `data/reviews.json`
+- Average rating (4.6/5) and total review count (642)
+- Direct link to Google Business Profile for more reviews
+- SEO-optimized with JSON-LD structured data
+
+### Files Involved
+1. **`data/reviews.json`** - Contains review data
+2. **`client/src/components/GoogleReviews.tsx`** - React component
+3. **`client/index.html`** - SEO meta tags and JSON-LD schema
+4. **`client/src/pages/Home.tsx`** - Integration on homepage
+
+### How to Update Reviews
+
+#### Manual Update (Recommended)
+To add new reviews manually:
+
+1. Open `data/reviews.json`
+2. Add new review entry at the top of the array:
+```json
+{
+  "name": "Customer Name",
+  "rating": 5,
+  "text": "Review text in German...",
+  "date": "2025-10-22"
+}
+```
+3. Save the file - changes appear immediately
+
+#### Fields Explanation
+- **name**: Customer's name (can be first name + initial for privacy)
+- **rating**: Number from 1-5 (stars)
+- **text**: Review text in German
+- **date**: ISO date format (YYYY-MM-DD)
+
+#### Update Statistics
+If total reviews or average rating changes:
+
+1. Open `client/src/pages/Home.tsx`
+2. Find the GoogleReviews component:
+```tsx
+<GoogleReviews maxReviews={9} averageRating={4.6} totalReviews={642} />
+```
+3. Update `averageRating` and `totalReviews` values
+4. Also update in `client/index.html` JSON-LD schema (lines 37-42)
+
+### Future Enhancement: Google Places API Integration
+
+For automatic review fetching (optional):
+
+1. **Get Google Places API Key**:
+   - Visit: https://console.cloud.google.com
+   - Enable Places API
+   - Create API credentials
+
+2. **Create Update Script** (`scripts/update-reviews.js`):
+```javascript
+const fetch = require('node-fetch');
+const fs = require('fs');
+
+async function fetchGoogleReviews() {
+  const placeId = 'YOUR_GOOGLE_PLACE_ID';
+  const apiKey = process.env.GOOGLE_API_KEY;
+  
+  const response = await fetch(
+    `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating,user_ratings_total&key=${apiKey}`
+  );
+  
+  const data = await response.json();
+  const reviews = data.result.reviews.map(review => ({
+    name: review.author_name,
+    rating: review.rating,
+    text: review.text,
+    date: new Date(review.time * 1000).toISOString().split('T')[0]
+  }));
+  
+  fs.writeFileSync('data/reviews.json', JSON.stringify(reviews, null, 2));
+  console.log('Reviews updated successfully!');
+}
+
+fetchGoogleReviews();
+```
+
+3. **Run manually or set up cron job**:
+```bash
+node scripts/update-reviews.js
+```
+
+### SEO Benefits
+
+The Google Reviews section includes:
+- ✅ **Rich Snippets**: Star ratings appear in Google search results
+- ✅ **Schema.org Markup**: AutoBodyShop + AggregateRating
+- ✅ **Trust Signals**: Displays 4.6/5 rating prominently
+- ✅ **Social Proof**: Real customer testimonials increase conversions
+- ✅ **Click-Through**: Direct link to Google Business Profile
+
+### Best Practices
+
+1. **Keep Reviews Fresh**: Update at least monthly with latest reviews
+2. **Mix Ratings**: Include 4-5 star reviews for authenticity
+3. **Vary Length**: Mix short and detailed reviews
+4. **Recent Dates**: Display recent reviews (last 3-6 months)
+5. **Privacy**: Use first name + last initial only
+6. **Translation**: Keep reviews in German for local SEO
+
 ---
 
 ## 🛠 Technical Stack
