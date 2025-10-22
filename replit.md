@@ -39,6 +39,32 @@ The website is a static, client-side React application built with TypeScript and
 - **SEO Schema**: Updated `LocalBusiness` structured data with accurate geo-coordinates for all locations.
 - **Content Management**: Uses German placeholder text, intended for client-provided content.
 
+### SEO Infrastructure
+Comprehensive SEO optimization for traditional search engines (Google, Bing) and AI systems (ChatGPT, Gemini, Perplexity, Copilot).
+
+- **`react-helmet-async`**: Installed for dynamic meta tag management in React SPA. `<HelmetProvider>` wraps the App component.
+- **`SEO.tsx` Component**: Reusable component managing title, description, keywords, canonical URLs, Open Graph tags, Twitter Card meta, and robots/AI-crawler permissions.
+- **Page-Specific Meta Tags**: All main pages include unique, keyword-rich meta tags via `<SEO>` component:
+  - Home: "Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden"
+  - Contact: "Kontakt | Corion Lackdoktor Hofheim"
+  - About: "Über Uns | Corion Lackdoktor - 20+ Jahre Erfahrung"
+  - FAQ: "FAQ | Häufige Fragen zu Smart Repair & Autoreparatur"
+  - Testimonials: "Kundenbewertungen | Corion Lackdoktor - 4.6/5 Sterne"
+  - Locations: "Standorte | Corion Lackdoktor - Hofheim, Mainz-Kastel, Wiesbaden"
+  - Gutachter: "Gutachterservice | KFZ Schadengutachten Hofheim & Wiesbaden"
+  - Gallery: "Galerie | Corion Lackdoktor - Vorher/Nachher Bilder"
+  - Impressum: "Impressum | Corion Lackdoktor Hofheim"
+- **JSON-LD Schema Markup**:
+  - `LocalBusiness` schema on homepage with all 3 locations (Hofheim-Wallau, Mainz-Kastel, Wiesbaden), GPS coordinates, opening hours, and contact details.
+  - `FAQPage` schema on FAQ page with all 10 questions for rich search results.
+- **AI Optimization Files**:
+  - `sitemap.xml`: Complete sitemap with all main URLs (home, services, contact, about, FAQ, gallery, reviews, locations, gutachter, impressum).
+  - `llm.txt`: Structured business data for AI systems with services, locations, FAQs, pricing, and contact information.
+  - `robots.txt`: Allows GPTBot, Google-Extended, Googlebot, and all crawlers; includes sitemap reference.
+- **AI-Briefs**: Hidden Q&A sections (`display: none`, `aria-hidden="true"`) on Homepage and FAQ pages to optimize AI crawler understanding with natural language answers.
+- **Canonical URLs**: All pages include canonical URLs pointing to `https://www.corion-lackdoktor.de/`.
+- **Social Sharing**: Open Graph and Twitter Card meta tags ensure proper previews when shared on social platforms.
+
 ### AI Intelligence System
 A dynamic intelligence system learns from user behavior, personalizes interactions, and provides GPT-powered assistance.
 
