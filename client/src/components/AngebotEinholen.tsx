@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Mail, Send } from "lucide-react";
+import { MessageCircle, Mail, Send, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import smartphoneImage from "@assets/generated_images/Smartphone_showing_car_damage_photo_2895b3f4.png";
 
@@ -41,16 +41,18 @@ export default function AngebotEinholen() {
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-4"
-            data-testid="heading-angebot"
+            className="flex items-center justify-center gap-4 mb-4"
           >
-            📸 Senden Sie uns einfach ein Foto vom Schaden!
-          </motion.h2>
+            <Camera className="w-10 h-10 md:w-12 md:h-12 text-primary flex-shrink-0" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary" data-testid="heading-angebot">
+              Senden Sie uns einfach ein Foto vom Schaden!
+            </h2>
+          </motion.div>
 
           {/* Subheading */}
           <motion.p
@@ -70,24 +72,24 @@ export default function AngebotEinholen() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 md:gap-6"
+            className="flex flex-wrap justify-center gap-4"
             data-testid="container-cta-buttons"
           >
             {/* WhatsApp Button */}
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary text-white font-heading font-bold rounded-2xl shadow-cta hover:scale-105 hover:brightness-110 transition-all duration-300 px-8 py-6 text-base md:text-lg"
+              className="font-heading font-bold shadow-cta"
               data-testid="button-whatsapp"
             >
               <a
                 href="https://wa.me/4917683458274"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3"
+                className="flex items-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" />
-                <span>📱 WhatsApp senden</span>
+                <span>WhatsApp senden</span>
               </a>
             </Button>
 
@@ -95,26 +97,26 @@ export default function AngebotEinholen() {
             <Button
               size="lg"
               onClick={handleScrollToKontakt}
-              className="bg-primary hover:bg-primary text-white font-heading font-bold rounded-2xl shadow-cta hover:scale-105 hover:brightness-110 transition-all duration-300 px-8 py-6 text-base md:text-lg"
+              className="font-heading font-bold shadow-cta"
               data-testid="button-form"
             >
               <Send className="w-5 h-5" />
-              <span>📩 Formular ausfüllen</span>
+              <span>Formular ausfüllen</span>
             </Button>
 
             {/* Email Button */}
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-primary text-white font-heading font-bold rounded-2xl shadow-cta hover:scale-105 hover:brightness-110 transition-all duration-300 px-8 py-6 text-base md:text-lg"
+              className="font-heading font-bold shadow-cta"
               data-testid="button-email"
             >
               <a
                 href="mailto:info@corion-lackdoktor.de"
-                className="flex items-center gap-3"
+                className="flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />
-                <span>✉️ E-Mail senden</span>
+                <span>E-Mail senden</span>
               </a>
             </Button>
           </motion.div>
