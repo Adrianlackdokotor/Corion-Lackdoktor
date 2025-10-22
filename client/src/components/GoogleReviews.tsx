@@ -72,7 +72,7 @@ export default function GoogleReviews({
           <motion.div
             className="flex gap-6"
             animate={{
-              x: [0, -100 * reviews.length],
+              x: ["0%", "-50%"],
             }}
             transition={{
               x: {
