@@ -5,6 +5,7 @@ import AngebotEinholen from "@/components/AngebotEinholen";
 import GoogleReviews from "@/components/GoogleReviews";
 import WarumCorion from "@/components/WarumCorion";
 import SoFunktionierts from "@/components/SoFunktionierts";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight } from "lucide-react";
 
@@ -15,6 +16,53 @@ import detailImage from "@assets/generated_images/Auto_detailing_service_image_2
 import oldtimerImage from "@assets/generated_images/Classic_car_restoration_image_360d4f59.png";
 
 export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Corion Lackdoktor",
+    "image": "https://www.corion-lackdoktor.de/assets/logo-corion.jpg",
+    "@id": "https://www.corion-lackdoktor.de",
+    "url": "https://www.corion-lackdoktor.de",
+    "telephone": "+49 176 83458274",
+    "email": "coriongmbh@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nassaustraße 41",
+      "addressLocality": "Hofheim-Wallau",
+      "postalCode": "65719",
+      "addressCountry": "DE"
+    },
+    "openingHours": "Mo-Fr 08:00-17:00",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.0780,
+      "longitude": 8.4450
+    },
+    "priceRange": "€€",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "642"
+    },
+    "sameAs": [
+      "https://maps.google.com/?cid=14888112816543306944",
+      "https://www.instagram.com/corion.lackdoktor",
+      "https://www.facebook.com/corionlackdoktor"
+    ],
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Standort Mainz-Kastel",
+        "value": "Wiesbadener Str. 30, 55252 Mainz-Kastel"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Standort Wiesbaden",
+        "value": "Wiesbaden"
+      }
+    ]
+  };
+
   const featuredServices = [
     {
       title: "Unfallschäden",
@@ -58,6 +106,12 @@ export default function Home() {
 
   return (
     <div>
+      <SEO
+        title="Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden"
+        description="Ihr Lackdoktor mit 12 Jahren Erfahrung – präzise, fair, AI-gestützt. Schnelle Auto-Reparaturen in Hofheim, Mainz-Kastel & Wiesbaden. Jetzt kostenloses Angebot in 24h!"
+        canonical="https://www.corion-lackdoktor.de/"
+        schemaMarkup={localBusinessSchema}
+      />
       <Hero />
 
       {/* Featured Services */}
