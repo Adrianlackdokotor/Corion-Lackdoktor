@@ -1,0 +1,126 @@
+OBJECTIVE:
+Creează pagina **Impressum** pentru **+1 Corion Lackdoktor**, care va include toate informațiile legale despre companie (corporație, adresă, date de contact), detaliile despre **AGB (clauze legale de utilizare a site-ului)** și o avertizare referitoare la **informarea datelor prin agenții AI**.
+
+---
+
+### ⚙️ 1️⃣ **Structura Paginii Impressum**
+
+Creează un fișier nou în `pages/impressum.tsx` cu următorul conținut:
+
+```tsx
+import React from 'react';
+
+const Impressum = () => {
+  return (
+    <div className="p-8 bg-darkBackground text-lightText">
+      <h1 className="text-3xl font-bold text-center mb-6">Impressum</h1>
+
+      <section>
+        <h2 className="text-xl font-semibold">Corion GmbH</h2>
+        <p>Adresse: Nassaustraße 41, 65719 Hofheim am Taunus, Deutschland</p>
+        <p>Telefon: <a href="tel:+4917683458274" className="text-primary">+49 176 83458274</a></p>
+        <p>E-Mail: <a href="mailto:info@corion.de" className="text-primary">info@corion.de</a></p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Geschäftsführer</h2>
+        <p>Adrian Apostol</p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Handelsregister</h2>
+        <p>HRB 128302</p>
+        <p>Amtsgericht Frankfurt am Main</p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Rechtsform</h2>
+        <p>Gesellschaft mit beschränkter Haftung (GmbH)</p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">AGB - Allgemeine Geschäftsbedingungen</h2>
+        <p>
+          Die Nutzung unserer Webseite unterliegt den folgenden Bedingungen. Bitte lesen Sie diese
+          sorgfältig durch:
+        </p>
+        <ul className="list-disc pl-5">
+          <li>Die Inhalte unserer Seite sind ausschließlich für den persönlichen Gebrauch bestimmt.</li>
+          <li>Alle Informationen und Inhalte werden ohne Gewähr bereitgestellt.</li>
+          <li>Wir behalten uns das Recht vor, die Seite jederzeit zu ändern oder zu entfernen.</li>
+          <li>Haftungsausschluss: Wir übernehmen keine Verantwortung für die Richtigkeit der Inhalte,
+            insbesondere für Informationen, die von unseren AI-Agenten bereitgestellt werden.
+          </li>
+          <li>Verantwortlich für die Inhalte und deren Nutzung ist ausschließlich der Benutzer.</li>
+        </ul>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold">Wichtiger Hinweis zu AI-Agenten</h2>
+        <p>
+          Unsere AI-Agenten können Informationen liefern, die auf der Verarbeitung von Daten basieren, 
+          aber diese Informationen sind möglicherweise nicht immer korrekt oder aktuell. Es wird empfohlen,
+          alle von den Agenten gelieferten Informationen zu überprüfen, bevor Entscheidungen getroffen werden.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+export default Impressum;
+```
+
+---
+
+### ✨ 2️⃣ **Design și stiluri pentru pagina Impressum**
+
+În `tailwind.config.ts`, asigură-te că ai activat **dark mode** și culorile de brand:
+```js
+module.exports = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#C00020', // roșu pentru linkuri
+        darkBackground: '#121212', // fundal negru
+        lightText: '#FFFFFF', // text alb
+      },
+    },
+  },
+};
+```
+
+În `styles/global.css`, asigură-te că există stiluri pentru text și fundal:
+```css
+body {
+  background-color: #121212;
+  color: #FFFFFF;
+}
+
+h1, h2, h3 {
+  color: #FFFFFF;
+}
+```
+
+---
+
+### 🔑 3️⃣ **Adăugarea de linkuri externe**
+
+Pentru a face ca emailul și numărul de telefon să fie clicabile și funcționale:
+```tsx
+<a href="mailto:info@corion.de" className="text-primary">info@corion.de</a>
+<a href="tel:+4917683458274" className="text-primary">+49 176 83458274</a>
+```
+
+---
+
+### ✅ **Rezultatul dorit:**
+- **Pagina Impressum** cu informațiile complete despre **Corion GmbH**.
+- **AGB** incluzând **clauzele legale** (cu un disclaimer pentru AI).
+- **Linkuri active** pentru contact (telefon, email).
+- **Dark mode activ** pentru toată pagina.
+- **Conformitate legală** cu reglementările germane (Germania) referitoare la utilizarea site-ului.
+
+---
+
+### 🚀 **Opțional**: În cazul în care vrei să adaugi un **link rapid la AGB** în footer-ul fiecărei pagini, îți pot crea un prompt care să insereze acest link automat pe toate paginile. 

@@ -29,6 +29,14 @@ The website is built as a static, client-side only application using **React** w
 ### Technical Implementations
 - **Theme System**: ThemeProvider context manages dark/light mode with localStorage persistence. ThemeToggle button (top-right, z-50) switches themes. Dark mode uses pure black background for maximum contrast.
 - **Page Structure**: Dedicated pages for 13+ services (e.g., `/leistungen/unfallschaeden`), legal information (`/impressum`, `/datenschutz`), `galerie` with filtering, `kontakt`, `uber-uns`, `bewertungen`, `standorte`, and `faq`.
+- **Impressum Page (Updated October 2025)**:
+  - **Company Information**: Corion GmbH, Nassaustraße 41, 65719 Hofheim am Taunus
+  - **Legal Details**: Managing Director Adrian Apostol, Commercial Register HRB 128302 (Amtsgericht Frankfurt am Main)
+  - **Clickable Contact Links**: Phone (+49 176 83458274) and Email (info@corion.de) with tel: and mailto: protocols
+  - **AGB Section**: Complete terms and conditions including AI content disclaimer
+  - **Prominent AI Disclaimer**: Bordered section warning about KI-gestützte Assistenten (AI-powered assistants) with recommendations to verify AI-generated information before making decisions
+  - **Legal Compliance**: EU dispute resolution, consumer arbitration, content responsibility per §55 Abs. 2 RStV, TMG disclaimers
+  - **Dark Mode Compatible**: All sections properly styled with readable text on dark background
 - **Hero Section (Updated October 2025)**: 
   - **Honest Messaging**: Removed all "Meisterbetrieb" terminology and replaced with "Team in Ausbildung zum Meister" throughout site
   - **SEO-Optimized H1**: "Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel" for local search visibility
@@ -38,7 +46,7 @@ The website is built as a static, client-side only application using **React** w
   - **Dual CTAs**: "Kostenvoranschlag erhalten" (primary) and "Jetzt Anrufen" (outline with backdrop blur)
 - **"Warum +1 Corion Lackdoktor" Section**: 4 benefit cards with Lucide icons (Award, Clock, Shield, Users), hover elevation effects, highlighting key differentiators
 - **"So funktioniert's" Section**: 3-step conversion process with numbered cards (1: Foto senden, 2: Angebot erhalten, 3: Reparatur durchführen), Camera/FileCheck/Wrench icons
-- **Floating WhatsApp CTA**: Globally accessible green button (bottom-right, fixed position, z-50) with scale/opacity animations, links to `https://wa.me/4917683458274`
+- **Floating WhatsApp CTA**: Globally accessible red button with Camera icon (fixed position: bottom-24 right-24, z-40) with scale/opacity animations, text "Foto schicken für Angebot", links to `https://wa.me/4917683458274`. Positioned above the AI chat button.
 - **"Jetzt Angebot einholen" Section**: Conversion-optimized section on homepage encouraging users to send photos of damage for free quotes. Features animated smartphone image, 3 CTA buttons (WhatsApp, Contact Form, Email), and Camera icon. All fixed pricing removed from service pages and replaced with "Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
 - **Google Reviews Integration**: Dark mode infinite horizontal slider displaying customer testimonials from `data/reviews.json`. Features black background, white text, red accents (#C00020), and gold stars (#FFD700). Smooth Framer Motion animation moves cards continuously right-to-left with seamless loop. Responsive design shows 1-4 cards depending on viewport. Includes average rating (4.6/5) and total review count (642). SEO-optimized with JSON-LD structured data for rich snippets and theme-color meta tag.
 - **Enhanced Footer**: Added "Servicegebiete: Hofheim · Wiesbaden · Mainz-Kastel · Frankfurt Umgebung" for local SEO
