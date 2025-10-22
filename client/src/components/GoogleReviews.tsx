@@ -70,7 +70,7 @@ export default function GoogleReviews({
           {reviews.map((review, index) => (
             <Card 
               key={index} 
-              className="bg-white rounded-2xl shadow-md hover-elevate transition-all duration-300 h-full"
+              className="bg-white rounded-2xl shadow-md hover-elevate hover:scale-105 transform transition-all duration-300 h-full"
               data-testid={`card-google-review-${index}`}
             >
               <CardContent className="p-6">
