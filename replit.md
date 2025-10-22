@@ -79,12 +79,16 @@ A comprehensive dynamic intelligence system that learns from user behavior, pers
 - Returns intelligent responses or fallback messages
 
 **5. AIChatWidget.tsx (client/src/components/AIChatWidget.tsx)**
+- **Custom Branding**: Uses uploaded image (`chat-icon_1761147332590.png`) as chat icon - woman half-human, half-digital with headset
+- **Pulsing Animation**: Two Framer Motion rings pulse continuously around icon for attention-grabbing effect
+  - First ring: scales 1→1.3, opacity 0.4→0, 2s duration
+  - Second ring: scales 1→1.2, opacity 0.5→0, 2s duration with 0.5s delay
 - Floating chat button positioned below WhatsApp CTA (z-index: 40)
-- Full chat window with message history
+- Full chat window with message history and spring animations
 - Auto-opens for returning users with high intent (2+ pages or 60+ seconds)
 - Suggestion buttons based on detected user intent
 - Persistent chat history via localStorage
-- Framer Motion animations
+- Enhanced border effects (primary red with opacity, hover transitions)
 
 **6. useDynamicIntelligence() Hook (client/src/hooks/useDynamicIntelligence.ts)**
 - Auto-tracks: page views, scroll depth (every 25%), idle time (30s threshold)
