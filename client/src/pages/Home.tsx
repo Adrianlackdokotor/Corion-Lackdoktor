@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialCard from "@/components/TestimonialCard";
+import GoogleReviews from "@/components/GoogleReviews";
 import StatsDisplay from "@/components/StatsDisplay";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Phone, ArrowRight } from "lucide-react";
@@ -52,29 +52,6 @@ export default function Home() {
     },
   ];
 
-  const testimonials = [
-    {
-      name: "Thomas Müller",
-      rating: 5,
-      text: "Hervorragender Service! Mein Auto sieht aus wie neu. Die Reparatur war schnell und der Preis fair. Absolut empfehlenswert!",
-      date: "Vor 2 Wochen",
-      source: "Google",
-    },
-    {
-      name: "Anna Schmidt",
-      rating: 5,
-      text: "Sehr professionell und freundlich. Die Lackierung ist perfekt geworden. Danke für die tolle Arbeit!",
-      date: "Vor 1 Monat",
-      source: "Google",
-    },
-    {
-      name: "Michael Weber",
-      rating: 5,
-      text: "Kompetente Beratung und schnelle Abwicklung. Preis-Leistung stimmt absolut. Gerne wieder!",
-      date: "Vor 3 Wochen",
-      source: "Google",
-    },
-  ];
 
   const stats = [
     { value: "20+", label: "Jahre Erfahrung", description: "Seit 2003" },
@@ -159,31 +136,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Das sagen unsere Kunden</h2>
-            <p className="text-lg text-muted-foreground">
-              Über 642 zufriedene Kunden haben uns bewertet
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} {...testimonial} />
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/bewertungen">
-              <Button size="lg" variant="outline" data-testid="button-all-reviews">
-                Alle Bewertungen ansehen
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Google Reviews */}
+      <GoogleReviews maxReviews={9} averageRating={4.6} totalReviews={642} />
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
