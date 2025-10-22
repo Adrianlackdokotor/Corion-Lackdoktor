@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/image007 (1)_1761130943207.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,9 +23,13 @@ export default function Header() {
         { name: "Rostschäden", href: "/leistungen/rostschaeden" },
         { name: "Oldtimer", href: "/leistungen/oldtimer" },
         { name: "Autoaufbereitung", href: "/leistungen/autoaufbereitung" },
+        { name: "Baulackierung", href: "/leistungen/baulackierung" },
+        { name: "Autoglas", href: "/leistungen/autoglas" },
+        { name: "Sonderlackierung", href: "/leistungen/sonderlackierung" },
+        { name: "Plastikreparatur", href: "/leistungen/plastikreparatur" },
       ]
     },
-    { name: "Über Uns", href: "/uber-uns" },
+    { name: "Gutachter", href: "/gutachter" },
     { name: "Galerie", href: "/galerie" },
     { name: "Kontakt", href: "/kontakt" },
   ];
@@ -35,11 +40,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3">
-              <div className="text-2xl font-bold text-primary">+1</div>
-              <div className="text-xl font-semibold">
-                Corion <span className="text-primary">Lackdoktor</span>
-              </div>
+            <div className="flex items-center cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3">
+              <img src={logoImage} alt="+1 Corion Lackdoktor" className="h-10 md:h-12" />
             </div>
           </Link>
 
@@ -75,9 +77,9 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:061225962939" className="text-sm font-mono text-muted-foreground hover:text-foreground transition-colors" data-testid="link-phone-header">
+            <a href="tel:017683458274" className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors" data-testid="link-phone-header">
               <Phone className="inline w-4 h-4 mr-1" />
-              06122 596 29 39
+              0176 834 582 74
             </a>
             <Link href="/kontakt">
               <Button data-testid="button-get-quote">Angebot einholen</Button>
@@ -130,7 +132,7 @@ export default function Header() {
                 </div>
               ))}
               <div className="mt-4 flex flex-col gap-2">
-                <a href="tel:061225962939">
+                <a href="tel:017683458274">
                   <Button variant="outline" className="w-full" data-testid="button-call-mobile">
                     <Phone className="w-4 h-4 mr-2" />
                     Jetzt Anrufen

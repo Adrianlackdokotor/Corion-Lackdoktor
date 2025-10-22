@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin } from "lucide-react";
+import logoImage from "@assets/image007 (1)_1761130943207.png";
 
 export default function Footer() {
   const services = [
@@ -13,10 +14,9 @@ export default function Footer() {
 
   const company = [
     { name: "Über Uns", href: "/uber-uns" },
-    { name: "Bewertungen", href: "/bewertungen" },
+    { name: "Gutachter", href: "/gutachter" },
     { name: "Galerie", href: "/galerie" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Preise", href: "/preise" },
+    { name: "Standorte", href: "/standorte" },
   ];
 
   const legal = [
@@ -31,16 +31,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="text-primary">+1</span> Corion Lackdoktor
-            </div>
+            <img src={logoImage} alt="+1 Corion Lackdoktor" className="h-12 mb-4" />
             <p className="text-sm text-muted-foreground mb-4">
               Professionelle Autoreparatur seit über 20 Jahren in Wiesbaden und Umgebung.
             </p>
             <div className="flex flex-col gap-2 text-sm">
-              <a href="tel:061225962939" className="flex items-center gap-2 hover:text-primary transition-colors" data-testid="link-phone-footer">
+              <a href="tel:017683458274" className="flex items-center gap-2 hover:text-primary transition-colors" data-testid="link-phone-footer">
                 <Phone className="w-4 h-4" />
-                <span className="font-mono">06122 596 29 39</span>
+                <span className="font-sans">0176 834 582 74</span>
               </a>
               <a href="mailto:info@lackdoktor.de" className="flex items-center gap-2 hover:text-primary transition-colors" data-testid="link-email-footer">
                 <Mail className="w-4 h-4" />
@@ -51,7 +49,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4">Leistungen</h3>
+            <h3 className="font-semibold font-heading mb-4">Leistungen</h3>
             <ul className="space-y-2 text-sm">
               {services.map((item) => (
                 <li key={item.name}>
@@ -67,7 +65,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold mb-4">Unternehmen</h3>
+            <h3 className="font-semibold font-heading mb-4">Unternehmen</h3>
             <ul className="space-y-2 text-sm">
               {company.map((item) => (
                 <li key={item.name}>
@@ -83,20 +81,26 @@ export default function Footer() {
 
           {/* Locations */}
           <div>
-            <h3 className="font-semibold mb-4">Standorte</h3>
+            <h3 className="font-semibold font-heading mb-4">Standorte</h3>
             <div className="space-y-4 text-sm">
               <div className="flex gap-2">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
-                  Nassaustraße 41<br />
-                  65719 Hofheim am Taunus
+                  Hofheim-Wallau<br />
+                  Wiesbadener Straße
                 </div>
               </div>
               <div className="flex gap-2">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
-                  Wiesbadener Strasse 30<br />
-                  55252 Mainz-Kastel
+                  Mainz-Kastel<br />
+                  Wiesbadener Strasse 30
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
+                <div className="text-muted-foreground">
+                  Wiesbaden
                 </div>
               </div>
             </div>

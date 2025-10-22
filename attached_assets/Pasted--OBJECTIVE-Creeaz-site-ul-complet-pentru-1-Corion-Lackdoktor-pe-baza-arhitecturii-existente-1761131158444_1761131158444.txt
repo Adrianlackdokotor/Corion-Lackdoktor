@@ -1,0 +1,123 @@
+🧠 OBJECTIVE:
+Creează site-ul complet pentru **+1 Corion Lackdoktor** pe baza arhitecturii existente din proiectul „WebStructurePlan”.
+
+---
+
+### 🎨 CORPORATE IDENTITY
+- **Fonturi:**  
+  - Primary: `Montserrat` (titluri, H1–H3)  
+  - Secondary: `Open Sans` (texte, paragrafe)
+- **Culori:**  
+  - Roșu: `#C00020`  
+  - Alb: `#FFFFFF`  
+  - Negru: `#000000`  
+  - Gri deschis: `#F2F2F2`
+- **Logo:** folosește fișierul `image007 (1).png` / `Logo-Final.ai` ca logo principal (versiune vectorială și PNG).
+- Adaugă importurile Google Fonts corespunzătoare în `index.html` și definește-le în `tailwind.config.ts`:
+  ```js
+  fontFamily: {
+    sans: ['Open Sans', 'sans-serif'],
+    heading: ['Montserrat', 'sans-serif'],
+  },
+  colors: {
+    primary: '#C00020',
+    light: '#F2F2F2',
+    dark: '#000000',
+  }
+  ```
+
+---
+
+### 🧱 STRUCTURA PAGINILOR
+
+1. **Homepage**
+   - Hero banner cu imagine din atelier și CTA: “Jetzt Angebot einholen”
+   - Prezentare servicii (3 coloane)
+   - Secțiune „Warum Corion” cu 3 beneficii
+   - Testimoniale slider + rating 4.6/5 (642 Bewertungen)
+   - CTA secundar: “Kostenlose Beratung sichern”
+
+2. **Leistungen (Servicii)**  
+   Creează un **landing page separat** pentru fiecare serviciu:
+   - Unfallschäden  
+   - Lackschäden  
+   - Smart Repair  
+   - Dellen Entfernen  
+   - Leasingrückläufer  
+   - Felgenreparaturen  
+   - Rostschäden  
+   - Oldtimer Restaurierung  
+   - Autoaufbereitung  
+   - Baulackierung  
+   - Autoglas  
+   - Sonderlackierung  
+   - Plastikreparatur  
+   Fiecare pagină are:
+   - Header cu imagine specifică
+   - Descriere SEO scurtă (în germană)
+   - CTA: “Kostenloses Angebot einholen”
+   - Formular de contact cu câmpuri: Name, Telefon, Nachricht, Upload Foto
+
+3. **Gutachter**
+   - Header cu imagine de mașină avariată
+   - Text explicativ: „Schadengutachten, schnelle Abwicklung, unabhängige Expertise”
+   - CTA: “Gutachten anfragen”
+   - Galerie cu imagini “vorher/nachher”
+
+4. **Standorte**
+   Creează o pagină pentru fiecare locație:
+   - Wiesbaden  
+   - Hofheim-Wallau  
+   - Mainz-Kastel  
+   Include Google Maps embed, orar, număr telefon, formular contact.
+   Telefon global: **0176 83458274**
+
+5. **Über uns**
+   - Povestea firmei + poze echipă
+   - Experiență de peste 20 ani
+   - Certificare Meisterbetrieb
+
+6. **Galerie**
+   - Slider cu poze înainte/după
+   - Filtru pe tipuri de lucrări
+
+7. **Kontakt**
+   - Formular de contact general + buton WhatsApp
+   - CTA: “Termin vereinbaren”
+   - Linkuri spre rețele sociale
+
+8. **Pagini legale**
+   - Impressum  
+   - Datenschutz  
+   - Cookie Policy  
+
+---
+
+### ⚙️ SETĂRI TEHNICE
+
+- **Navbar:** logo stânga, butoane către Home, Leistungen, Gutachter, Galerie, Kontakt.  
+- **Footer:** informații firmei, copyright, linkuri legale.  
+- **SEO:**  
+  - Meta tags optimizate pentru zonele Wiesbaden, Hofheim, Mainz.  
+  - Schema.org `LocalBusiness` integrat.  
+  - `robots.txt` + `sitemap.xml` generate automat.  
+- **Design:**  
+  - Responsive (mobile first).  
+  - Animații hover (scale up + lumină 5%).  
+  - Butoane rotunjite (`rounded-2xl`).  
+  - Favicon = versiune simplificată din logo.  
+
+---
+
+### 📦 OUTPUT
+- Actualizează structura React + Tailwind cu paginile de mai sus.
+- Creează componente reutilizabile: `Header`, `Footer`, `Hero`, `ServiceCard`, `ContactForm`.
+- Aplică fonturile și culorile definite în `tailwind.config.ts`.
+- Include fișierele de identitate vizuală și logo din atașamente.
+- Pregătește structura pentru inserarea textului german (ce va fi adăugat ulterior manual).
+
+---
+
+🎯 **Rezultat așteptat:**
+Un site complet funcțional, coerent vizual, optimizat pentru mobil și SEO local, cu design modern bazat pe identitatea +1 Corion Lackdoktor și integrarea paginii „Gutachter”.
+

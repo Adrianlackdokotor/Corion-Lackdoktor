@@ -20,7 +20,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6">
             Professionelle Autoreparatur in Wiesbaden
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8">
@@ -31,12 +31,12 @@ export default function Hero() {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link href="/kontakt">
-              <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90" data-testid="button-hero-quote">
+              <Button size="lg" className="w-full sm:w-auto" data-testid="button-hero-quote">
                 Kostenvoranschlag erhalten
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <a href="tel:061225962939" className="w-full sm:w-auto">
+            <a href="tel:017683458274" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="w-full bg-background/20 backdrop-blur-sm border-white/30 text-white hover:bg-background/30" data-testid="button-hero-call">
                 <Phone className="mr-2 w-5 h-5" />
                 Jetzt Anrufen
@@ -47,16 +47,16 @@ export default function Hero() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-3 gap-4 md:gap-8 text-white/90">
             <div>
-              <div className="text-2xl md:text-3xl font-bold font-mono text-white">20+</div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-white">20+</div>
               <div className="text-sm md:text-base">Jahre Erfahrung</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-bold font-mono text-white">4.6/5</div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-white">4.6/5</div>
               <div className="text-sm md:text-base">642 Bewertungen</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-bold font-mono text-white">100%</div>
-              <div className="text-sm md:text-base">Kostenloser Service</div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-white">100%</div>
+              <div className="text-sm md:text-base">Garantie</div>
             </div>
           </div>
         </div>

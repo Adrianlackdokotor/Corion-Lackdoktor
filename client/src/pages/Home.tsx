@@ -13,7 +13,6 @@ import detailImage from "@assets/generated_images/Auto_detailing_service_image_2
 import oldtimerImage from "@assets/generated_images/Classic_car_restoration_image_360d4f59.png";
 
 export default function Home() {
-  // todo: remove mock data
   const featuredServices = [
     {
       title: "Unfallschäden",
@@ -53,7 +52,6 @@ export default function Home() {
     },
   ];
 
-  // todo: remove mock data
   const testimonials = [
     {
       name: "Thomas Müller",
@@ -78,7 +76,6 @@ export default function Home() {
     },
   ];
 
-  // todo: remove mock data
   const stats = [
     { value: "20+", label: "Jahre Erfahrung", description: "Seit 2003" },
     { value: "4.6/5", label: "Kundenbewertung", description: "642 Bewertungen" },
@@ -86,7 +83,6 @@ export default function Home() {
     { value: "100%", label: "Garantie", description: "Auf alle Arbeiten" },
   ];
 
-  // todo: remove mock data
   const whyChooseUs = [
     "Über 20 Jahre Erfahrung",
     "Schnelle Terminvergabe",
@@ -104,7 +100,7 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Unsere Leistungen</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Unsere Leistungen</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Professionelle Autoreparatur und -pflege für alle Marken und Modelle
             </p>
@@ -117,7 +113,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/leistungen">
+            <Link href="/leistungen/unfallschaeden">
               <Button size="lg" variant="outline" data-testid="button-all-services">
                 Alle Leistungen ansehen
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -132,7 +128,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
                 Warum +1 Corion Lackdoktor?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
@@ -167,7 +163,7 @@ export default function Home() {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Das sagen unsere Kunden</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Das sagen unsere Kunden</h2>
             <p className="text-lg text-muted-foreground">
               Über 642 zufriedene Kunden haben uns bewertet
             </p>
@@ -192,7 +188,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
             Bereit für eine professionelle Autoreparatur?
           </h2>
           <p className="text-lg mb-8 opacity-90">
@@ -205,10 +201,10 @@ export default function Home() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <a href="tel:061225962939" className="w-full sm:w-auto">
+            <a href="tel:017683458274" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="w-full bg-primary-foreground/10 backdrop-blur-sm border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20" data-testid="button-cta-call">
                 <Phone className="mr-2 w-5 h-5" />
-                06122 596 29 39
+                0176 834 582 74
               </Button>
             </a>
           </div>
