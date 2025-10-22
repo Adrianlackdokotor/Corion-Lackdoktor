@@ -7,10 +7,9 @@ import { useState, useEffect } from "react";
 
 export default function Hero() {
   const rotatingServices = [
+    "Unfallschäden",
+    "Lackschäden",
     "Smart Repair",
-    "Gutachten",
-    "Lackierung",
-    "Felgenreparatur",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,7 +38,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6" data-testid="heading-hero">
-            +1 Corion Lackdoktor – Lackierung & Smart Repair in Hofheim, Wiesbaden & Mainz
+            Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel
           </h1>
           
           <p className="text-2xl md:text-3xl font-heading text-white mb-4" data-testid="text-hero-subtitle">
