@@ -4,23 +4,25 @@ import { MapPin } from "lucide-react";
 export default function Locations() {
   const locations = [
     {
-      title: "Wiesbaden",
-      address: "Standort Wiesbaden",
-      city: "65xxx Wiesbaden",
-      phone: "0176 834 582 74",
-      hours: "Mo-Fr: 8:00 - 18:00, Sa: 9:00 - 13:00",
-    },
-    {
       title: "Hofheim-Wallau",
-      address: "Wiesbadener Straße",
+      address: "Nassau Str. 41",
       city: "65719 Hofheim-Wallau",
       phone: "0176 834 582 74",
       hours: "Mo-Fr: 8:00 - 18:00, Sa: 9:00 - 13:00",
+      mapsUrl: "https://www.google.com/maps/place/Nassau+Str.+41,+65719+Hofheim+am+Taunus",
     },
     {
       title: "Mainz-Kastel",
-      address: "Wiesbadener Strasse 30",
+      address: "Wiesbadener Str. 30",
       city: "55252 Mainz-Kastel",
+      phone: "0176 834 582 74",
+      hours: "Mo-Fr: 8:00 - 18:00, Sa: 9:00 - 13:00",
+      mapsUrl: "https://www.google.com/maps/place/Wiesbadener+Str.+30,+55252+Wiesbaden",
+    },
+    {
+      title: "Wiesbaden",
+      address: "Standort Wiesbaden",
+      city: "65xxx Wiesbaden",
       phone: "0176 834 582 74",
       hours: "Mo-Fr: 8:00 - 18:00, Sa: 9:00 - 13:00",
     },

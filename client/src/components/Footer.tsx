@@ -87,14 +87,14 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
                   Hofheim-Wallau<br />
-                  Wiesbadener Straße
+                  Nassau Str. 41
                 </div>
               </div>
               <div className="flex gap-2">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
                   Mainz-Kastel<br />
-                  Wiesbadener Strasse 30
+                  Wiesbadener Str. 30
                 </div>
               </div>
               <div className="flex gap-2">

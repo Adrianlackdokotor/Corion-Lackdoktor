@@ -1,0 +1,136 @@
+OBJECTIVE:
+Actualizează site-ul +1 Corion Lackdoktor cu următoarele modificări:
+- Adaugă adresa **Wiesbadener Str. 30, Mainz-Kastel** și **Hofheim Wallau, Nassau Str. 41**, cu linkuri corecte către Google Maps.
+- Activează **dark mode** pe întreaga pagină cu fundal negru și text alb, respectând identitatea de brand.
+
+---
+
+### ⚙️ 1️⃣ **Modificarea adreselor și linkuri Google Maps**
+
+1. Găsește în `components/LocationSection.tsx` secțiunea care conține adresele.
+2. Actualizează textul și adaugă linkuri corecte Google Maps:
+   - **Hofheim Wallau, Nassau Str. 41**:
+     ```tsx
+     <p className="text-lg font-medium text-white">
+       Unsere Werkstatt: Hofheim Wallau, Nassau Str. 41
+     </p>
+     <a href="https://goo.gl/maps/your-map-link" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+       Sehen Sie uns auf Google Maps
+     </a>
+     ```
+   - **Wiesbadener Str. 30, Mainz-Kastel**:
+     ```tsx
+     <p className="text-lg font-medium text-white">
+       Unsere Werkstatt: Wiesbadener Str. 30, Mainz-Kastel
+     </p>
+     <a href="https://goo.gl/maps/your-map-link" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+       Sehen Sie uns auf Google Maps
+     </a>
+     ```
+
+---
+
+### 🌑 2️⃣ **Activarea Dark Mode**
+
+1. În `tailwind.config.ts`, activează dark mode global:
+   ```js
+   module.exports = {
+     darkMode: 'class', // activăm dark mode pe întreaga pagină
+     theme: {
+       extend: {
+         colors: {
+           primary: '#C00020', // culoare roșie pentru contrast
+           darkBackground: '#121212', // fundal negru
+           lightText: '#FFFFFF', // text alb
+         },
+       },
+     },
+   };
+   ```
+
+2. În componenta principală a paginii (`App.tsx` sau `index.tsx`), setează un `className` pe tag-ul `<html>` pentru dark mode:
+   ```tsx
+   <html className="dark">
+     <body className="bg-darkBackground text-lightText">
+       ...
+     </body>
+   </html>
+   ```
+
+3. În `index.tsx`, adaugă un buton de schimbare între modurile **light** și **dark**:
+   ```tsx
+   const toggleDarkMode = () => {
+     const currentClass = document.documentElement.classList.contains("dark");
+     document.documentElement.classList.toggle("dark", !currentClass);
+   };
+
+   return (
+     <button onClick={toggleDarkMode} className="absolute top-5 right-5 p-3 bg-primary text-white rounded-full">
+       🌙/🌞
+     </button>
+   );
+   ```
+
+---
+
+### ✨ 3️⃣ **Actualizarea stilurilor pentru contrast și identitatea de brand**
+
+1. Asigură-te că în `components/Navbar.tsx` sau alte componente de meniu, culoarea textului este albă și contrastantă:
+   ```tsx
+   <nav className="bg-black text-white">
+     <ul className="flex justify-around">
+       <li><a href="#home" className="hover:text-primary">Home</a></li>
+       <li><a href="#services" className="hover:text-primary">Services</a></li>
+       ...
+     </ul>
+   </nav>
+   ```
+
+2. În `components/Button.tsx`, actualizează butoanele pentru a avea un contrast ridicat în dark mode:
+   ```tsx
+   <button className="bg-primary text-white px-6 py-3 rounded-2xl hover:bg-red-700 transition">
+     Click Here
+   </button>
+   ```
+
+---
+
+### 🌍 4️⃣ **Implementarea Dark Mode pentru întreaga pagină**
+
+1. În `App.tsx` sau componenta principală, activează dark mode global pentru toate paginile:
+   ```tsx
+   <div className="bg-darkBackground text-lightText">
+     <header className="bg-primary p-4 text-center text-white">Corion Lackdoktor</header>
+     <main>
+       {/* Restul site-ului */}
+     </main>
+   </div>
+   ```
+
+2. Asigură-te că toate componentele folosește **culori contrastante** (text alb și fundaluri închise):
+   ```tsx
+   <section className="p-8 bg-darkBackground text-lightText">
+     <h2 className="text-xl font-bold">Unsere Leistungen</h2>
+     <p>Wir bieten professionelle Reparaturdienste...</p>
+   </section>
+   ```
+
+---
+
+### ✅ 5️⃣ **Test final**
+
+1. Rulează aplicația local (sau pe Replit) și verifică:
+   - Adresele sunt actualizate corect cu linkurile Google Maps.
+   - Dark mode este activ pe întreaga pagină, iar textul este ușor de citit.
+   - Toate elementele vizuale respectă identitatea de brand (culori, fonturi).
+
+---
+
+### 📝 **OUTPUT FINAL:**
+- **Adresa**: „Hofheim Wallau, Nassau Str. 41” și „Wiesbadener Str. 30, Mainz-Kastel” cu linkuri Google Maps
+- **Dark mode activ** pe întreaga pagină, cu contrast ridicat
+- **Design compatibil cu corporate identity** (culori și fonturi de brand)
+- **Test complet**: pagina funcționează corect pe toate dispozitivele și se încarcă rapid.
+
+🎯 **Rezultatul dorit**:  
+O pagină modernă, estetică, conformă cu identitatea de brand Corion, și ușor accesibilă pe toate dispozitivele, cu un contrast vizual excelent pentru utilizatori.

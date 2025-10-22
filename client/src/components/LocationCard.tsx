@@ -7,9 +7,10 @@ interface LocationCardProps {
   city: string;
   phone: string;
   hours?: string;
+  mapsUrl?: string;
 }
 
-export default function LocationCard({ title, address, city, phone, hours }: LocationCardProps) {
+export default function LocationCard({ title, address, city, phone, hours, mapsUrl }: LocationCardProps) {
   return (
     <Card data-testid={`card-location-${title.toLowerCase()}`}>
       <CardHeader>
@@ -25,6 +26,18 @@ export default function LocationCard({ title, address, city, phone, hours }: Loc
             {address}<br />
             {city}
           </p>
+          {mapsUrl && (
+            <a 
+              href={mapsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-sm text-primary hover:underline mt-2 inline-flex items-center gap-1"
+              data-testid={`link-maps-${title.toLowerCase()}`}
+            >
+              <MapPin className="w-3 h-3" />
+              Auf Google Maps ansehen
+            </a>
+          )}
         </div>
         
         <div>
