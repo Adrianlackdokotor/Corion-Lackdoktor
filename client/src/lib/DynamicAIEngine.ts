@@ -36,7 +36,7 @@ class DynamicAIEngine {
 
   private initializeSession(): void {
     const session = getUserSession();
-    if (session) {
+    if (session && session.metadata?.pagesVisited && session.metadata.pagesVisited.length > 0) {
       markReturningUser();
     }
   }

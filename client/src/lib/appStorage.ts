@@ -23,19 +23,6 @@ export interface UserSession {
 }
 
 const STORAGE_KEY = 'corion_user_session';
-const ENCRYPTION_KEY = 'corion_2025_key';
-
-function simpleEncrypt(text: string): string {
-  return btoa(text);
-}
-
-function simpleDecrypt(encrypted: string): string {
-  try {
-    return atob(encrypted);
-  } catch {
-    return '';
-  }
-}
 
 export function saveUserSession(data: Partial<UserSession>): void {
   try {
@@ -51,20 +38,20 @@ export function saveUserSession(data: Partial<UserSession>): void {
       },
       chatHistory: [...(existing?.chatHistory || []), ...(data.chatHistory || [])],
       metadata: {
-        ...existing?.metadata,
-        ...data.metadata,
         pagesVisited: [
           ...(existing?.metadata?.pagesVisited || []),
           ...(data.metadata?.pagesVisited || []),
         ],
         timeOnSite: (existing?.metadata?.timeOnSite || 0) + (data.metadata?.timeOnSite || 0),
-        lastVisit: new Date().toISOString(),
-        isReturningUser: existing?.metadata?.isReturningUser || false,
+        lastVisit: data.metadata?.lastVisit || new Date().toISOString(),
+        isReturningUser: data.metadata?.isReturningUser !== undefined 
+          ? data.metadata.isReturningUser 
+          : (existing?.metadata?.isReturningUser || false),
       },
     };
 
-    const encrypted = simpleEncrypt(JSON.stringify(updated));
-    localStorage.setItem(STORAGE_KEY, encrypted);
+    const serialized = JSON.stringify(updated);
+    localStorage.setItem(STORAGE_KEY, serialized);
   } catch (error) {
     console.error('Error saving user session:', error);
   }
@@ -72,13 +59,10 @@ export function saveUserSession(data: Partial<UserSession>): void {
 
 export function getUserSession(): UserSession | null {
   try {
-    const encrypted = localStorage.getItem(STORAGE_KEY);
-    if (!encrypted) return null;
+    const serialized = localStorage.getItem(STORAGE_KEY);
+    if (!serialized) return null;
 
-    const decrypted = simpleDecrypt(encrypted);
-    if (!decrypted) return null;
-
-    return JSON.parse(decrypted) as UserSession;
+    return JSON.parse(serialized) as UserSession;
   } catch (error) {
     console.error('Error getting user session:', error);
     return null;
@@ -120,12 +104,13 @@ export function addChatMessage(role: 'user' | 'assistant', content: string): voi
 }
 
 export function trackPageVisit(page: string): void {
+  const session = getUserSession();
   saveUserSession({
     metadata: {
       pagesVisited: [page],
       timeOnSite: 0,
       lastVisit: new Date().toISOString(),
-      isReturningUser: false,
+      isReturningUser: session?.metadata?.isReturningUser || false,
     },
   });
 }
