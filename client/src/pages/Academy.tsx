@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GraduationCap, Award, BookOpen, Users, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import { GraduationCap, Award, BookOpen, Users, Clock, CheckCircle, ArrowRight, Wrench, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -20,35 +20,79 @@ export default function Academy() {
 
   const courses = [
     {
-      icon: GraduationCap,
+      icon: Wrench,
       title: "Smart Repair Grundlagen",
       duration: "2 Tage",
-      description: "Lernen Sie die Grundlagen der professionellen Smart Repair Technik für kleinere Lackschäden.",
-      topics: ["Spot Repair Technik", "Materialauswahl", "Farbabstimmung", "Qualitätskontrolle"],
+      description: "Lerne die wichtigsten Schritte der professionellen Spot- und Smart-Repair-Technik für kleine Lackschäden.",
+      topics: [
+        "Spot Repair Technik",
+        "Materialauswahl & Oberflächenvorbereitung",
+        "Farbtonfindung & Mischsysteme",
+        "Qualitätskontrolle & Dokumentation"
+      ],
+      ideal: "Ideal für: Einsteiger, die präzise, schnelle und kosteneffiziente Reparaturen durchführen wollen."
     },
     {
       icon: Award,
       title: "Lackiertechnik Fortgeschritten",
       duration: "3 Tage",
-      description: "Vertiefen Sie Ihre Kenntnisse in modernen Lackiertechniken und professioneller Ausführung.",
-      topics: ["Mehrschichtlackierung", "Effektlacke", "Polieren & Finish", "Fehleranalyse"],
+      description: "Vertiefe dein Wissen über moderne Mehrschicht- und Effektlackierungen. Perfektioniere dein Finish mit AI-gestützter Fehleranalyse.",
+      topics: [
+        "Mehrschichtlackierung & Effektlacke",
+        "Airbrush & Spezialbeschichtungen",
+        "Polieren & Finish auf OEM-Niveau",
+        "Lackfehler erkennen & vermeiden"
+      ],
+      ideal: "Ideal für: Profis, die Qualität und Geschwindigkeit optimieren wollen."
+    },
+    {
+      icon: Wrench,
+      title: "Dellen- und Drucktechnik (PDR)",
+      duration: "3 Tage",
+      description: "Lerne die Kunst der Dellenentfernung ohne Lackieren – eine der gefragtesten Kompetenzen im modernen Karosseriebereich.",
+      topics: [
+        "Werkzeugkunde & Hebeltechniken",
+        "Aluminium & Stahl – Unterschiede in der Verarbeitung",
+        "Temperaturführung & Lichttechnik",
+        "Dellenanalyse mit AI-Unterstützung"
+      ],
+      ideal: "Ideal für: Karosseriebauer, Lackierer, Detailer & Smart-Repair-Techniker."
+    },
+    {
+      icon: Sparkles,
+      title: "Fahrzeugaufbereitung & Finish Excellence",
+      duration: "2 Tage",
+      description: "Werde zum Aufbereitungsprofi mit System! Vom Innenraum bis zum Hochglanz-Finish – perfekt vorbereitet durch praxisnahe Übungen und AI-Unterstützung.",
+      topics: [
+        "Lackreinigung & Schleiftechnik",
+        "Polituren & Versiegelungen",
+        "Innenraumaufbereitung & Lederpflege",
+        "Glanzmessung & Qualitätsprüfung"
+      ],
+      ideal: "Ideal für: Aufbereiter & Smart Repair Werkstätten."
     },
     {
       icon: BookOpen,
-      title: "Gutachter Ausbildung",
+      title: "Gutachter Ausbildung (Zertifiziert)",
       duration: "5 Tage",
-      description: "Qualifizieren Sie sich zum professionellen KFZ-Gutachter mit anerkanntem Zertifikat.",
-      topics: ["Schadenbewertung", "Dokumentation", "Rechtliche Grundlagen", "Kommunikation"],
+      description: "Erhalte deine anerkannte Zertifizierung als KFZ-Gutachter mit praxisnaher Erfahrung und digitaler Dokumentation.",
+      topics: [
+        "Schadenanalyse & Bewertung",
+        "Kalkulation & Dokumentation mit AI-Unterstützung",
+        "Rechtliche Grundlagen & Kommunikation",
+        "Praktische Gutachtenübungen"
+      ],
+      ideal: "Ideal für: Lackierer, Werkstattleiter, Versicherungsfachleute & Selbständige."
     },
   ];
 
   const benefits = [
     "Praxisnahe Ausbildung von erfahrenen Profis",
-    "Modernste Werkstatt und Technologie",
-    "Kleine Gruppen für intensives Lernen",
-    "Anerkannte Zertifikate nach Abschluss",
-    "Flexible Terminplanung möglich",
-    "Inkl. Arbeitsmaterialien und Dokumentation",
+    "Modernste Werkstatt & Lackiertechnik",
+    "Kleine Gruppen für intensives Lernen (max. 6 Teilnehmer)",
+    "Zertifikat nach erfolgreichem Abschluss",
+    "Flexible Termine & individuelle Schulungen",
+    "Inklusive Materialien, Dokumentation & Support durch AI PaintMaster",
   ];
 
   return (
@@ -160,7 +204,7 @@ export default function Academy() {
             <h1 className="text-4xl md:text-5xl font-bold font-heading">Corion Academy</h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            Professionelle Weiterbildung und Zertifizierung für KFZ-Fachkräfte
+            Professionelle Weiterbildung & Zertifizierung für KFZ-Fachkräfte
           </p>
         </div>
       </div>
@@ -168,17 +212,15 @@ export default function Academy() {
       {/* Intro */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold font-heading mb-6">Werden Sie zum Experten</h2>
+          <h2 className="text-3xl font-bold font-heading mb-6">Werde Teil der neuen Generation von Fahrzeugexperten</h2>
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
             <p>
-              Die Corion Academy bietet professionelle Weiterbildungskurse für Lackierer, 
-              KFZ-Mechaniker und alle, die sich im Bereich Smart Repair und Fahrzeugreparatur 
-              spezialisieren möchten.
+              Mit Unterstützung von <span className="text-primary font-semibold">AI PaintMaster</span> und 
+              über <span className="font-semibold">20 Jahren Erfahrung</span> im Bereich Lackierung, Smart Repair und Fahrzeugaufbereitung.
             </p>
             <p>
-              Mit über 20 Jahren Erfahrung geben wir unser Wissen an die nächste Generation 
-              weiter. Unsere Kurse kombinieren theoretisches Fachwissen mit praktischer 
-              Anwendung in einer modernen Werkstatt.
+              Unsere Kurse verbinden <span className="font-semibold">moderne Technologie</span> mit 
+              praxisnaher Ausbildung und ermöglichen eine sofortige Umsetzung des Gelernten in deinem Berufsalltag.
             </p>
           </div>
         </div>
@@ -188,11 +230,11 @@ export default function Academy() {
       <div className="bg-card py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold font-heading mb-12 text-center">Unsere Kurse</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course, index) => {
               const Icon = course.icon;
               return (
-                <div key={index} className="bg-background p-6 rounded-md border">
+                <div key={index} className="bg-background p-6 rounded-md border hover-elevate">
                   <div className="w-16 h-16 mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon className="w-8 h-8 text-primary" />
                   </div>
@@ -202,7 +244,7 @@ export default function Academy() {
                     <span>{course.duration}</span>
                   </div>
                   <p className="text-muted-foreground mb-4">{course.description}</p>
-                  <div className="space-y-2">
+                  <div className="space-y-2 mb-4">
                     <p className="text-sm font-semibold">Kursinhalte:</p>
                     <ul className="space-y-1">
                       {course.topics.map((topic, idx) => (
@@ -213,6 +255,7 @@ export default function Academy() {
                       ))}
                     </ul>
                   </div>
+                  <p className="text-sm text-primary font-semibold">{course.ideal}</p>
                 </div>
               );
             })}
@@ -222,7 +265,7 @@ export default function Academy() {
 
       {/* Benefits */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <h2 className="text-3xl font-bold font-heading mb-12 text-center">Ihre Vorteile</h2>
+        <h2 className="text-3xl font-bold font-heading mb-12 text-center">Deine Vorteile mit der Corion Academy</h2>
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {benefits.map((benefit, index) => (
             <div key={index} className="flex items-start gap-3">
@@ -233,21 +276,45 @@ export default function Academy() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* AI PaintMaster Info Section */}
+      <div className="bg-card py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold font-heading mb-6">
+            🤖 AI PaintMaster – Dein digitaler Begleiter
+          </h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            Dein persönlicher AI-Assistent begleitet dich während des Kurses und danach.
+            Er merkt sich deine Projekte, bewertet deine Fortschritte und hilft dir, 
+            deine Fähigkeiten auf das nächste Level zu bringen.
+          </p>
+          <p className="text-2xl font-bold font-heading text-primary mb-4">
+            "Lernen. Üben. Verbessern. Und verdienen."
+          </p>
+          <p className="text-muted-foreground">
+            Das ist die Zukunft des Handwerks mit Corion Academy
+          </p>
+        </div>
+      </div>
+
+      {/* CTA - Waitlist */}
       <div className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Users className="w-16 h-16 mx-auto mb-6 opacity-90" />
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-            Starten Sie Ihre Weiterbildung
+            🟥 Jetzt auf die Warteliste eintragen!
           </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Kontaktieren Sie uns für weitere Informationen zu unseren Kursen, 
-            Terminen und individuellen Schulungsmöglichkeiten.
+          <p className="text-lg mb-4 opacity-90">
+            Erhalte Zugang zu Early-Bird-Plätzen, Bonusinhalten und AI-PaintMaster Tools zur Kursvorbereitung.
           </p>
+          <div className="space-y-2 mb-8 opacity-90">
+            <p>📍 Ort: Wiesbaden & Umgebung</p>
+            <p>📅 Flexible Termine | Kleine Gruppen (max. 6 Teilnehmer)</p>
+            <p>💰 Förderung durch Bildungsprämie möglich</p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/kontakt">
               <Button size="lg" variant="secondary" data-testid="button-contact-academy">
-                Jetzt informieren
+                Jetzt auf Warteliste eintragen
               </Button>
             </Link>
             <a href="tel:017683458274">

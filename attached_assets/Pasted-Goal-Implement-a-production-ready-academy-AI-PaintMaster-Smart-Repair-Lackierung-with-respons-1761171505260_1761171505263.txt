@@ -1,0 +1,287 @@
+Goal:
+
+Implement a production-ready academy AI PaintMaster – Smart Repair & Lackierung with:
+responsive UI (hero, courses, benefits, CTA),
+Waitlist form (DB + email confirmation stub),
+AI chat widget (“Frag den AI PaintMeister”),
+routes + templates + CSS/JS,
+security basics and clean structure,
+stubs for HUB payments (ICP) & analytics.
+Tech: Flask + Jinja2, SQLite (dev), SQLAlchemy, WTForms, SocketIO (optional), fetch/AJAX.
+Brand: Colors — primary #C1272D (red), black #000000, white #FFFFFF, gray #7A7A7A. Fonts — Montserrat (titles), Open Sans (text).
+1) Create/Update file structure
+
+project_root/
+├─ app.py
+├─ config.py
+├─ extensions.py
+├─ models.py
+├─ forms.py
+├─ services/
+│   ├─ mailer.py
+│   ├─ icp_client.py
+│   └─ ai_client.py
+├─ templates/
+│   ├─ base.html
+│   ├─ home.html
+│   ├─ partials/_navbar.html
+│   ├─ partials/_footer.html
+│   └─ success.html
+├─ static/
+│   ├─ css/home.css
+│   └─ js/home.js
+├─ requirements.txt
+└─ .env (EMAIL_API_KEY=..., OPENAI_API_KEY=..., etc.)
+2) requirements.txt
+
+flask
+flask-wtf
+flask-sqlalchemy
+email-validator
+python-dotenv
+requests
+openai
+itsdangerous
+3) config.py
+
+import osfrom dotenv import load_dotenv
+load_dotenv()class Config:
+    SECRET_KEY = os.getenv("SECRET_KEY","changeme")
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL","sqlite:///site.db")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    EMAIL_API_KEY = os.getenv("EMAIL_API_KEY","")
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY","")
+4) extensions.py
+
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+5) models.py
+
+from datetime import datetimefrom extensions import dbclass Waitlist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120))
+    email = db.Column(db.String(120), unique=True, index=True, nullable=False)
+    phone = db.Column(db.String(50))
+    role = db.Column(db.String(50))  # meserias, client, partner
+    note = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)class ChatLog(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.Text, nullable=False)
+    answer = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+6) forms.py
+
+from flask_wtf import FlaskFormfrom wtforms import StringField, TextAreaField, SelectField, SubmitFieldfrom wtforms.validators import DataRequired, Emailclass WaitlistForm(FlaskForm):
+    name  = StringField("Name")
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    phone = StringField("Telefon")
+    role  = SelectField("Ich bin", choices=[("meserias","Handwerker"),
+                                            ("client","Kunde"),
+                                            ("partner","Partner")])
+    note  = TextAreaField("Nachricht")
+    submit= SubmitField("Jetzt anmelden")
+7) services/mailer.py (stub—safe no send)
+
+import osdef send_confirmation(email:str, name:str):
+    # Stub: integrate Brevo/Mailgun later
+    print(f"[MAIL-STUB] Confirmation to {email} (Hi {name})")
+8) services/icp_client.py (stubs)
+
+def create_hub_payment_intent(amount_hub: float, memo: str):
+    # TODO: integrate ic-py to call escrow canister
+    return {"status":"created","intent_id":"icp-intent-stub","amount_hub": amount_hub, "memo": memo}
+9) services/ai_client.py (safe stub)
+
+import osdef paintmeister_answer(prompt:str)->str:
+    # TODO: integrate real LLM; return deterministic demo for now
+    demo = {
+        "metallic":"Für Metallicflächen: gleichmäßiger Spritzabstand (15–20 cm), Kreuzgang, dünne Schichten, Flash-Zeiten einhalten, Klarlack in 1–2 Gängen.",
+        "polish":"Dunkle Lacke: weicher Pad, feine Paste, niedrige Drehzahl, Schrittweise kontrollieren, entfetten, versiegeln."
+    }
+    for k,v in demo.items():
+        if k in prompt.lower(): return v
+    return "Kurzfassung: Oberfläche reinigen & schleifen (P800–P1000), Basis lackieren im Kreuzgang, Flash-Zeit, dann Klarlack. Fehler vermeiden: zu dicker Auftrag, falscher Abstand, fehlende Entfettung."
+10) app.py
+
+from flask import Flask, render_template, request, jsonify, redirect, url_forfrom config import Configfrom extensions import dbfrom models import Waitlist, ChatLogfrom forms import WaitlistFormfrom services.mailer import send_confirmationfrom services.icp_client import create_hub_payment_intentfrom services.ai_client import paintmeister_answer
+
+app = Flask(__name__)
+app.config.from_object(Config)
+db.init_app(app)@app.before_first_requestdef init():
+    db.create_all()@app.route("/", methods=["GET","POST"])def home():
+    form = WaitlistForm()
+    if form.validate_on_submit():
+        wl = Waitlist(name=form.name.data,
+                      email=form.email.data,
+                      phone=form.phone.data,
+                      role=form.role.data,
+                      note=form.note.data)
+        db.session.add(wl); db.session.commit()
+        send_confirmation(wl.email, wl.name or "")
+        return redirect(url_for("success"))
+    return render_template("home.html", form=form)@app.route("/success")def success():
+    return render_template("success.html")@app.post("/api/chat")def api_chat():
+    data = request.get_json() or {}
+    q = data.get("prompt","")
+    ans = paintmeister_answer(q)
+    log = ChatLog(question=q, answer=ans)
+    db.session.add(log); db.session.commit()
+    return jsonify({"answer": ans})@app.post("/api/payment/intent")def api_payment_intent():
+    data = request.get_json() or {}
+    amount_hub = float(data.get("amount_hub", 10))
+    memo = data.get("memo","Academy Course")
+    intent = create_hub_payment_intent(amount_hub, memo)
+    return jsonify(intent)if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
+11) templates/base.html
+
+<!doctype html><html lang="de"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AI PaintMaster | Corion Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"></head><body>
+  {% include 'partials/_navbar.html' %}
+  <main>{% block content %}{% endblock %}</main>
+  {% include 'partials/_footer.html' %}
+  <script src="{{ url_for('static', filename='js/home.js') }}"></script></body></html>
+12) templates/partials/_navbar.html
+
+<nav class="nav">
+  <div class="brand">Hub+1 · Bikutoru.ai</div>
+  <div class="links">
+    <a href="#kurse">Kurse</a>
+    <a href="#benefits">Vorteile</a>
+    <a href="#kontakt">Kontakt</a>
+  </div></nav>
+13) templates/partials/_footer.html
+
+<footer class="footer">
+  <div>© 2025 Corion GmbH & Co. KG – Wiesbaden</div>
+  <div>Mail: coriongmbh@gmail.com · Tel: 0176 834 582 74</div></footer>
+14) templates/home.html
+
+{% extends "base.html" %}{% block content %}<section class="hero">
+  <div class="hero-content">
+    <h1>AI PaintMaster – Ihr persönlicher AI-Tutor für Smart Repair & Lackierung</h1>
+    <p>Frag den AI PaintMeister und erhalte sofort umsetzbare Profi-Tipps, Schritt-für-Schritt-Guides und Trainings – online & in der Werkstatt.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#waitlist">Jetzt auf die Warteliste</a>
+      <button class="btn ghost" onclick="openChat()">Mit AI besprechen</button>
+    </div>
+    <div class="chips">
+      <span>Smart Repair Basics</span><span>Farbmischung Tipps</span><span>Lackfehler vermeiden</span><span>Polieren & Finish</span>
+    </div>
+  </div></section><section id="kurse" class="courses">
+  <h2>Corion Academy – Professionelle Weiterbildung & Zertifizierung</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Smart Repair Grundlagen · 2 Tage</h3>
+      <ul>
+        <li>Spot Repair Technik</li><li>Materialauswahl</li><li>Farbabstimmung</li><li>Qualitätskontrolle</li>
+      </ul>
+      <button class="btn primary" onclick="startIntent(25,'Smart Repair Kurs')">Jetzt reservieren (25 HUB)</button>
+    </article>
+    <article class="card">
+      <h3>Lackiertechnik Fortgeschritten · 3 Tage</h3>
+      <ul>
+        <li>Mehrschichtlackierung</li><li>Effektlacke</li><li>Polieren & Finish</li><li>Fehleranalyse</li>
+      </ul>
+      <button class="btn primary" onclick="startIntent(35,'Fortgeschritten Kurs')">Jetzt reservieren (35 HUB)</button>
+    </article>
+    <article class="card">
+      <h3>Dellen & Drucktechnik (PDR) · 3 Tage</h3>
+      <ul>
+        <li>Werkzeugkunde & Hebel</li><li>Alu vs. Stahl</li><li>Temperatur & Licht</li><li>AI-gestützte Analyse</li>
+      </ul>
+      <button class="btn primary" onclick="startIntent(30,'PDR Kurs')">Jetzt reservieren (30 HUB)</button>
+    </article>
+    <article class="card">
+      <h3>Fahrzeugaufbereitung & Finish · 2 Tage</h3>
+      <ul>
+        <li>Lackreinigung & Schleiftechnik</li><li>Polituren & Versiegelung</li><li>Innenraumaufbereitung</li><li>Glanzmessung</li>
+      </ul>
+      <button class="btn primary" onclick="startIntent(20,'Aufbereitung Kurs')">Jetzt reservieren (20 HUB)</button>
+    </article>
+    <article class="card">
+     
+       
+      </ul>
+      <button class="btn primary" onclick="startIntent(50,'Gutachter Kurs')">Jetzt reservieren (50 HUB)</button>
+    </article>
+  </div></section><section id="benefits" class="benefits">
+  <h2>Ihre Vorteile</h2>
+  <ul class="pill-list">
+    <li>Praxisnahe Ausbildung von erfahrenen Profis</li>
+    <li>Modernste Werkstatt & Technologie</li>
+    <li>Kleine Gruppen für intensives Lernen</li>
+    <li>Anerkannte Zertifikate</li>
+    <li>Flexible Terminplanung</li>
+    <li>AI-Unterstützung vor, während & nach dem Kurs</li>
+  </ul></section><section id="waitlist" class="waitlist">
+  <h2>🟥 Jetzt auf die Warteliste eintragen</h2>
+  <p>Early-Bird Plätze, Bonusinhalte & AI-Tools zur Vorbereitung – kostenlos.</p>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-row">{{ form.name.label }} {{ form.name(class="input") }}</div>
+    <div class="form-row">{{ form.email.label }} {{ form.email(class="input", required=True) }}</div>
+    <div class="form-row">{{ form.phone.label }} {{ form.phone(class="input") }}</div>
+    <div class="form-row">{{ form.role.label }} {{ form.role(class="input") }}</div>
+    <div class="form-row">{{ form.note.label }} {{ form.note(class="textarea") }}</div>
+    {{ form.submit(class="btn primary") }}
+  </form></section><section id="kontakt" class="contact">
+  <h2>Kontakt & Standorte</h2>
+  <p>Corion Lackdoktor · Wiesbaden und Umgebung</p>
+  <p>☎ 0176 834 582 74 · ✉ coriongmbh@gmail.com</p></section><!-- AI Chat Widget --><div id="chat-widget" class="chat hidden">
+  <div class="chat-head">AI PaintMeister</div>
+  <div class="chat-body" id="chat-body"></div>
+  <div class="chat-input">
+    <input id="chatPrompt" placeholder="z. B. Wie lackiere ich Metallic richtig?">
+    <button onclick="sendChat()">Senden</button>
+  </div></div><button class="chat-fab" onclick="toggleChat()">💬</button>
+
+{% endblock %}
+15) templates/success.html
+
+{% extends "base.html" %}{% block content %}<section class="success">
+  <h2>Danke! Du bist auf der Warteliste.</h2>
+  <p>Wir melden uns mit Terminen & Early-Bird-Vorteilen.</p>
+  <a class="btn primary" href="/">Zurück zur Startseite</a></section>
+{% endblock %}
+16) static/css/home.css (minimal, brand-safe)
+
+:root { --red:#C1272D; --black:#000; --white:#fff; --gray:#7A7A7A; }
+*{box-sizing:border-box} body{margin:0;font-family:"Open Sans",sans-serif;color:#111;background:#fff}h1,h2,h3{font-family:"Montserrat",sans-serif;margin:0 0 .5rem}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #eee}.nav .brand{font-weight:700}.nav .links a{margin-left:16px;color:#111;text-decoration:none}.hero{background:linear-gradient(135deg,var(--black),#2b2b2b);color:#fff;padding:64px 20px}.hero .btn{margin-right:10px}.btn{border:none;padding:12px 18px;border-radius:10px;cursor:pointer}.btn.primary{background:var(--red);color:#fff}.btn.ghost{background:transparent;border:1px solid #fff;color:#fff}.chips span{display:inline-block;margin:6px 8px;padding:6px 10px;border:1px solid #fff;border-radius:999px;font-size:.85rem}.courses,.benefits,.waitlist,.contact{padding:48px 20px;max-width:1100px;margin:0 auto}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.card{border:1px solid #eee;border-radius:12px;padding:18px}.pill-list{display:flex;flex-wrap:wrap;gap:10px}.pill-list li{background:#f5f5f5;padding:8px 12px;border-radius:999px}.form-row{margin:10px 0}.input,.textarea,select{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}.footer{padding:20px;border-top:1px solid #eee;color:#444;text-align:center}.chat-fab{position:fixed;right:16px;bottom:16px;border-radius:50%;padding:14px 16px;background:var(--red);color:#fff;border:none}.chat{position:fixed;right:16px;bottom:80px;width:340px;max-width:90vw;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.15);display:flex;flex-direction:column}.chat.hidden{display:none}.chat-head{padding:10px 12px;background:var(--red);color:#fff;border-radius:12px 12px 0 0}.chat-body{padding:10px;max-height:300px;overflow:auto}.msg{margin:6px 0;padding:8px 10px;border-radius:8px}.msg.q{background:#f5f5f5;align-self:flex-end}.msg.a{background:#eef7ff}.chat-input{display:flex;gap:8px;padding:10px;border-top:1px solid #eee}.success{padding:64px 20px;text-align:center}@media (max-width:640px){ .hero{padding:40px 16px} }
+17) static/js/home.js
+
+function toggleChat(){ document.getElementById('chat-widget').classList.toggle('hidden'); }function openChat(){ const c=document.getElementById('chat-widget'); c.classList.remove('hidden'); }function pushMsg(text, cls){
+  const wrap=document.getElementById('chat-body'); const b=document.createElement('div');
+  b.className='msg '+cls; b.textContent=text; wrap.appendChild(b); wrap.scrollTop=wrap.scrollHeight;
+}async function sendChat(){
+  const inp=document.getElementById('chatPrompt'); const q=inp.value.trim(); if(!q) return;
+  pushMsg(q,'q'); inp.value=''; 
+  const res = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q})});
+  const data = await res.json(); pushMsg(data.answer || '…', 'a');
+}async function startIntent(amount, memo){
+  const res = await fetch('/api/payment/intent',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount_hub:amount, memo})});
+  const data = await res.json();
+  alert(`Intent erstellt: ${data.intent_id} · Betrag: ${data.amount_hub} HUB`);
+}
+✅ Acceptance criteria
+/ renders the AI PaintMaster homepage (German text as above).
+Waitlist form persists entries in SQLite; redirects to /success.
+AI chat widget works (stubbed answer).
+Payment intent stub returns JSON and shows alert.
+Mobile responsive; brand colors & fonts applied.
+Run & test:
+
+Set SECRET_KEY in .env
+pip install -r requirements.txt
+python app.py
+Next upgrades (optional):
+
+Replace AI stub with OpenAI/Gemini via API key.
+Replace ICP payment stub with ic-py escrow canister.
+Add reCAPTCHA to waitlist form.
+Add email sender (Brevo/Mailgun).
+Now, create all files, wire routes, and ensure the homepage loads as default with the CTA “Jetzt anmelden / Warteliste”.
