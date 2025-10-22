@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import AIChatWidget from "@/components/AIChatWidget";
+import ThemeToggle from "@/components/ThemeToggle";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { useDynamicIntelligence } from "@/hooks/useDynamicIntelligence";
 
 import Home from "@/pages/Home";
@@ -84,14 +86,17 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Layout>
-          <Router />
-        </Layout>
-        <FloatingWhatsApp />
-        <AIChatWidget />
-        <Toaster />
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Layout>
+            <Router />
+          </Layout>
+          <FloatingWhatsApp />
+          <AIChatWidget />
+          <ThemeToggle />
+          <Toaster />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
