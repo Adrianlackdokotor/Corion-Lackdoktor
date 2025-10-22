@@ -28,7 +28,9 @@ The website is a static, client-side React application built with TypeScript and
 
 ### Technical Implementations
 - **Theme System**: `ThemeProvider` context manages dark/light mode with `localStorage` persistence and a `ThemeToggle` button.
-- **Page Structure**: Dedicated pages for services, legal information (`/impressum`, `/datenschutz`), gallery, contact, about us, reviews, locations, and FAQ.
+- **Page Structure**: Dedicated pages for services, legal information (`/impressum`, `/datenschutz`), gallery, contact, about us, reviews, locations, FAQ, and Academy.
+- **Header Navigation**: Sticky header with comprehensive navigation including Home, Leistungen (dropdown), Gutachter, Bewertungen, Academy, FAQ, Kontakt, and Impressum. Logo always links to homepage. Mobile menu features collapsible Leistungen dropdown with scrollable submenu (max-height with overflow-y-auto). Chevron icon rotates on mobile dropdown expansion.
+- **Academy Page**: New educational page showcasing professional training courses for KFZ professionals, including Smart Repair basics, advanced painting techniques, and certified appraiser training.
 - **Impressum Page**: Includes detailed company information, legal disclaimers, clickable contact links, and a prominent AI content disclaimer.
 - **Hero Section**: Features "Präzision trifft Leidenschaft" as the main title, with keywords highlighted in brand red. Includes Framer Motion animations, dual CTAs (WhatsApp and Call), and trust indicators.
 - **Conversion Sections**: "Warum +1 Corion Lackdoktor" highlights benefits, "So funktioniert's" outlines a 3-step process, and "Jetzt Angebot einholen" encourages photo submissions for quotes.
