@@ -1,0 +1,163 @@
+OBJECTIVE:
+Actualizează website-ul +1 Corion Lackdoktor pentru a reflecta în mod autentic stadiul de formare Meister și pentru a îmbunătăți conversia, prezentarea și încrederea clienților.
+
+---
+
+### 🧹 PASUL 1: Elimină și înlocuiește termenii „Meisterbetrieb” / „Meisterwerkstatt”
+- Caută în întregul proiect toate aparițiile „Meisterbetrieb”, „Meisterwerkstatt”, „Meisterqualität”.
+- Înlocuiește-le astfel:
+
+| Termen vechi | Înlocuire nouă |
+|---------------|----------------|
+| Meisterbetrieb / Meisterwerkstatt | Lackdoktor-Team in Ausbildung zum Meister |
+| Meisterqualität | Meisterliche Qualität – auch ohne Titel |
+| Meisterhafte Arbeit | Präzise und leidenschaftliche Arbeit |
+
+- În secțiunea „Über uns”:
+  ```
+  Wir sind ein engagiertes Lackdoktor-Team in Ausbildung zum Meister. 
+  Unsere Kunden geben uns täglich das beste Zeugnis – durch ihr Vertrauen und ihre Zufriedenheit.
+  ```
+
+- În meta descrieri (index.html):
+  ```
+  Professionelle Lack- & Smart-Repair Werkstatt in Wiesbaden, Hofheim und Mainz – 
+  in Ausbildung zum Meister, mit Leidenschaft und Präzision.
+  ```
+
+---
+
+### 🎯 PASUL 2: Optimizări pentru vânzare și încredere
+
+#### 🔹 Hero Section (prima secțiune)
+Adaugă un subtitlu emoțional:
+```
+Ihr Auto in besten Händen – schnell, fair und mit Leidenschaft lackiert.
+```
+Subtext:
+```
+Seit über 12 Jahren Lackdoktor-Erfahrung in Wiesbaden & Hofheim.
+```
+Adaugă o animație de text rotativ:
+> Smart Repair · Gutachten · Lackierung · Felgenreparatur
+
+---
+
+#### 🔹 „Warum +1 Corion Lackdoktor” Section
+Creează 4 carduri cu iconițe:
+
+| Icon | Text |
+|------|------|
+| 🧰 | In Ausbildung zum Meister – Qualität mit Erfahrung |
+| ⚡ | Schnelle Abwicklung & Soforttermine |
+| 💬 | Kostenlose Beratung per WhatsApp |
+| 🛡️ | Versicherung? Wir regeln das für Sie! |
+
+---
+
+#### 🔹 „So funktioniert’s” Section (3 Pași)
+Creează o nouă secțiune cu trei coloane, icon + text:
+
+1️⃣ Foto vom Schaden senden  
+2️⃣ Kostenloses Angebot erhalten  
+3️⃣ Repariert & zufrieden abholen  
+
+Sub text:  
+👉 **„Jetzt kostenloses Angebot anfordern”** (buton roșu #C00020)
+
+---
+
+#### 🔹 Galerie „Vorher / Nachher”
+Creează o secțiune nouă cu un slider interactiv (Before/After effect).
+- 4–6 imagini reale (placeholder momentan)
+- Text:  
+  „Kratzer? Delle? – Fast wie neu in 48 Stunden.”
+
+---
+
+#### 🔹 CTA Fix WhatsApp (Floating Button)
+Adaugă un buton flotant în colțul dreapta jos:
+```
+📸 Foto schicken für Angebot
+```
+- Deschide: `https://wa.me/4917683458274`
+- Pe mobil, poziționează-l peste footer (cu shadow și pulsare ușoară)
+
+---
+
+#### 🔹 „Unsere Partner & Versicherungen”
+Secțiune nouă sub formular:
+- Afișează logo-uri mici (Allianz, HUK, DEVK, Signal Iduna)
+- Text:
+  > „Wir arbeiten mit allen großen Versicherungen – unkompliziert & direkt.”
+
+---
+
+#### 🔹 „Unser Team”
+Mică secțiune cu 2–3 imagini reale din atelier.
+Text:
+```
+Hinter +1 Corion Lackdoktor steht ein erfahrenes Team aus Lack- und Smart-Repair-Spezialisten. 
+Wir lieben Autos – und Perfektion im Detail.
+```
+
+---
+
+#### 🔹 Formular inteligent de ofertă
+Înlocuiește formularul clasic cu unul în 3 pași:
+1. Wählen Sie den Schaden (Kratzer / Delle / Stoßstange / Felge)
+2. Foto hochladen
+3. Name + Telefonnummer
+
+După trimitere → mesaj de confirmare:
+```
+Danke! Wir melden uns in Kürze mit Ihrem individuellen Angebot.
+```
+
+---
+
+#### 🔹 Optimizare SEO locală
+- H1 principal:  
+  `+1 Corion Lackdoktor – Lackierung & Smart Repair in Hofheim, Wiesbaden & Mainz`
+- Footer:
+  `Servicegebiete: Hofheim · Wiesbaden · Mainz-Kastel · Frankfurt Umgebung`
+- În `index.html`:
+  Adaugă Schema LocalBusiness cu `geoCoordinates` pentru Hofheim și Wiesbaden.
+
+---
+
+#### 🔹 Mini video testimonial (opțional)
+Adaugă placeholder video în secțiunea de recenzii:
+> „4,6 ★ bei über 640 zufriedenen Kunden! Schnell. Fair. Präzise.”
+
+Autoplay mut, loop, max 10 secunde.
+
+---
+
+### ⚙️ PASUL 3: Design & stil general
+- Toate secțiunile noi respectă schema:
+  - Roșu principal `#C00020`
+  - Gri fundal `#F2F2F2`
+  - Fonturi Montserrat (titluri), Open Sans (text)
+- Spațiere aerisită (`py-16 px-6`)
+- Colțuri rotunjite `rounded-2xl`
+- Efecte hover animate subtile (`scale-105`, `transition ease-out`)
+
+---
+
+### 🧾 OUTPUT FINAL:
+- Actualizare completă a textelor pentru onestitate („în formare Meister”)
+- Implementare secțiuni noi:
+  - Hero îmbunătățit
+  - Warum Corion (4 motive)
+  - 3 Pași (proces clar)
+  - Galerie Vorher/Nachher
+  - CTA WhatsApp flotant
+  - Parteneri & Asigurări
+  - Echipa Corion
+  - Formular inteligent
+- SEO local actualizat
+- Design coerent și modern (redesign complet al fluxului de conversie)
+
+🎯 **Rezultat dorit:**  
+Un site care comunică autenticitate, profesionalism și încredere, fără exagerări, dar cu un ton cald, onest și vizual atractiv — optimizat pentru mai multe cereri prin WhatsApp și

@@ -32,7 +32,7 @@ export default function About() {
   // todo: remove mock data
   const guarantees = [
     "20+ Jahre Erfahrung in der Autoreparatur",
-    "Zertifizierte Fachkräfte und Meisterbetrieb",
+    "Lackdoktor-Team in Ausbildung zum Meister",
     "Faire und transparente Preisgestaltung",
     "Kostenloser Leihwagen während der Reparatur",
     "Kostenloser Abhol- und Bringservice",
@@ -65,12 +65,11 @@ export default function About() {
               Lackierarbeiten in der Region entwickelt.
             </p>
             <p>
-              Unser Erfolgsrezept ist einfach: Höchste Qualität, faire Preise und 
-              persönlicher Service. Jedes Fahrzeug wird von unseren erfahrenen Fachkräften 
-              mit der gleichen Sorgfalt behandelt, als wäre es ihr eigenes.
+              Wir sind ein engagiertes Lackdoktor-Team in Ausbildung zum Meister. 
+              Unsere Kunden geben uns täglich das beste Zeugnis – durch ihr Vertrauen und ihre Zufriedenheit.
             </p>
             <p>
-              Mit modernster Technologie und traditionellem Handwerk sorgen wir dafür, 
+              Mit modernster Technologie und präziser, leidenschaftlicher Arbeit sorgen wir dafür, 
               dass Ihr Fahrzeug in bestem Zustand zu Ihnen zurückkommt. Vertrauen Sie 
               auf unsere Expertise und Erfahrung.
             </p>
