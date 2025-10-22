@@ -1,0 +1,40 @@
+OBJECTIVE:
+Redesign the HOME header section (hero area) to increase visual impact and brand identity, while maintaining Corion's dark, elegant theme.
+
+TASKS:
+1. Replace the current black-and-white background with a more dynamic visual:
+   - Use a **colorized workshop image** or **animated background (loop video)** with reflections on car paint, spray gun effect, or detailing scenes.
+   - Apply a **dark gradient overlay** (rgba(0,0,0,0.6)) to keep text readable while preserving realism.
+
+2. Enhance the hero text typography:
+   - Use **Poppins ExtraBold** or **Oswald** for main titles.
+   - Highlight keywords in brand red (#C00020).
+   - Example:
+     “Präzision trifft Leidenschaft – Ihr Lackdoktor seit 12 Jahren.”
+
+3. Add subtle animations with **Framer Motion**:
+   - Fade-in or slide-up for title and call-to-action buttons.
+   - Light shimmer effect or slow motion gradient behind text.
+
+4. Introduce a **dual-CTA layout** for conversions:
+   - Left button (red): “📸 Foto schicken für Angebot”
+   - Right button (outlined): “Jetzt Anrufen”
+   - Both buttons should have hover animations and shadows.
+
+5. Keep **Dark Mode** consistent:
+   - Background pure black with semi-transparent overlay.
+   - Text and buttons in contrast white and brand red.
+
+6. Add a small floating **Chat + WhatsApp zone** fixed at bottom-right, but ensure it does not overlap with the hero text.
+
+7. Optional (recommended for UX):
+   - Add a **subtle smoke, light beam, or reflection animation** behind the car shape (using CSS or Lottie animation).
+   - Include a background video loop (max 12s, muted, autoplay, no controls) in `public/videos/hero.mp4`.
+
+8. Performance optimization:
+   - Lazy load hero video/image.
+   - Compress media under 2MB.
+   - Maintain mobile responsiveness and proper contrast.
+
+GOAL:
+The redesigned homepage header should immediately convey Corion’s professionalism and precision in car painting, creating a visually strong impression with high contrast, motion, and emotional connection.
