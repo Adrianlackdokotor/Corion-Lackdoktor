@@ -1,0 +1,99 @@
+Hero Section cu titlu nou + Header complet
+OBJECTIVE:
+Update the homepage header (hero section) of +1 Corion Lackdoktor with a more powerful, SEO-optimized title and visually striking layout.
+
+The goal is to:
+1️⃣ Replace the current hero headline with a modern, emotionally resonant title.
+2️⃣ Ensure visual harmony with the dark mode design and red accent color (#C00020).
+3️⃣ Keep the logo, navigation, and buttons consistent with the rebuilt header.
+
+---
+
+### NEW HERO SECTION CONTENT
+
+**Title (H1):**
+> Präzision trifft Innovation – Ihr Lackdoktor für Smart Repair & Gutachten
+
+**Subtitle (H2):**
+> Perfekte Ergebnisse durch Erfahrung, Leidenschaft und modernste Technologie.  
+> Jetzt Angebot sichern – kostenlos und unverbindlich.
+
+**CTA Buttons:**
+- 🔴 Primary: **Foto schicken für Angebot**
+  - Action → opens WhatsApp or form modal
+- ⚫ Secondary (outline): **Jetzt anrufen**
+  - Action → `tel:+4917683458274`
+
+---
+
+### DESIGN & STRUCTURE
+
+1️⃣ **Layout**
+- Keep a full-width hero section with height = 100vh (or min-h-[80vh]).
+- Background:  
+  - Dark gradient overlay on top of an image or video (showing spray gun, car reflection, or paint finish).
+  - Add slight motion (slow zoom or fade).
+- Text alignment: center on mobile, left on desktop.
+- Add subtle entrance animations (Framer Motion or Tailwind transition).
+
+Example (Tailwind classes):
+```html
+<section className="relative flex flex-col justify-center items-center text-center lg:text-left bg-black text-white py-24 px-8">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl lg:text-6xl font-extrabold mb-4 leading-tight">
+      Präzision trifft <span className="text-[#C00020]">Innovation</span> – Ihr Lackdoktor für Smart Repair & Gutachten
+    </h1>
+    <p className="text-lg text-gray-300 mb-8">
+      Perfekte Ergebnisse durch Erfahrung, Leidenschaft und modernste Technologie. Jetzt Angebot sichern – kostenlos und unverbindlich.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+      <a href="https://wa.me/4917683458274" className="bg-[#C00020] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#e31536] transition">
+        📸 Foto schicken für Angebot
+      </a>
+      <a href="tel:+4917683458274" className="border border-[#C00020] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#C00020] hover:text-white transition">
+        ☎️ Jetzt anrufen
+      </a>
+    </div>
+  </div>
+</section>
+
+2️⃣ RESPONSIVE DESIGN
+
+Mobile: stacked layout, centered text.
+
+Desktop: two-column layout (text left, image or looping video right).
+
+Ensure text contrast remains AA+ accessible (white on black/red).
+
+3️⃣ SEO OPTIMIZATION
+
+Add inside <head>:
+
+<title>Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden</title>
+<meta name="description" content="Präzision trifft Innovation – Ihr Lackdoktor für Smart Repair, Gutachten & Autolackierung in Hofheim, Wiesbaden & Mainz-Kastel.">
+
+
+Keep keywords: Smart Repair, Lackdoktor, Gutachter Hofheim, Autolackierung Wiesbaden, Corion GmbH.
+
+4️⃣ OPTIONAL ANIMATIONS
+
+Use Framer Motion for entry animations:
+
+<motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+
+
+Fade-in from below for headline.
+
+Slide-up stagger for buttons.
+
+5️⃣ CHECKLIST
+
+✅ New title & subtitle visible on all screen sizes
+✅ Hero text contrasts with dark background
+✅ Buttons functional and responsive
+✅ SEO metadata updated
+✅ Smooth transition from header to content section
+
+GOAL:
+
+Create a visually impactful, SEO-optimized hero header that embodies Corion Lackdoktor’s brand — a mix of präzise Handwerkskunst, Innovation, and AI-driven Modernität.

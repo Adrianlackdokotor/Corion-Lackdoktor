@@ -27,35 +27,29 @@ export default function Hero() {
         <div className="max-w-4xl">
           {/* Main Title with Poppins ExtraBold and highlighted keywords */}
           <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             data-testid="heading-hero"
           >
             <span className="text-primary">Präzision</span> trifft{" "}
-            <span className="text-primary">Leidenschaft</span>
+            <span className="text-primary">Innovation</span> –{" "}
+            Ihr Lackdoktor für{" "}
+            <span className="text-primary">Smart Repair</span> &{" "}
+            <span className="text-primary">Gutachten</span>
           </motion.h1>
           
           <motion.p 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-6"
+            className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             data-testid="text-hero-subtitle"
           >
-            Ihr <span className="text-primary">Lackdoktor</span> seit <span className="text-primary">12 Jahren</span>
-          </motion.p>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            data-testid="text-hero-experience"
-          >
-            Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel – 
-            Ihr Auto in besten Händen, schnell und fair lackiert.
+            Perfekte Ergebnisse durch <span className="text-white font-bold">Erfahrung</span>, <span className="text-white font-bold">Leidenschaft</span> und{" "}
+            <span className="text-white font-bold">modernste Technologie</span>.
+            Jetzt Angebot sichern – kostenlos und unverbindlich.
           </motion.p>
 
           {/* Dual-CTA Layout with enhanced styling */}
