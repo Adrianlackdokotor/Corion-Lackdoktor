@@ -100,7 +100,7 @@ export default function ServicePage({
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <a href="tel:061225962939" className="block">
+                <a href="tel:017683458274" className="block">
                   <Button variant="outline" className="w-full" size="lg" data-testid="button-call-now">
                     Jetzt Anrufen
                   </Button>

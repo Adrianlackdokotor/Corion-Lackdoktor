@@ -12,7 +12,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { 
       name: "Leistungen", 
-      href: "/leistungen",
+      href: "/leistungen/unfallschaeden",
       submenu: [
         { name: "Unfallschäden", href: "/leistungen/unfallschaeden" },
         { name: "Lackschäden", href: "/leistungen/lackschaeden" },

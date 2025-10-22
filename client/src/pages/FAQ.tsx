@@ -46,7 +46,7 @@ export default function FAQ() {
     },
     {
       question: "Wie vereinbare ich einen Termin?",
-      answer: "Sie können telefonisch unter 06122 596 29 39, per WhatsApp, E-Mail oder über unser Kontaktformular einen Termin vereinbaren. Wir melden uns schnellstmöglich bei Ihnen zurück.",
+      answer: "Sie können telefonisch unter 0176 834 582 74, per WhatsApp, E-Mail oder über unser Kontaktformular einen Termin vereinbaren. Wir melden uns schnellstmöglich bei Ihnen zurück.",
     },
   ];
 
@@ -85,7 +85,7 @@ export default function FAQ() {
             Wir helfen Ihnen gerne weiter!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:061225962939" className="inline-block">
+            <a href="tel:017683458274" className="inline-block">
               <button className="px-6 py-3 bg-primary text-primary-foreground rounded-md hover-elevate active-elevate-2 font-medium" data-testid="button-call-faq">
                 Jetzt Anrufen
               </button>

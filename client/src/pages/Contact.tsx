@@ -7,10 +7,10 @@ export default function Contact() {
   // todo: remove mock data
   const locations = [
     {
-      title: "Hofheim am Taunus",
-      address: "Nassaustraße 41",
-      city: "65719 Hofheim am Taunus",
-      phone: "06122 596 29 39",
+      title: "Hofheim-Wallau",
+      address: "Wiesbadener Straße",
+      city: "65719 Hofheim-Wallau",
+      phone: "0176 834 582 74",
       hours: "Mo-Fr: 8:00 - 18:00, Sa: 9:00 - 13:00",
     },
     {
@@ -46,12 +46,12 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Contact Methods */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <a href="tel:061225962939" className="block">
+          <a href="tel:017683458274" className="block">
             <div className="text-center p-6 border rounded-md hover-elevate transition-all" data-testid="card-contact-phone">
               <Phone className="w-12 h-12 mx-auto mb-4 text-primary" />
               <h3 className="font-semibold mb-2">Telefon</h3>
               <p className="text-sm text-muted-foreground mb-2">Rufen Sie uns an</p>
-              <p className="font-mono text-sm">06122 596 29 39</p>
+              <p className="font-mono text-sm">0176 834 582 74</p>
             </div>
           </a>
 
