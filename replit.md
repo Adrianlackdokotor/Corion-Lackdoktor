@@ -81,6 +81,19 @@ A dynamic intelligence system learns from user behavior, personalizes interactio
 - **Data Privacy**: All user data stored locally in browser `localStorage`, with no external tracking services.
 - **API Configuration**: Uses GPT-4o-mini with a temperature of 0.7 and max tokens of 500. API key is stored in Replit Secrets (`OPENAI_API_KEY_CORIONLACKDOKTOR`) and not exposed to the frontend.
 
+## Contact Form & Email System
+- **PHP Email Handler**: `send_form.php` in project root for IONOS deployment
+  - Sends notification email to `coriongmbh@gmail.com`
+  - Sends confirmation email to customer
+  - Field mapping: name, email, telefon (phone), nachricht (message)
+  - Returns JSON response with status
+- **ContactForm Component**: React form with validation (react-hook-form + Zod)
+  - Submits to `/send_form.php` endpoint
+  - Proper field name mapping for PHP compatibility
+  - Loading states, error handling, file upload support
+  - Integration with dynamic intelligence tracking
+- **Note**: PHP endpoint only works on IONOS production server (requires PHP runtime with mail() function)
+
 ## External Dependencies
 - **Google Fonts**: For typography (Poppins, Open Sans).
 - **Google Business Profile**: For direct linking to customer reviews.
