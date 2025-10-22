@@ -111,6 +111,58 @@ A comprehensive dynamic intelligence system that learns from user behavior, pers
 - End-to-end tested with Playwright (October 2025)
 - Verified: form tracking, intent detection, session persistence, returning user detection, AI chat functionality
 - All core tracking features working as expected
+- OpenAI API integration verified with GPT-4o-mini (October 2025)
+- API key: `OPENAI_API_KEY_CORIONLACKDOKTOR` configured in Replit Secrets
+
+### Future Roadmap (Prepared Infrastructure)
+
+The AI system is architected to support future enhancements:
+
+**1. GPT Vision API Integration**
+- **Purpose**: Automatic damage analysis from uploaded photos
+- **Use Case**: User uploads car damage photos → GPT Vision analyzes → generates preliminary cost estimate
+- **Implementation Ready**: Photo upload already integrated in contact form
+- **Next Steps**: 
+  - Add Vision API calls in `server/routes/ai.ts`
+  - Create new `VisionAgent` class in `CorionAgent.ts`
+  - Update frontend to display AI-analyzed damage reports
+
+**2. Speech-to-Text Integration**
+- **Purpose**: Voice input for AI chat widget
+- **Use Case**: Users can speak their questions instead of typing
+- **Technology**: OpenAI Whisper API or browser Web Speech API
+- **Next Steps**:
+  - Add microphone button to AIChatWidget
+  - Implement audio recording and transcription
+  - Send transcribed text to existing chat flow
+
+**3. Auto-Offerten AI System**
+- **Purpose**: Automated quote generation based on photo + description
+- **Workflow**: 
+  1. User uploads damage photos
+  2. GPT Vision analyzes damage type and severity
+  3. BusinessAgent generates detailed quote with timeframe
+  4. System sends quote via email/WhatsApp
+- **Next Steps**:
+  - Combine Vision + Business agents
+  - Create quote template system
+  - Integrate with email/WhatsApp notification system
+
+**4. Corion Hub Tokenization**
+- **Purpose**: Internal token management for AI usage tracking
+- **Features**: Track API costs per location, user, or service type
+- **Next Steps**:
+  - Add token counting middleware
+  - Create usage dashboard
+  - Implement cost allocation system
+
+### Current API Configuration
+- **Model**: GPT-4o-mini (cost-effective, fast responses)
+- **Temperature**: 0.7 (balanced creativity/consistency)
+- **Max Tokens**: 500 (concise responses)
+- **Fallback**: German predefined responses if API unavailable
+- **Security**: API key stored in Replit Secrets, never exposed to frontend
+- **Endpoint**: `/api/ai` (all requests server-side only)
 
 ## External Dependencies
 - **Google Fonts**: Used for Montserrat and Open Sans typography.
