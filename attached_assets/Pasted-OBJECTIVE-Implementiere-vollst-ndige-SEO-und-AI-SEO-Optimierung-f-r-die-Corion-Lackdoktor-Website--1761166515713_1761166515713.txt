@@ -1,0 +1,33 @@
+OBJECTIVE:
+Implementiere vollständige SEO- und AI-SEO-Optimierung für die Corion Lackdoktor Website.  
+Ziel ist es, Sichtbarkeit in klassischen Suchmaschinen (Google, Bing) und AI-Suchsystemen (ChatGPT, Gemini, Perplexity, Copilot, You.com) zu maximieren.
+
+---
+
+### 1️⃣ META-TAGS UND KEYWORDS
+Füge auf **allen Hauptseiten (Home, Kontakt, Leistungen, FAQ, Academy, Impressum)** folgende Metadaten in den <head>-Bereich ein:
+
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden</title>
+<meta name="description" content="Schnelle Auto-Reparaturen, faire Preise & AI-gestützte Abwicklung. Jetzt kostenloses Angebot in 24 h!">
+<meta name="keywords" content="lackdoktor hofheim, smart repair wiesbaden, felgenreparatur mainz-kastel, kfz gutachter hofheim, unfallinstandsetzung wiesbaden, lackdoktor erfahrungen, autoaufbereitung hofheim, gutachter wiesbaden, spot repair auto, dellen entfernen, leasingrückläufer reparatur, autoglas austausch hofheim, roststellen entfernen, plastikreparatur, oldtimer restaurierung, nachhaltige autolackierung hofheim, leasingrückgabe sparen, corion gmbh, +1 corion, corion lackdoktor">
+
+<!-- Robots & Crawlers -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="ai-access" content="allow">
+<meta name="ai-crawler" content="ChatGPT, Perplexity, Gemini, Copilot, Anthropic, You.com, Mistral">
+<meta name="ai-summary" content="Corion Lackdoktor – Smart Repair, Fahrzeuglackierung & Gutachterservice mit KI-gestützter Beratung. Standorte in Hofheim-Wallau und Mainz-Kastel.">
+<meta name="author" content="Corion GmbH – Adrian Apostol">
+<link rel="canonical" href="https://www.corion-lackdoktor.de/">
+
+<!-- Social Meta (Open Graph + Twitter) -->
+<meta property="og:title" content="Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden">
+<meta property="og:description" content="Ihr Lackdoktor mit 12 Jahren Erfahrung – präzise, fair, AI-gestützt.">
+<meta property="og:image" content="/assets/logo-corion.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Corion Lackdoktor Hofheim | Smart Repair & Gutachter Wiesbaden">
+<meta name="twitter:description" content="AI-gestützte Auto-Reparaturen. Kostenlose Angebote in 24 Stunden.">
