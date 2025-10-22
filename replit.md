@@ -13,17 +13,21 @@ This project delivers a professional website for +1 Corion Lackdoktor, a German 
 - Red (`#C00020`) as primary to match brand
 - Multi-location support emphasized
 - Trust indicators prominently displayed
+- **Dark mode enabled by default** (pure black background #000000, white text)
+- Dark/Light mode toggle available in top-right corner
 
 ## System Architecture
 The website is built as a static, client-side only application using **React** with **TypeScript** and **Vite**. **Wouter** handles routing, while **Tailwind CSS** provides utility-first styling, complemented by **shadcn/ui** components for enhanced UI elements. Form handling is managed with **React Hook Form** and **Zod** for validation. Icons are sourced from **Lucide React**.
 
 ### UI/UX Decisions
 - **Color Scheme**: Primary Red (`#C00020`), White (`#FFFFFF`), Black (`#000000`), Light Gray (`#F2F2F2`) to match brand identity.
+- **Dark Mode**: Full dark mode support with pure black background (`#000000`), white text (`#FFFFFF`), and maintained red brand color. Default theme is dark, with toggle button in top-right corner.
 - **Typography**: Montserrat for headings (`font-heading`) and Open Sans for body text (`font-sans`), loaded via Google Fonts.
 - **Design Patterns**: Sticky header with dropdown navigation, full-screen hero sections with CTAs, reusable cards for services, testimonials, and locations, subtle shadows and borders, and hover/active states for interactive elements.
 - **Responsive Design**: Mobile-first approach with Tailwind CSS breakpoints (`sm`, `md`, `lg`, `xl`) and mobile-specific features like a hamburger menu and collapsible submenus.
 
 ### Technical Implementations
+- **Theme System**: ThemeProvider context manages dark/light mode with localStorage persistence. ThemeToggle button (top-right, z-50) switches themes. Dark mode uses pure black background for maximum contrast.
 - **Page Structure**: Dedicated pages for 13+ services (e.g., `/leistungen/unfallschaeden`), legal information (`/impressum`, `/datenschutz`), `galerie` with filtering, `kontakt`, `uber-uns`, `bewertungen`, `standorte`, and `faq`.
 - **Hero Section (Updated October 2025)**: 
   - **Honest Messaging**: Removed all "Meisterbetrieb" terminology and replaced with "Team in Ausbildung zum Meister" throughout site
@@ -39,9 +43,9 @@ The website is built as a static, client-side only application using **React** w
 - **Google Reviews Integration**: Dark mode infinite horizontal slider displaying customer testimonials from `data/reviews.json`. Features black background, white text, red accents (#C00020), and gold stars (#FFD700). Smooth Framer Motion animation moves cards continuously right-to-left with seamless loop. Responsive design shows 1-4 cards depending on viewport. Includes average rating (4.6/5) and total review count (642). SEO-optimized with JSON-LD structured data for rich snippets and theme-color meta tag.
 - **Enhanced Footer**: Added "Servicegebiete: Hofheim · Wiesbaden · Mainz-Kastel · Frankfurt Umgebung" for local SEO
 - **Multi-Location Support**: Configuration for three distinct locations with geo-coordinates:
-  - Hofheim-Wallau: 50.0780°N, 8.4450°E
-  - Mainz-Kastel: 50.0037°N, 8.3031°E
-  - Wiesbaden: 50.0826°N, 8.2400°E
+  - Hofheim-Wallau: Nassau Str. 41, 65719 Hofheim-Wallau (50.0780°N, 8.4450°E) - Google Maps integrated
+  - Mainz-Kastel: Wiesbadener Str. 30, 55252 Mainz-Kastel (50.0037°N, 8.3031°E) - Google Maps integrated
+  - Wiesbaden: Standort Wiesbaden, 65xxx Wiesbaden (50.0826°N, 8.2400°E)
 - **SEO Schema**: Updated LocalBusiness structured data with accurate geo-coordinates for all 3 locations, multiple addresses, and honest description
 - **Content Management**: All pages use German placeholder text, expecting the client to replace it with actual content and workshop images.
 
