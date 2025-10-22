@@ -83,26 +83,44 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold font-heading mb-4">Standorte</h3>
             <div className="space-y-4 text-sm">
-              <div className="flex gap-2">
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=50.0780,8.4450" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex gap-2 hover:text-foreground transition-colors"
+                data-testid="link-location-hofheim"
+              >
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                <div className="text-muted-foreground">
+                <div className="text-muted-foreground hover:text-foreground transition-colors">
                   Hofheim-Wallau<br />
                   Nassau Str. 41
                 </div>
-              </div>
-              <div className="flex gap-2">
+              </a>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=50.0037,8.3031" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex gap-2 hover:text-foreground transition-colors"
+                data-testid="link-location-mainz"
+              >
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                <div className="text-muted-foreground">
+                <div className="text-muted-foreground hover:text-foreground transition-colors">
                   Mainz-Kastel<br />
                   Wiesbadener Str. 30
                 </div>
-              </div>
-              <div className="flex gap-2">
+              </a>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=50.0826,8.2400" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex gap-2 hover:text-foreground transition-colors"
+                data-testid="link-location-wiesbaden"
+              >
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                <div className="text-muted-foreground">
+                <div className="text-muted-foreground hover:text-foreground transition-colors">
                   Wiesbaden
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
