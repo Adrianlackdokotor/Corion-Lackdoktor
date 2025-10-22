@@ -64,12 +64,12 @@ export default function Contact() {
             </div>
           </a>
 
-          <a href="mailto:info@lackdoktor.de" className="block">
+          <a href="mailto:coriongmbh@gmail.com" className="block">
             <div className="text-center p-6 border rounded-md hover-elevate transition-all" data-testid="card-contact-email">
               <Mail className="w-12 h-12 mx-auto mb-4 text-primary" />
               <h3 className="font-semibold mb-2">E-Mail</h3>
               <p className="text-sm text-muted-foreground mb-2">Senden Sie uns eine E-Mail</p>
-              <p className="text-sm">info@lackdoktor.de</p>
+              <p className="text-sm">coriongmbh@gmail.com</p>
             </div>
           </a>
         </div>

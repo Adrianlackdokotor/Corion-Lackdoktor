@@ -40,9 +40,9 @@ export default function Footer() {
                 <Phone className="w-4 h-4" />
                 <span className="font-sans">0176 834 582 74</span>
               </a>
-              <a href="mailto:info@lackdoktor.de" className="flex items-center gap-2 hover:text-primary transition-colors" data-testid="link-email-footer">
+              <a href="mailto:coriongmbh@gmail.com" className="flex items-center gap-2 hover:text-primary transition-colors" data-testid="link-email-footer">
                 <Mail className="w-4 h-4" />
-                info@lackdoktor.de
+                coriongmbh@gmail.com
               </a>
             </div>
           </div>

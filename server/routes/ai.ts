@@ -139,7 +139,7 @@ function getFallbackResponse(prompt: string, agentType: string) {
   }
 
   return {
-    reply: 'Vielen Dank für Ihre Nachricht! Für eine detaillierte Beratung erreichen Sie uns unter:\n\n📞 0176 834 582 74\n💬 WhatsApp verfügbar\n📧 info@lackdoktor.de\n\nWie kann ich Ihnen weiterhelfen?',
+    reply: 'Vielen Dank für Ihre Nachricht! Für eine detaillierte Beratung erreichen Sie uns unter:\n\n📞 0176 834 582 74\n💬 WhatsApp verfügbar\n📧 coriongmbh@gmail.com\n\nWie kann ich Ihnen weiterhelfen?',
     suggestions: ['Angebot einholen', 'Standorte anzeigen', 'Dienstleistungen'],
   };
 }

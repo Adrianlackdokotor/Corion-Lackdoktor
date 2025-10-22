@@ -112,7 +112,7 @@ export default function AngebotEinholen() {
               data-testid="button-email"
             >
               <a
-                href="mailto:info@corion-lackdoktor.de"
+                href="mailto:coriongmbh@gmail.com"
                 className="flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />

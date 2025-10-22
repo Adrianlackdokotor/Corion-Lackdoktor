@@ -30,7 +30,7 @@ export default function Impressum() {
                 Telefon: <a href="tel:+4917683458274" className="text-primary hover:underline" data-testid="link-phone">+49 176 83458274</a>
               </p>
               <p>
-                E-Mail: <a href="mailto:info@corion.de" className="text-primary hover:underline" data-testid="link-email">info@corion.de</a>
+                E-Mail: <a href="mailto:coriongmbh@gmail.com" className="text-primary hover:underline" data-testid="link-email">coriongmbh@gmail.com</a>
               </p>
             </div>
           </section>

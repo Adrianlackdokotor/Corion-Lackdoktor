@@ -32,7 +32,7 @@ The website is built as a static, client-side only application using **React** w
 - **Impressum Page (Updated October 2025)**:
   - **Company Information**: Corion GmbH, Nassaustraße 41, 65719 Hofheim am Taunus
   - **Legal Details**: Managing Director Adrian Apostol, Commercial Register HRB 128302 (Amtsgericht Frankfurt am Main)
-  - **Clickable Contact Links**: Phone (+49 176 83458274) and Email (info@corion.de) with tel: and mailto: protocols
+  - **Clickable Contact Links**: Phone (+49 176 83458274) and Email (coriongmbh@gmail.com) with tel: and mailto: protocols
   - **AGB Section**: Complete terms and conditions including AI content disclaimer
   - **Prominent AI Disclaimer**: Bordered section warning about KI-gestützte Assistenten (AI-powered assistants) with recommendations to verify AI-generated information before making decisions
   - **Legal Compliance**: EU dispute resolution, consumer arbitration, content responsibility per §55 Abs. 2 RStV, TMG disclaimers
