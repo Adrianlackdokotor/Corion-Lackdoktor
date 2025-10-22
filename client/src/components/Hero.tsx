@@ -73,7 +73,7 @@ export default function Hero() {
               <a href="https://wa.me/4917683458274" target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-auto font-heading font-bold text-lg px-8 py-6 shadow-cta hover:shadow-xl transition-all duration-300" 
+                  className="w-full sm:w-auto font-heading font-bold shadow-cta hover:shadow-xl transition-all duration-300" 
                   data-testid="button-hero-photo"
                 >
                   <Camera className="mr-2 w-5 h-5" />
@@ -91,7 +91,7 @@ export default function Hero() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60 font-heading font-bold text-lg px-8 py-6 transition-all duration-300" 
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60 font-heading font-bold transition-all duration-300" 
                   data-testid="button-hero-call"
                 >
                   <Phone className="mr-2 w-5 h-5" />
