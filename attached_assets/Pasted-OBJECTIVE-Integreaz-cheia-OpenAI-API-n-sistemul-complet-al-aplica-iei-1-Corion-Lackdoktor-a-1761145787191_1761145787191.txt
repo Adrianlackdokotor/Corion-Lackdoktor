@@ -1,0 +1,112 @@
+OBJECTIVE:
+Integrează cheia OpenAI API în sistemul complet al aplicației **+1 Corion Lackdoktor**, astfel încât toate modulele AI (DynamicAIEngine, CorionAgent, AIChatWidget, backend API) să poată comunica în siguranță cu modelul GPT.
+
+---
+
+### 🧱 1️⃣ Setup & Environment Security
+1. Creează fișierul `.env` în rădăcina proiectului (dacă nu există).
+2. Adaugă:
+   ```
+   OPENAI_API_KEY=${process.env.OPENAI_API_KEY_CORIONLACKDOKTOR}
+   ```
+   sau, dacă rulează pe Replit:
+   - Mergi la **Tools → Secrets** și definește:
+     ```
+     OPENAI_API_KEY_CORIONLACKDOKTOR=***************
+     ```
+   (cheia completă din sistemul Corion, fără ghilimele)
+
+3. Asigură-te că fișierul `.env` este adăugat în `.gitignore`:
+   ```
+   .env
+   ```
+
+---
+
+### ⚙️ 2️⃣ Backend API Connection
+Editează fișierul `server/routes/ai.ts` (sau endpointul echivalent) pentru a folosi cheia din environment:
+
+```ts
+import dotenv from "dotenv";
+dotenv.config();
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY_CORIONLACKDOKTOR;
+
+if (!OPENAI_API_KEY) {
+  console.error("❌ Lipsă cheie OpenAI API! Verifică .env sau Secrets Replit.");
+}
+
+router.post("/", async (req, res) => {
+  const { prompt } = req.body;
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: "You are Corion AI assistant for the auto repair website." },
+        { role: "user", content: prompt }
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  res.json({ reply: data.choices?.[0]?.message?.content });
+});
+```
+
+✅ Toate cererile GPT trec prin server, nu din frontend → cheia rămâne protejată.  
+
+---
+
+### 🤖 3️⃣ GPT Agent Integration
+Actualizează fișierul `client/src/agents/CorionAgent.ts` pentru a trimite prompturile către backend:
+
+```ts
+export async function askCorionAgent(prompt: string) {
+  const res = await fetch("/api/ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+  const data = await res.json();
+  return data.reply;
+}
+```
+
+---
+
+### 💬 4️⃣ Dynamic Intelligence Hook Integration
+Verifică în `DynamicAIEngine.ts` și `AIChatWidget.tsx` că folosesc funcția `askCorionAgent()` pentru interacțiuni GPT.  
+Astfel, sistemul de tracking, reacție la evenimente și chat utilizează aceeași sursă GPT.
+
+---
+
+### 🔎 5️⃣ Test și Verificare
+1. Rulează `npm run dev`  
+2. Deschide aplicația și folosește chatul AI.
+3. În consolă backend, verifică:
+   ```
+   ✅ Connected to OpenAI API
+   ```
+4. Dacă apare eroarea 401, verifică cheia în `.env` sau Secrets.
+
+---
+
+### 🧠 6️⃣ Extensii viitoare
+Pregătește terenul pentru:
+- Integrarea **GPT Vision API** pentru analiză foto (daune auto);
+- Integrarea **Speech-to-Text** pentru voice input;
+- Integrarea sistemului de **tokenizare internă** în Corion Hub.
+
+---
+
+### ✅ OUTPUT FINAL
+- Cheia OpenAI este protejată în `.env`
+- Toate cererile GPT merg prin `/api/ai`
+- Chat, AI Intelligence și Dynamic Engine sunt complet funcționale
+- Sistemul este pregătit pentru Vision, Voice și Auto-Offerten AI

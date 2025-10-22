@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Upload } from "lucide-react";
+import { useDynamicIntelligence } from "@/hooks/useDynamicIntelligence";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein"),
@@ -20,20 +21,35 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
   const [files, setFiles] = useState<File[]>([]);
+  const [hasInteractedWithForm, setHasInteractedWithForm] = useState(false);
   const { toast } = useToast();
+  const { trackFormStart, trackFormComplete, triggerAIAction, trackClick } = useDynamicIntelligence();
   
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   });
 
+  const handleFormInteraction = () => {
+    if (!hasInteractedWithForm) {
+      setHasInteractedWithForm(true);
+      trackFormStart('contact');
+      triggerAIAction('seeking_quote');
+    }
+  };
+
   const onSubmit = (data: ContactFormData) => {
     console.log('Form submitted:', data, 'Files:', files);
+    
+    trackFormComplete('contact');
+    trackClick('submit_contact_form', files.length > 0 ? 'with_files' : 'without_files');
+    
     toast({
       title: "Anfrage gesendet!",
       description: "Wir werden uns in Kürze bei Ihnen melden.",
     });
     reset();
     setFiles([]);
+    setHasInteractedWithForm(false);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +68,7 @@ export default function ContactForm() {
           placeholder="Ihr Name"
           className="mt-1"
           data-testid="input-name"
+          onFocus={handleFormInteraction}
         />
         {errors.name && (
           <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
@@ -67,6 +84,7 @@ export default function ContactForm() {
           placeholder="ihre.email@beispiel.de"
           className="mt-1"
           data-testid="input-email"
+          onFocus={handleFormInteraction}
         />
         {errors.email && (
           <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
@@ -82,6 +100,7 @@ export default function ContactForm() {
           placeholder="+49 123 456789"
           className="mt-1"
           data-testid="input-phone"
+          onFocus={handleFormInteraction}
         />
         {errors.phone && (
           <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>
@@ -96,6 +115,7 @@ export default function ContactForm() {
           placeholder="Beschreiben Sie Ihr Anliegen..."
           className="mt-1 min-h-[120px]"
           data-testid="input-message"
+          onFocus={handleFormInteraction}
         />
         {errors.message && (
           <p className="text-sm text-destructive mt-1">{errors.message.message}</p>
