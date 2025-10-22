@@ -3,9 +3,10 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import AngebotEinholen from "@/components/AngebotEinholen";
 import GoogleReviews from "@/components/GoogleReviews";
-import StatsDisplay from "@/components/StatsDisplay";
+import WarumCorion from "@/components/WarumCorion";
+import SoFunktionierts from "@/components/SoFunktionierts";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 
 import dentImage from "@assets/generated_images/Dent_removal_service_image_b9ce6b23.png";
 import paintImage from "@assets/generated_images/Paint_service_image_68d4cdbf.png";
@@ -54,21 +55,6 @@ export default function Home() {
   ];
 
 
-  const stats = [
-    { value: "20+", label: "Jahre Erfahrung", description: "Seit 2003" },
-    { value: "4.6/5", label: "Kundenbewertung", description: "642 Bewertungen" },
-    { value: "5.000+", label: "Reparaturen", description: "Pro Jahr" },
-    { value: "100%", label: "Garantie", description: "Auf alle Arbeiten" },
-  ];
-
-  const whyChooseUs = [
-    "Über 20 Jahre Erfahrung",
-    "Schnelle Terminvergabe",
-    "Faire und transparente Preise",
-    "Kostenloser Leihwagen",
-    "Kostenloser Abhol- und Bringservice",
-    "Garantie auf alle Arbeiten",
-  ];
 
   return (
     <div>
@@ -101,41 +87,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-                Warum +1 Corion Lackdoktor?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Wir sind Ihr zuverlässiger Partner für alle Autoreparaturen in Wiesbaden 
-                und Umgebung. Vertrauen Sie auf unsere langjährige Erfahrung und höchste Qualität.
-              </p>
-              <ul className="space-y-4">
-                {whyChooseUs.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <Link href="/uber-uns">
-                  <Button size="lg" data-testid="button-learn-more">
-                    Mehr über uns erfahren
-                  </Button>
-                </Link>
-              </div>
-            </div>
+      {/* Warum Corion Section */}
+      <WarumCorion />
 
-            <div>
-              <StatsDisplay stats={stats} />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* So funktioniert's Section */}
+      <SoFunktionierts />
 
       {/* Angebot Einholen Section */}
       <AngebotEinholen />

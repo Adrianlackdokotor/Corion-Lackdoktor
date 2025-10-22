@@ -1,9 +1,27 @@
 import { Link } from "wouter";
 import { Phone, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const rotatingServices = [
+    "Smart Repair",
+    "Gutachten",
+    "Lackierung",
+    "Felgenreparatur",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % rotatingServices.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative h-[600px] md:h-[700px] flex items-center">
       {/* Background Image */}
@@ -20,13 +38,37 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6">
-            Professionelle Autoreparatur in Wiesbaden
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading text-white mb-6" data-testid="heading-hero">
+            +1 Corion Lackdoktor – Lackierung & Smart Repair in Hofheim, Wiesbaden & Mainz
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8">
-            Über 20 Jahre Erfahrung in Unfallschäden, Lackierung und Smart Repair. 
-            Schneller Service, faire Preise und höchste Qualität.
+          
+          <p className="text-2xl md:text-3xl font-heading text-white mb-4" data-testid="text-hero-subtitle">
+            Ihr Auto in besten Händen – schnell, fair und mit Leidenschaft lackiert.
           </p>
+          
+          <p className="text-lg md:text-xl text-white/90 mb-4" data-testid="text-hero-experience">
+            Seit über 12 Jahren Lackdoktor-Erfahrung in Wiesbaden & Hofheim.
+          </p>
+
+          {/* Rotating Services Text */}
+          <div className="flex items-center gap-2 text-lg md:text-xl text-white/90 mb-8 h-8" data-testid="container-rotating-services">
+            <span>Unsere Expertise:</span>
+            <div className="relative w-48 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute left-0 font-heading font-bold text-primary"
+                  data-testid={`text-rotating-service-${currentIndex}`}
+                >
+                  {rotatingServices[currentIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+          </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">

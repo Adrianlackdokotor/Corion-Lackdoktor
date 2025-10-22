@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
@@ -78,6 +79,7 @@ function App() {
         <Layout>
           <Router />
         </Layout>
+        <FloatingWhatsApp />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
