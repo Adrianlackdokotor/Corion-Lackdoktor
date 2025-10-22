@@ -1,0 +1,139 @@
+OBJECTIVE:
+Adaugă în aplicația +1 Corion Lackdoktor un sistem de **inteligență dinamică** cu stocare locală/cloud (App Storage) și integrare directă cu **GPT Agents** pentru automatizare, personalizare și comunicare AI-driven.
+
+---
+
+### ⚙️ 1️⃣ Dynamic Intelligence Layer
+
+Creează un modul `DynamicAIEngine.ts` care:
+- gestionează logica de inteligență adaptivă în funcție de comportamentul utilizatorilor (pagini vizitate, timp pe site, clicuri, interacțiuni)
+- poate oferi sugestii dinamice precum:
+  - „Vreți o ofertă rapidă? Trimiteți o poză aici 📸”
+  - „Ați mai fost clientul nostru? Bine ați revenit, putem repara istoricul anterior.”
+- învață în timp, salvând datele relevante în App Storage (de ex. `localStorage`, `Supabase`, sau `Replit DB`)
+
+✅ **Funcționalități cheie:**
+- detectează acțiuni (click, scroll, form submit)
+- evaluează intenția utilizatorului (vizitator nou / client recurent / interes pentru ofertă)
+- trimite prompturi contextuale către GPT Agent pentru răspunsuri personalizate
+- poate actualiza UI-ul dinamic (ex: schimbă CTA text, afișează recomandări sau mesaje prietenoase)
+
+---
+
+### 🧱 2️⃣ App Storage System (User Memory + Logs)
+
+Creează un fișier `appStorage.ts` care oferă:
+- Funcții CRUD pentru datele utilizatorului:
+  ```ts
+  saveUserSession(data: any)
+  getUserSession(id: string)
+  deleteUserSession(id: string)
+  ```
+- Structură stocare:
+  ```json
+  {
+    "userId": "unique-session-id",
+    "timestamp": "2025-10-22T13:00:00Z",
+    "actions": ["visited_home", "clicked_offer", "sent_whatsapp"],
+    "preferences": {
+      "language": "de",
+      "interest": "lackschäden"
+    }
+  }
+  ```
+- Compatibil cu **Supabase**, **Replit DB**, sau **localforage** (fallback local)
+- Criptare simplă AES pentru confidențialitate
+
+---
+
+### 🤖 3️⃣ GPT Agent Integration Layer
+
+Creează un folder `agents/` și adaugă un fișier `CorionAgent.ts` care:
+- Conectează aplicația la GPT API (sau OpenAI Realtime API)
+- Poate fi chemat din componente printr-o funcție:
+  ```ts
+  import { askCorionAgent } from "@/agents/CorionAgent";
+
+  const response = await askCorionAgent("Clientul a încărcat o poză cu bara față, ce să-i spun?");
+  console.log(response);
+  ```
+- Include modele pentru task-uri diferite:
+  - **AssistantAgent** → răspunde la clienți
+  - **BusinessAgent** → generează oferte
+  - **LearningAgent** → analizează interacțiuni și propune îmbunătățiri
+
+✅ API Example:
+```ts
+export async function askCorionAgent(prompt: string) {
+  const res = await fetch("/api/ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt }),
+  });
+  const data = await res.json();
+  return data.reply;
+}
+```
+
+---
+
+### 🔌 4️⃣ Backend Integration
+
+Creează endpoint `server/routes/ai.ts`:
+- primește `POST /api/ai` cu prompt și context utilizator
+- trimite cererea către GPT API (cu cheie din `.env`)
+- returnează răspunsul text (sau JSON cu instrucțiuni dinamice)
+- loghează interacțiunile în App Storage
+
+---
+
+### 💬 5️⃣ Frontend Integration – Dynamic AI Chat
+
+Creează un component `AIChatWidget.tsx`:
+- Buton flotant 💬 în colțul dreapta-jos (sub WhatsApp)
+- Se deschide o mică fereastră de chat cu AI-ul Corion:
+  - Salutare personalizată (în funcție de datele stocate)
+  - Istoric conversații din App Storage
+  - Posibilitate de încărcare foto + răspuns GPT (prin agent vizual ulterior)
+- Design în stilul brandului Corion (negru / roșu / alb)
+- Conectat la `CorionAgent.ts`
+
+---
+
+### 🧩 6️⃣ Contextual Intelligence Hooks (bonus)
+
+Creează hook `useDynamicIntelligence()`:
+- ascultă evenimente (page view, click, scroll, idle)
+- trimite semnale către AI Engine pentru reacții (ex: "user_interested", "returning_user")
+- poate declanșa update-uri UI (CTA, notificări personalizate)
+
+Exemplu:
+```ts
+const { triggerAIAction } = useDynamicIntelligence();
+
+useEffect(() => {
+  triggerAIAction("user_returned");
+}, []);
+```
+
+---
+
+### 🔍 7️⃣ Future-ready: Extend with Auto Agents
+Pregătește sistemul pentru:
+- AutoGPT/Function Calling (ofertă automată pe baza fotografiei)
+- Voice input (microfon API)
+- Integrare cu CRM-ul Corion pentru management clienți
+- Stocare conversații AI în Supabase pentru antrenare internă
+
+---
+
+### ✅ OUTPUT FINAL:
+- `DynamicAIEngine.ts` – gestionează comportamente inteligente
+- `appStorage.ts` – stocare sesiunii utilizatorului
+- `agents/CorionAgent.ts` – legătura cu GPT Agents
+- `AIChatWidget.tsx` – interfață de chat AI pe site
+- `server/routes/ai.ts` – endpoint backend pentru GPT API
+- Hook `useDynamicIntelligence()` pentru acțiuni contextuale
+
+🎯 **Rezultat dorit:**
+O aplicație care *învață din comportamentul vizitatorilor*, personalizează comunicarea, memorează sesiunile și interacționează natural cu utilizatorii prin GPT Agents – pregătită pentru viitoarele funcționalități AI (auto ofertare, asistență vocală, training intern etc.).

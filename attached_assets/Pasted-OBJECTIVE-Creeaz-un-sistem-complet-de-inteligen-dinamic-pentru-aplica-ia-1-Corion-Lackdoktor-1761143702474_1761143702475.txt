@@ -1,0 +1,89 @@
+OBJECTIVE:
+Creează un sistem complet de inteligență dinamică pentru aplicația **+1 Corion Lackdoktor**, care învață din comportamentul utilizatorilor, salvează sesiunile în App Storage, și interacționează prin GPT Agents pentru mesaje, oferte și analiză automată.
+
+---
+
+### ⚙️ 1️⃣ Arhitectură generală
+
+Creează următoarea structură:
+
+```
+client/
+ └─ src/
+     ├─ lib/
+     │   ├─ appStorage.ts
+     │   └─ DynamicAIEngine.ts
+     ├─ agents/
+     │   └─ CorionAgent.ts
+     ├─ components/
+     │   └─ AIChatWidget.tsx
+     ├─ hooks/
+     │   └─ useDynamicIntelligence.ts
+server/
+ └─ routes/
+     └─ ai.ts
+```
+
+---
+
+### 🧩 2️⃣ `appStorage.ts` – Stocare persistentă (user sessions)
+
+Implementare simplă cu fallback local (`localStorage` → `Supabase` dacă există).
+```ts
+export const appStorage = {
+  async saveSession(sessionId: string, data: any) {
+    localStorage.setItem(sessionId, JSON.stringify(data));
+  },
+  async getSession(sessionId: string) {
+    const item = localStorage.getItem(sessionId);
+    return item ? JSON.parse(item) : null;
+  },
+  async deleteSession(sessionId: string) {
+    localStorage.removeItem(sessionId);
+  },
+};
+```
+Structură stocare:
+```json
+{
+  "userId": "uuid",
+  "timestamp": "2025-10-22T13:00:00Z",
+  "actions": ["visited_home", "clicked_offer", "opened_chat"],
+  "preferences": {
+    "language": "de",
+    "interest": "smart-repair"
+  }
+}
+```
+
+---
+
+### 🧠 3️⃣ `DynamicAIEngine.ts` – Inteligență adaptivă
+
+Creează un sistem care:
+- urmărește evenimente de utilizator (`view`, `scroll`, `click`, `form submit`);
+- trimite contextul către GPT Agent pentru reacții dinamice (text, CTA, oferte);
+- memorează comportamentul în `appStorage`.
+
+Exemplu:
+
+```ts
+import { askCorionAgent } from "@/agents/CorionAgent";
+import { appStorage } from "./appStorage";
+
+export class DynamicAIEngine {
+  constructor() {
+    this.sessionId = this.initSession();
+  }
+
+  initSession() {
+    let id = localStorage.getItem("corion_session");
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem("corion_session", id);
+    }
+    return id;
+  }
+
+  async track(event: string, meta: any = {}) {
+    const data = (await appStorage.getS

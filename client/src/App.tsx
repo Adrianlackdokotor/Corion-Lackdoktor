@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import AIChatWidget from "@/components/AIChatWidget";
+import { useDynamicIntelligence } from "@/hooks/useDynamicIntelligence";
 
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
@@ -73,6 +75,13 @@ function Router() {
 }
 
 function App() {
+  useDynamicIntelligence({
+    enableTracking: true,
+    trackScrollDepth: true,
+    trackIdleTime: true,
+    idleThreshold: 30,
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -80,6 +89,7 @@ function App() {
           <Router />
         </Layout>
         <FloatingWhatsApp />
+        <AIChatWidget />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
