@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Thomas Müller",
+    "rating": 5,
+    "text": "Hervorragender Service! Mein Auto sieht aus wie neu. Die Reparatur war schnell und der Preis fair. Absolut empfehlenswert!",
+    "date": "2025-10-15"
+  },
+  {
+    "name": "Anna Schmidt",
+    "rating": 5,
+    "text": "Sehr professionell und freundlich. Die Lackierung ist perfekt geworden. Danke für die tolle Arbeit!",
+    "date": "2025-10-08"
+  },
+  {
+    "name": "Michael Weber",
+    "rating": 5,
+    "text": "Kompetente Beratung und schnelle Abwicklung. Preis-Leistung stimmt absolut. Gerne wieder!",
+    "date": "2025-10-01"
+  },
+  {
+    "name": "Sarah Fischer",
+    "rating": 5,
+    "text": "Toller Service vom ersten Kontakt bis zur Abholung. Das Auto wurde pünktlich fertig und sieht fantastisch aus.",
+    "date": "2025-09-28"
+  },
+  {
+    "name": "Klaus Becker",
+    "rating": 5,
+    "text": "Nach einem Unfall war ich sehr besorgt. Das Team hat mich super beraten und alles perfekt repariert. Vielen Dank!",
+    "date": "2025-09-20"
+  },
+  {
+    "name": "Lisa Hoffmann",
+    "rating": 4,
+    "text": "Gute Arbeit zu fairem Preis. Die Wartezeit war etwas länger als geplant, aber das Ergebnis ist sehr gut.",
+    "date": "2025-09-15"
+  },
+  {
+    "name": "Peter Schulz",
+    "rating": 5,
+    "text": "Ich bringe mein Auto seit Jahren hier hin. Immer zuverlässig, immer top Qualität. Kann ich nur empfehlen!",
+    "date": "2025-09-12"
+  },
+  {
+    "name": "Julia Wagner",
+    "rating": 5,
+    "text": "Smart Repair für einen kleinen Kratzer - schnell, günstig und man sieht nichts mehr. Perfekt!",
+    "date": "2025-09-08"
+  },
+  {
+    "name": "Martin Koch",
+    "rating": 5,
+    "text": "Oldtimer-Restaurierung vom Feinsten. Die Liebe zum Detail ist beeindruckend. Danke!",
+    "date": "2025-09-05"
+  },
+  {
+    "name": "Sandra Meyer",
+    "rating": 5,
+    "text": "Freundliches Team, faire Preise und top Ergebnis. Die Felgenreparatur sieht aus wie neu!",
+    "date": "2025-09-01"
+  }
+]

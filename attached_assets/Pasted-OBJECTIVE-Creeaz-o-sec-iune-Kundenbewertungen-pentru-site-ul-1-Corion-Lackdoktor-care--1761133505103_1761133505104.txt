@@ -1,0 +1,104 @@
+OBJECTIVE:
+Creează o secțiune **„Kundenbewertungen”** pentru site-ul **+1 Corion Lackdoktor**, care afişează automat ultimele recenzii publice din Google și include link direct către profilul Google oficial:
+👉 https://www.google.com/search?q=+1%20Corion%20Lackdoktor%20Recenzii&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLGwsDA0NLIwNDM1MTY2MLM0MdnAyPiKUVbbUME5vygzP0_BJzE5OyU_uyS_SCEoNTk1ryozcxErfnkAcTddblsAAAA&rldimm=14888112816543306944&tbm=lcl&hl=ro&sa=X#lkt=LocalPoiReviews
+
+---
+
+### 🔧 REQUIREMENTS
+
+1. **Creează un component React/Tailwind** numit `GoogleReviews.tsx`:
+   - Afișează ultimele 10 recenzii (nume, rating, text, data).
+   - Include un **buton CTA**:  
+     „Mehr auf Google ansehen” → deschide linkul Google de mai sus într-un tab nou.
+   - Adaugă un mic heading:
+     ```
+     ⭐ 4,6 / 5 · Basierend auf über 642 Google-Bewertungen
+     ```
+     (valoare editabilă din JSON sau prop)
+
+2. **Creează un fișier `data/reviews.json`** cu structura:
+   ```json
+   [
+     {
+       "name": "Max Müller",
+       "rating": 5,
+       "text": "Top Lackierung! Auto wie neu. Danke an das Corion-Team!",
+       "date": "2025-09-12"
+     },
+     {
+       "name": "Anna Schmidt",
+       "rating": 4,
+       "text": "Sehr netter Service, schnelle Reparatur. Empfehlenswert!",
+       "date": "2025-08-23"
+     }
+   ]
+   ```
+   *(poate fi populat manual sau ulterior prin script API)*
+
+3. **Design UI (Tailwind)**
+   - Fundal: gri deschis `#F2F2F2`
+   - Carduri albe `bg-white` cu `rounded-2xl` și `shadow-md`
+   - Numele și ratingul în **Montserrat Bold**
+   - Textul recenziei în **Open Sans**
+   - Responsive: 1 card/rând pe mobil, 3 carduri/rând pe desktop
+   - Adaugă o ușoară animație hover (`scale-105 transition-ease-out`)
+
+4. **Integrează componentul în pagina principală (`Home.tsx`)**
+   - Sub secțiunea „Warum +1 Corion Lackdoktor”
+   - Include heading:
+     ```
+     <h2 className="text-3xl font-heading text-primary text-center mb-6">
+       Kundenbewertungen
+     </h2>
+     ```
+
+5. **Adaugă butonul Google în josul secțiunii:**
+   ```html
+   <a
+     href="https://www.google.com/search?q=+1%20Corion%20Lackdoktor%20Recenzii&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLGwsDA0NLIwNDM1MTY2MLM0MdnAyPiKUVbbUME5vygzP0_BJzE5OyU_uyS_SCEoNTk1ryozcxErfnkAcTddblsAAAA&rldimm=14888112816543306944&tbm=lcl&hl=ro&sa=X#lkt=LocalPoiReviews"
+     target="_blank"
+     rel="noopener noreferrer"
+     className="mt-4 inline-block bg-primary text-white px-6 py-3 rounded-2xl font-heading hover:bg-red-700"
+   >
+     Mehr auf Google ansehen
+   </a>
+   ```
+
+6. **Optimizări SEO**
+   - Adaugă în `<head>` tagurile:
+     ```html
+     <meta name="description" content="4,6 ⭐ Kundenbewertungen – +1 Corion Lackdoktor: professionelle Smart-Repair- und Lackierarbeiten in Hofheim, Wiesbaden & Mainz." />
+     <script type="application/ld+json">
+       {
+         "@context": "https://schema.org",
+         "@type": "AutoBodyShop",
+         "name": "+1 Corion Lackdoktor",
+         "aggregateRating": {
+           "@type": "AggregateRating",
+           "ratingValue": "4.6",
+           "reviewCount": "642"
+         },
+         "url": "https://corion-lackdoktor.de",
+         "telephone": "+49 176 83458274"
+       }
+     </script>
+     ```
+
+7. **Documentație**
+   - În `replit.md` adaugă o secțiune “Reviews Update” care explică:
+     - Cum se actualizează manual fișierul `data/reviews.json`
+     - Cum se poate conecta un script simplu care preia automat datele de pe Google Places API (opțional)
+
+---
+
+### 🧾 OUTPUT
+
+- `components/GoogleReviews.tsx` (component complet)
+- `data/reviews.json` (date demo)
+- Integrare în `Home.tsx`
+- Actualizare `replit.md` cu pași de actualizare recenzii
+- Secțiune vizibilă cu recenziile și link activ către profilul Google
+
+🎯 **Rezultat dorit:**
+O secțiune testimonial modernă, responsive și SEO-optimizată, care afișează recenziile de pe Google și crește încrederea clienților pentru +1 Corion Lackdoktor.
+
