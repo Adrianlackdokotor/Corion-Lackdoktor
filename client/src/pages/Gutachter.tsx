@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { CheckCircle, FileText, Clock, Shield } from "lucide-react";
 import paintImage from "@assets/generated_images/Paint_service_image_68d4cdbf.png";
 
@@ -24,6 +25,11 @@ export default function Gutachter() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Gutachterservice | KFZ Schadengutachten Hofheim & Wiesbaden"
+        description="Unabhängige Schadengutachten für Ihre Versicherung. Schnelle Terminvergabe, professionelle Dokumentation und 20+ Jahre Expertise. Jetzt Termin vereinbaren!"
+        canonical="https://www.corion-lackdoktor.de/gutachter"
+      />
       {/* Hero Section */}
       <div className="relative h-[400px] flex items-center">
         <div className="absolute inset-0 z-0">

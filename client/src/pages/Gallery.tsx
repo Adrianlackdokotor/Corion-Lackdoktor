@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import paintImage from "@assets/generated_images/Paint_service_image_68d4cdbf.png";
 import dentImage from "@assets/generated_images/Dent_removal_service_image_b9ce6b23.png";
 import wheelImage from "@assets/generated_images/Wheel_repair_service_image_878b7e9d.png";
@@ -30,6 +31,11 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Galerie | Corion Lackdoktor - Vorher/Nachher Bilder"
+        description="Überzeugen Sie sich von der Qualität unserer Arbeit. Sehen Sie Beispiele unserer Lackierungen, Smart Repairs, Oldtimer-Restaurierungen und mehr."
+        canonical="https://www.corion-lackdoktor.de/galerie"
+      />
       {/* Header */}
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">

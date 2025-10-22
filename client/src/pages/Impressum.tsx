@@ -1,6 +1,13 @@
+import SEO from "@/components/SEO";
+
 export default function Impressum() {
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Impressum | Corion Lackdoktor"
+        description="Impressum der Corion GmbH - Rechtliche Informationen und Kontaktdaten unserer Autoreparatur-Werkstatt in Hofheim-Wallau."
+        canonical="https://www.corion-lackdoktor.de/impressum"
+      />
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4" data-testid="heading-impressum">

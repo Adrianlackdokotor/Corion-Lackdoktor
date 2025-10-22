@@ -1,5 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import LocationCard from "@/components/LocationCard";
+import SEO from "@/components/SEO";
 import { Phone, Mail, MessageCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -31,6 +32,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Kontakt | Corion Lackdoktor Hofheim"
+        description="Kontaktieren Sie uns für professionelle Auto-Reparaturen in Hofheim, Mainz-Kastel & Wiesbaden. ☎ 0176 834 582 74 | ✉ coriongmbh@gmail.com"
+        canonical="https://www.corion-lackdoktor.de/kontakt"
+      />
       {/* Header */}
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">

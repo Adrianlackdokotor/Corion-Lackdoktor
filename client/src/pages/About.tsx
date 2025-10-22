@@ -1,5 +1,6 @@
 import { CheckCircle, Award, Users, Clock } from "lucide-react";
 import StatsDisplay from "@/components/StatsDisplay";
+import SEO from "@/components/SEO";
 
 export default function About() {
   // todo: remove mock data
@@ -43,6 +44,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Über Uns | Corion Lackdoktor - 20+ Jahre Erfahrung"
+        description="Seit über 20 Jahren Ihr Partner für professionelle Autoreparatur in Wiesbaden. Erfahrenes Lackdoktor-Team mit modernster Technik und fairen Preisen."
+        canonical="https://www.corion-lackdoktor.de/uber-uns"
+      />
       {/* Header */}
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">

@@ -1,5 +1,6 @@
 import TestimonialCard from "@/components/TestimonialCard";
 import StatsDisplay from "@/components/StatsDisplay";
+import SEO from "@/components/SEO";
 import { Star } from "lucide-react";
 
 export default function Testimonials() {
@@ -80,6 +81,11 @@ export default function Testimonials() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Kundenbewertungen | Corion Lackdoktor - 4.6/5 Sterne"
+        description="642+ zufriedene Kunden bewerten uns mit 4.6/5 Sternen. Lesen Sie echte Erfahrungen mit unserem Smart Repair Service in Hofheim, Mainz-Kastel & Wiesbaden."
+        canonical="https://www.corion-lackdoktor.de/bewertungen"
+      />
       {/* Header */}
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">

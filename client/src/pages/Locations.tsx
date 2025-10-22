@@ -1,4 +1,5 @@
 import LocationCard from "@/components/LocationCard";
+import SEO from "@/components/SEO";
 import { MapPin } from "lucide-react";
 
 export default function Locations() {
@@ -30,6 +31,11 @@ export default function Locations() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Standorte | Corion Lackdoktor - Hofheim, Mainz-Kastel, Wiesbaden"
+        description="Besuchen Sie uns an 3 Standorten: Hofheim-Wallau (Nassau Str. 41), Mainz-Kastel (Wiesbadener Str. 30) und Wiesbaden. ☎ 0176 834 582 74"
+        canonical="https://www.corion-lackdoktor.de/standorte"
+      />
       {/* Header */}
       <div className="bg-card border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
