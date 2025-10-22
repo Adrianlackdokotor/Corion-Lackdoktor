@@ -97,7 +97,7 @@ export default function Footer() {
                 </div>
               </a>
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=50.0037,8.3031" 
+                href="https://www.google.com/maps/place/Lackdoktor+Wiesbaden/@50.0152337,8.2745749,622m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47bd97a96f1e0bcb:0xb1d20f540e987e11!8m2!3d50.0152337!4d8.2771498!16s%2Fg%2F1hc2c4693?authuser=0&entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex gap-2 hover:text-foreground transition-colors"
