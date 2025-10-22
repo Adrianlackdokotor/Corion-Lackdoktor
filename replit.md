@@ -45,7 +45,75 @@ The website is built as a static, client-side only application using **React** w
 - **SEO Schema**: Updated LocalBusiness structured data with accurate geo-coordinates for all 3 locations, multiple addresses, and honest description
 - **Content Management**: All pages use German placeholder text, expecting the client to replace it with actual content and workshop images.
 
+## AI Intelligence System (Implemented October 2025)
+A comprehensive dynamic intelligence system that learns from user behavior, personalizes interactions, and provides GPT-powered assistance.
+
+### Architecture Components
+
+**1. appStorage.ts (client/src/lib/appStorage.ts)**
+- User session management with localStorage persistence
+- Tracks: actions, preferences, chat history, pages visited, time on site, returning user status
+- Functions: saveUserSession, getUserSession, updateUserAction, addChatMessage, trackPageVisit, markReturningUser
+
+**2. DynamicAIEngine.ts (client/src/lib/DynamicAIEngine.ts)**
+- Adaptive intelligence engine for behavior analysis
+- Tracks events: page views, scroll depth, clicks, form interactions, idle time
+- Intent detection: browsing, seeking_quote, returning_customer, interested_service, ready_to_contact
+- Contextual suggestions and personalized greeting generation
+
+**3. CorionAgent.ts (client/src/agents/CorionAgent.ts)**
+- GPT API integration layer with 3 specialized agent types:
+  - **AssistantAgent**: Customer support and general questions
+  - **BusinessAgent**: Quote generation, service suggestions, timeframe estimates
+  - **LearningAgent**: Behavior analysis and improvement recommendations
+- Fallback responses when OpenAI API key not configured
+
+**4. server/routes/ai.ts**
+- Backend POST /api/ai endpoint
+- OpenAI GPT-4o-mini integration
+- System prompts customized per agent type
+- Returns intelligent responses or fallback messages
+
+**5. AIChatWidget.tsx (client/src/components/AIChatWidget.tsx)**
+- Floating chat button positioned below WhatsApp CTA (z-index: 40)
+- Full chat window with message history
+- Auto-opens for returning users with high intent (2+ pages or 60+ seconds)
+- Suggestion buttons based on detected user intent
+- Persistent chat history via localStorage
+- Framer Motion animations
+
+**6. useDynamicIntelligence() Hook (client/src/hooks/useDynamicIntelligence.ts)**
+- Auto-tracks: page views, scroll depth (every 25%), idle time (30s threshold)
+- Provides: triggerAIAction, trackClick, trackFormStart, trackFormComplete
+- Intent detection and contextual suggestions
+
+**7. Contact Form Integration**
+- Contact form fully integrated with AI tracking
+- Tracks form start (first field focus) → triggers "seeking_quote" intent
+- Tracks form completion → records "ready_to_contact" intent
+- Records whether photos were uploaded
+
+### Key Features
+- **Session Persistence**: All user data stored in localStorage with proper returning user detection
+- **Intent Detection**: 5 intent types analyzed from behavior patterns
+- **Personalized Greetings**: Context-aware welcome messages based on user history
+- **Auto-Open Logic**: Chat widget automatically opens for returning users with engagement signals
+- **Form Tracking**: Complete tracking of contact form interactions for conversion optimization
+- **GPT Integration**: Optional OpenAI API key for intelligent responses (graceful fallback if missing)
+
+### Data Privacy
+- All data stored locally in browser localStorage (plain JSON)
+- No external tracking services
+- User data never leaves the browser except for GPT API calls (when configured)
+- Session data includes: user ID, actions, preferences, chat history, pages visited, time on site
+
+### Testing Status
+- End-to-end tested with Playwright (October 2025)
+- Verified: form tracking, intent detection, session persistence, returning user detection, AI chat functionality
+- All core tracking features working as expected
+
 ## External Dependencies
 - **Google Fonts**: Used for Montserrat and Open Sans typography.
 - **Google Business Profile**: Direct linking for customer reviews.
+- **OpenAI API (Optional)**: GPT-4o-mini for intelligent chat responses (fallback available if not configured).
 - **Google Maps API**: (Future enhancement for automatic review fetching via Google Places API, not currently integrated).
