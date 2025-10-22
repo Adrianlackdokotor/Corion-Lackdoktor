@@ -25,9 +25,24 @@ The website is built as a static, client-side only application using **React** w
 
 ### Technical Implementations
 - **Page Structure**: Dedicated pages for 13+ services (e.g., `/leistungen/unfallschaeden`), legal information (`/impressum`, `/datenschutz`), `galerie` with filtering, `kontakt`, `uber-uns`, `bewertungen`, `standorte`, and `faq`.
-- **"Jetzt Angebot einholen" Section**: New conversion-optimized section on homepage encouraging users to send photos of damage for free quotes. Features animated smartphone image, 3 CTA buttons (WhatsApp, Contact Form, Email), and Camera icon. All fixed pricing removed from service pages and replaced with "Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
+- **Hero Section (Updated October 2025)**: 
+  - **Honest Messaging**: Removed all "Meisterbetrieb" terminology and replaced with "Team in Ausbildung zum Meister" throughout site
+  - **SEO-Optimized H1**: "Professionelle Autoreparatur in Wiesbaden, Hofheim & Mainz-Kastel" for local search visibility
+  - **Rotating Text Animation**: Framer Motion AnimatePresence rotates through 3 core services every 2.5s: "Unfallschäden", "Lackschäden", "Smart Repair"
+  - **Emotional Subtitle**: "Ihr Auto in besten Händen – schnell, fair und mit Leidenschaft lackiert"
+  - **Trust Indicators**: Display 20+ years experience, 4.6/5 rating (642 reviews), 100% guarantee
+  - **Dual CTAs**: "Kostenvoranschlag erhalten" (primary) and "Jetzt Anrufen" (outline with backdrop blur)
+- **"Warum +1 Corion Lackdoktor" Section**: 4 benefit cards with Lucide icons (Award, Clock, Shield, Users), hover elevation effects, highlighting key differentiators
+- **"So funktioniert's" Section**: 3-step conversion process with numbered cards (1: Foto senden, 2: Angebot erhalten, 3: Reparatur durchführen), Camera/FileCheck/Wrench icons
+- **Floating WhatsApp CTA**: Globally accessible green button (bottom-right, fixed position, z-50) with scale/opacity animations, links to `https://wa.me/4917683458274`
+- **"Jetzt Angebot einholen" Section**: Conversion-optimized section on homepage encouraging users to send photos of damage for free quotes. Features animated smartphone image, 3 CTA buttons (WhatsApp, Contact Form, Email), and Camera icon. All fixed pricing removed from service pages and replaced with "Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
 - **Google Reviews Integration**: Dark mode infinite horizontal slider displaying customer testimonials from `data/reviews.json`. Features black background, white text, red accents (#C00020), and gold stars (#FFD700). Smooth Framer Motion animation moves cards continuously right-to-left with seamless loop. Responsive design shows 1-4 cards depending on viewport. Includes average rating (4.6/5) and total review count (642). SEO-optimized with JSON-LD structured data for rich snippets and theme-color meta tag.
-- **Multi-Location Support**: Configuration for three distinct locations: Wiesbaden, Hofheim-Wallau, and Mainz-Kastel.
+- **Enhanced Footer**: Added "Servicegebiete: Hofheim · Wiesbaden · Mainz-Kastel · Frankfurt Umgebung" for local SEO
+- **Multi-Location Support**: Configuration for three distinct locations with geo-coordinates:
+  - Hofheim-Wallau: 50.0780°N, 8.4450°E
+  - Mainz-Kastel: 50.0037°N, 8.3031°E
+  - Wiesbaden: 50.0826°N, 8.2400°E
+- **SEO Schema**: Updated LocalBusiness structured data with accurate geo-coordinates for all 3 locations, multiple addresses, and honest description
 - **Content Management**: All pages use German placeholder text, expecting the client to replace it with actual content and workshop images.
 
 ## External Dependencies
