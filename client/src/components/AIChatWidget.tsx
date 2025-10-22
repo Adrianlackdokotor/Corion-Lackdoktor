@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, MessageCircle, Loader2 } from 'lucide-react';
+import { X, Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { askCorionAgent } from '@/agents/CorionAgent';
 import { addChatMessage, getUserSession } from '@/lib/appStorage';
 import { aiEngine } from '@/lib/DynamicAIEngine';
+import chatIconImage from '@assets/chat-icon_1761147332590.png';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -125,14 +126,21 @@ export default function AIChatWidget() {
             transition={{ duration: 0.2 }}
             className="fixed bottom-6 right-24 z-40"
           >
-            <Button
-              size="lg"
-              onClick={() => setIsOpen(true)}
-              className="h-14 w-14 rounded-full shadow-lg bg-primary hover:bg-primary/90"
-              data-testid="button-ai-chat-open"
-            >
-              <MessageCircle className="w-6 h-6" />
-            </Button>
+            <div className="relative">
+              {/* Pulsing glow effect */}
+              <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
+              <button
+                onClick={() => setIsOpen(true)}
+                className="relative h-16 w-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-200 overflow-hidden border-2 border-primary/40 hover:border-primary/60"
+                data-testid="button-ai-chat-open"
+              >
+                <img 
+                  src={chatIconImage} 
+                  alt="AI Chat Assistant" 
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -141,20 +149,30 @@ export default function AIChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-card border border-border rounded-lg shadow-2xl flex flex-col"
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 300,
+              damping: 30
+            }}
+            className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-card border-2 border-primary/30 rounded-lg shadow-2xl flex flex-col backdrop-blur-sm"
             data-testid="container-ai-chat"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
-              <div className="flex items-center gap-2">
-                <MessageCircle className="w-5 h-5" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-foreground/30">
+                  <img 
+                    src={chatIconImage} 
+                    alt="AI Assistant" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div>
-                  <h3 className="font-heading font-bold text-sm">AI-Assistent</h3>
-                  <p className="text-xs opacity-90">+1 Corion Lackdoktor</p>
+                  <h3 className="font-heading font-bold text-sm">Corion AI-Assistent</h3>
+                  <p className="text-xs opacity-90">Powered by GPT-4o-mini</p>
                 </div>
               </div>
               <Button
