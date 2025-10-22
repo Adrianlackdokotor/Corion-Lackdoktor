@@ -127,8 +127,32 @@ export default function AIChatWidget() {
             className="fixed bottom-6 right-24 z-40"
           >
             <div className="relative">
-              {/* Pulsing glow effect */}
-              <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
+              {/* Pulsing glow effect - multiple rings for visibility */}
+              <motion.div
+                className="absolute inset-0 rounded-full bg-primary/20"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.4, 0, 0.4],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 rounded-full bg-primary/30"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0, 0.5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
               <button
                 onClick={() => setIsOpen(true)}
                 className="relative h-16 w-16 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-200 overflow-hidden border-2 border-primary/40 hover:border-primary/60"
