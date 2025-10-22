@@ -19,6 +19,7 @@ import FAQ from "@/pages/FAQ";
 import Gutachter from "@/pages/Gutachter";
 import Locations from "@/pages/Locations";
 import Gallery from "@/pages/Gallery";
+import Academy from "@/pages/Academy";
 import Impressum from "@/pages/Impressum";
 import Datenschutz from "@/pages/Datenschutz";
 import Cookies from "@/pages/Cookies";
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/gutachter" component={Gutachter} />
       <Route path="/standorte" component={Locations} />
       <Route path="/galerie" component={Gallery} />
+      <Route path="/academy" component={Academy} />
       
       {/* Legal Pages */}
       <Route path="/impressum" component={Impressum} />
