@@ -48,7 +48,7 @@ export default function AngebotEinholen() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center justify-center gap-4 mb-4"
           >
-            <Camera className="w-10 h-10 md:w-12 md:h-12 text-primary flex-shrink-0" />
+            <Camera className="w-10 h-10 md:w-12 md:h-12 text-primary flex-shrink-0" data-testid="icon-camera-angebot" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary" data-testid="heading-angebot">
               Senden Sie uns einfach ein Foto vom Schaden!
             </h2>
