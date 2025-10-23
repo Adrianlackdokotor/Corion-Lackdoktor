@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Mail, Send, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import smartphoneImage from "@assets/generated_images/Smartphone_showing_car_damage_photo_2895b3f4.png";
+import smartphoneImage from "@assets/Auto-Kratzerreparatur-Digital-Anfrage-Corion_1761206586966.jpeg";
 
 export default function AngebotEinholen() {
   const handleScrollToKontakt = (e: React.MouseEvent) => {
