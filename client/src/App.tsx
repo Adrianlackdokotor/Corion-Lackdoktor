@@ -14,10 +14,9 @@ import { useDynamicIntelligence } from "@/hooks/useDynamicIntelligence";
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
 import About from "@/pages/About";
-import Testimonials from "@/pages/Testimonials";
+import Standorte from "@/pages/Standorte";
 import FAQ from "@/pages/FAQ";
 import Gutachter from "@/pages/Gutachter";
-import Locations from "@/pages/Locations";
 import Gallery from "@/pages/Gallery";
 import Academy from "@/pages/Academy";
 import Impressum from "@/pages/Impressum";
@@ -46,10 +45,9 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/kontakt" component={Contact} />
       <Route path="/uber-uns" component={About} />
-      <Route path="/bewertungen" component={Testimonials} />
+      <Route path="/standorte" component={Standorte} />
       <Route path="/faq" component={FAQ} />
       <Route path="/gutachter" component={Gutachter} />
-      <Route path="/standorte" component={Locations} />
       <Route path="/galerie" component={Gallery} />
       <Route path="/academy" component={Academy} />
       
