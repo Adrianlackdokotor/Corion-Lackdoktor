@@ -23,11 +23,10 @@ export default function Contact() {
     },
   ];
 
-  // todo: remove mock data
   const freeServices = [
-    "Individuelles Preisangebot",
-    "Kostenloser Leihwagen",
-    "Abhol- und Bringservice",
+    { name: "Individuelles Preisangebot", asterisk: false },
+    { name: "Kostenloser Leihwagen", asterisk: true },
+    { name: "Abhol- und Bringservice innerhalb 30 Km", asterisk: true },
   ];
 
   return (
@@ -94,10 +93,16 @@ export default function Contact() {
                 {freeServices.map((service, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-lg">{service}</span>
+                    <span className="text-lg">
+                      {service.name}
+                      {service.asterisk && <sup className="text-primary">*</sup>}
+                    </span>
                   </li>
                 ))}
               </ul>
+              <p className="text-xs text-muted-foreground mt-6 pt-4 border-t">
+                <sup className="text-primary">*</sup> ab 1000€ Rechnung Betrag
+              </p>
             </div>
 
             <h3 className="text-xl font-semibold mb-4">Öffnungszeiten</h3>
