@@ -23,7 +23,7 @@ export default function Header() {
       ]
     },
     { name: "Gutachter", href: "/gutachter" },
-    { name: "Bewertungen", href: "/bewertungen" },
+    { name: "Standorte", href: "/standorte" },
     { name: "Academy", href: "/academy" },
     { name: "FAQ", href: "/faq" },
     { name: "Kontakt", href: "/kontakt" },
