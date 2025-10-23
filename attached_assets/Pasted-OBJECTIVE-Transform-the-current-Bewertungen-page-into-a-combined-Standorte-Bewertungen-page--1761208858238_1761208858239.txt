@@ -1,0 +1,116 @@
+OBJECTIVE:
+Transform the current "Bewertungen" page into a combined "Standorte & Bewertungen" page.
+
+---
+
+### TASKS
+
+#### 1️⃣ Page Renaming
+- Rename the route `/bewertungen` → `/standorte`
+- Update navigation label from **“Bewertungen”** to **“Standorte”**
+- Ensure the logo still links to `/` (homepage)
+- Keep SEO meta tags consistent and add new title/description:
+
+```html
+<meta name="title" content="Corion Lackdoktor Standorte & Kundenbewertungen">
+<meta name="description" content="Finden Sie unsere Standorte in Hofheim-Wallau, Wiesbaden, Mainz und Frankfurt. Lesen Sie echte Kundenbewertungen über Corion Lackdoktor.">
+
+2️⃣ Top Section: STANDORTE
+
+Add a responsive, dark-mode section at the top of the page, above the reviews.
+
+Use grid cards for each location with address, and a red button linking to the Google or website URL.
+
+Example layout:
+
+<section className="w-full bg-black text-white py-12 px-6 md:px-16 border-b border-gray-800">
+  <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#C00020]">
+    Unsere Standorte
+  </h1>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">
+        Hofheim-Wallau <span className="text-[#C00020] text-sm ml-2">Hauptstandort</span>
+      </h2>
+      <p className="text-gray-400 mb-4">Nassau Str. 41, 65719 Hofheim am Taunus</p>
+      <a href="https://www.google.com/maps/place/%2B1+Corion+Lackdoktor/@50.0722447,8.3788688,622m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47bda31d6038322b:0xce9d33b9de0114c0!8m2!3d50.0722447!4d8.3814437!16s%2Fg%2F11ptz_8kfg?authuser=0" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition">
+        Standort ansehen
+      </a>
+    </div>
+
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">Mainz-Kastel</h2>
+      <p className="text-gray-400 mb-4">Wiesbadener Str. 30, 55252 Wiesbaden</p>
+      <a href="https://www.google.com/maps/place/Lackdoktor+Wiesbaden/@50.0152337,8.2745749,622m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47bd97a96f1e0bcb:0xb1d20f540e987e11!8m2!3d50.0152337!4d8.2771498!16s%2Fg%2F1hc2c4693"
+         target="_blank"
+         rel="noopener noreferrer"
+         className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition">
+        Standort ansehen
+      </a>
+    </div>
+
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">Frankfurt</h2>
+      <p className="text-gray-400 mb-4">Frankfurt am Main</p>
+      <a href="https://www.main-lackdoktor.de/" 
+         target="_blank"
+         rel="noopener noreferrer"
+         className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition">
+        Standort ansehen
+      </a>
+    </div>
+
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">Wiesbaden</h2>
+      <a href="https://www.lackdoktor-wiesbaden.de/" 
+         target="_blank"
+         rel="noopener noreferrer"
+         className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition">
+        Standort ansehen
+      </a>
+    </div>
+
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">Mainz</h2>
+      <a href="https://lackdoktor-mainz.de/" 
+         target="_blank"
+         rel="noopener noreferrer"
+         className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition">
+        Standort ansehen
+      </a>
+    </div>
+  </div>
+</section>
+
+3️⃣ Keep the Reviews Section
+
+Keep the existing Kundenbewertungen section below the Standorte grid.
+
+Title should now be smaller and centered, e.g.:
+
+<h2 class="text-2xl font-semibold text-center text-white mt-12">Kundenbewertungen</h2>
+
+
+Preserve slider, average rating (4.6/5), and the red WhatsApp CTA bubble.
+
+4️⃣ Responsive + SEO
+
+Maintain dark mode with black background and white text.
+
+Add structured data (schema) for both:
+
+LocalBusiness (Standorte)
+
+AggregateRating (Bewertungen)
+
+Update sitemap and robots for AI-SEO visibility.
+
+GOAL
+
+When visiting /standorte, users should first see the Corion Standorte section with all active locations (each linking to Google Maps or external websites), followed by the original reviews slider as social proof at the bottom.
+
+All functionality (dark mode, responsiveness, logo link, and SEO) must remain consistent with the rest of the site.

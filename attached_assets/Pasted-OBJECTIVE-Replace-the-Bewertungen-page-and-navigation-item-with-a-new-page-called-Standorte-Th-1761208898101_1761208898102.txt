@@ -1,0 +1,81 @@
+OBJECTIVE:
+Replace the “Bewertungen” page and navigation item with a new page called “Standorte”.
+This page should display all Corion Lackdoktor locations with direct Google links for Hofheim-Wallau, Mainz-Kastel, Wiesbaden, Frankfurt, and Mainz.
+
+---
+
+### TASKS
+
+#### 1️⃣ Navigation Update
+- Remove “Bewertungen” from the header.
+- Add **“Standorte”** in the same position.
+- Link: `/standorte`
+- Keep consistent with dark mode, hover effects, and brand colors (red/white/black).
+
+---
+
+#### 2️⃣ Create new page `/standorte`
+Design a **modern, responsive grid layout** with Tailwind/React (matching current style).
+
+Each location should appear as a **Card** with:
+- Title (location name)
+- Address (short)
+- Google/Website link (button)
+- Optional tag (e.g. “Hauptstandort”)
+
+---
+
+### 🏢 LOCATION DATA
+
+#### 🟥 Standort Hofheim-Wallau (Hauptstandort)
+- **Address:** Nassau Str. 41, 65719 Hofheim am Taunus
+- **Link:** [Google Reviews](https://www.google.com/search?sca_esv=bf302389b4c6e1ea&hl=ro-DE&tbm=lcl&sxsrf=AE3TifOl7rzKSOFTLkotLPPILExH7-wOug:1761207059509&q=Main+Lackdoktor+Recenzii&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MjM0MjUwszQwNjcytjC1NDQy3sDI-IpRwjcxM0_BJzE5OyU_uyS_SCEoNTk1ryozcxErTikA03XUw1AAAAA&rldimm=2612506903723859123&sa=X&ved=2ahUKEwjRvKHJ77mQAxWzRv4FHY_LKjkQ9fQKegQIOBAF&biw=1920&bih=992&dpr=1#lkt=LocalPoiReviews)
+- **Label:** Hauptstandort (Main)
+- **Badge color:** Red
+
+#### 🟥 Standort Mainz-Kastel
+- **Address:** Wiesbadener Str. 30, 55252 Wiesbaden
+- **Link:** [Google Maps](https://www.google.com/maps/place/Lackdoktor+Wiesbaden/@50.0152337,8.2771498,17z/data=!4m22!1m13!4m12!1m4!2m2!1d8.3812223!2d50.0716757!4e1!1m6!1m2!1s0x47bd97a96f1e0bcb:0xb1d20f540e987e11!2sLackdoktor+Wiesbaden,+Wiesbadener+Str.+30,+55252+Wiesbaden!2m2!1d8.277128!2d50.0152255!3m7!1s0x47bd97a96f1e0bcb:0xb1d20f540e987e11!8m2!3d50.0152337!4d8.2771498!9m1!1b1!16s%2Fg%2F1hc2c4693?hl=ro-DE&entry=ttu&g_ep=EgoyMDI1MTAyMC4wIKXMDSoASAFQAw%3D%3D)
+
+#### 🟥 Standort Frankfurt
+- **Address:** Frankfurt am Main
+- **Link:** [Main Lackdoktor Website](https://www.main-lackdoktor.de/)
+
+#### 🟥 Standort Wiesbaden
+- **Address:** Wiesbaden
+- **Link:** [Lackdoktor Wiesbaden Website](https://www.lackdoktor-wiesbaden.de/)
+
+#### 🟥 Standort Mainz
+- **Address:** Mainz
+- **Link:** [Lackdoktor Mainz Website](https://lackdoktor-mainz.de/)
+
+---
+
+### ✨ LAYOUT EXAMPLE (React + Tailwind)
+
+```tsx
+<section className="w-full bg-black text-white py-12 px-6 md:px-16">
+  <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#C00020]">
+    Unsere Standorte
+  </h1>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {/* Example card */}
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-red-500/30 transition">
+      <h2 className="text-xl font-semibold mb-2 text-white">
+        Hofheim-Wallau <span className="text-[#C00020] text-sm ml-2">Hauptstandort</span>
+      </h2>
+      <p className="text-gray-400 mb-4">Nassau Str. 41, 65719 Hofheim am Taunus</p>
+      <a
+        href="https://www.google.com/search?sca_esv=bf302389b4c6e1ea..."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-[#C00020] text-white px-4 py-2 rounded-md font-medium hover:bg-[#e31536] transition"
+      >
+        Standort ansehen
+      </a>
+    </div>
+
+    {/* Repeat for each location */}
+  </div>
+</section>
