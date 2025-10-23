@@ -150,6 +150,33 @@ export default function Standorte() {
           "latitude": "50.0152337",
           "longitude": "8.2771498"
         }
+      },
+      {
+        "@type": "Place",
+        "name": "Frankfurt",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Frankfurt am Main",
+          "addressCountry": "DE"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Wiesbaden",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wiesbaden",
+          "addressCountry": "DE"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Mainz",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mainz",
+          "addressCountry": "DE"
+        }
       }
     ]
   };
