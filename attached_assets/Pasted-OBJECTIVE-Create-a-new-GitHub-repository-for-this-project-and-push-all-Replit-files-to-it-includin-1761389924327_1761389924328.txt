@@ -1,0 +1,84 @@
+OBJECTIVE:
+Create a new GitHub repository for this project and push all Replit files to it (including commits, branches, and configurations).
+
+---
+
+### TASKS
+
+#### 1️⃣ Create a new GitHub repository
+- Repository name: **Corion-Lackdoktor-Web**
+- Description: "Official website and management system for +1 Corion Lackdoktor — Smart Repair, Gutachter & CRM Integration"
+- Visibility: **Private**
+- Initialize with:
+  - `.gitignore` for Node.js
+  - MIT License
+  - README.md containing:
+    ```
+    # +1 Corion Lackdoktor Web
+    Official website and CRM system for Corion GmbH.
+    Includes Smart Repair service pages, AI chat integration, and admin dashboard.
+    
+    ## Tech Stack
+    - React + TailwindCSS (Frontend)
+    - Express + Node.js (Backend)
+    - PostgreSQL + Drizzle ORM
+    - Passport.js Authentication
+    - Hosted on Replit and deployable to IONOS
+    
+    © Corion GmbH 2025 – All rights reserved.
+    ```
+
+---
+
+#### 2️⃣ Connect Replit project to GitHub repository
+- Initialize git if not already:  
+  ```bash
+  git init
+
+
+Add GitHub remote:
+
+git remote add origin https://github.com/adrianlackdoktor/Corion-Lackdoktor-Web.git
+
+
+Stage and commit all files:
+
+git add .
+git commit -m "Initial commit – Corion Lackdoktor website and CRM system"
+
+
+Push code to main branch:
+
+git branch -M main
+git push -u origin main
+
+3️⃣ Configure Git identity
+
+Ensure git user is set for Replit environment:
+
+git config --global user.name "Adrian Lackdoktor"
+git config --global user.email "adrianlackdoktor@gmail.com"
+
+4️⃣ Verify sync
+
+After pushing, verify:
+
+All project files (frontend, backend, config) are uploaded.
+
+The following folders are included:
+/client, /server, /shared, /db, /data, /attached_assets
+
+.env or other sensitive files remain excluded (add to .gitignore if needed).
+
+5️⃣ Finalize setup
+
+Print confirmation message:
+
+✅ Successfully created and pushed repository:
+https://github.com/adrianlackdoktor/Corion-Lackdoktor-Web
+
+You can now manage code directly via GitHub.
+To update from Replit later:
+  git add .
+  git commit -m "Update changes"
+  git push
