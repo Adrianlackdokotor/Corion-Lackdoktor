@@ -9,9 +9,12 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import AIChatWidget from "@/components/AIChatWidget";
 import ThemeToggle from "@/components/ThemeToggle";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { AuthProvider } from "@/hooks/use-auth";
 import { useDynamicIntelligence } from "@/hooks/useDynamicIntelligence";
 
 import Home from "@/pages/Home";
+import Login from "@/pages/Login";
+import AdminDashboard from "@/pages/AdminDashboard";
 import Contact from "@/pages/Contact";
 import About from "@/pages/About";
 import Standorte from "@/pages/Standorte";
@@ -51,6 +54,10 @@ function Router() {
       <Route path="/galerie" component={Gallery} />
       <Route path="/academy" component={Academy} />
       
+      {/* Auth Pages */}
+      <Route path="/login" component={Login} />
+      <Route path="/admin" component={AdminDashboard} />
+      
       {/* Legal Pages */}
       <Route path="/impressum" component={Impressum} />
       <Route path="/datenschutz" component={Datenschutz} />
@@ -89,15 +96,17 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <ThemeProvider>
-          <TooltipProvider>
-            <Layout>
-              <Router />
-            </Layout>
-            <FloatingWhatsApp />
-            <AIChatWidget />
-            <ThemeToggle />
-            <Toaster />
-          </TooltipProvider>
+          <AuthProvider>
+            <TooltipProvider>
+              <Layout>
+                <Router />
+              </Layout>
+              <FloatingWhatsApp />
+              <AIChatWidget />
+              <ThemeToggle />
+              <Toaster />
+            </TooltipProvider>
+          </AuthProvider>
         </ThemeProvider>
       </HelmetProvider>
     </QueryClientProvider>

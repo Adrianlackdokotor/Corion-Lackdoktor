@@ -102,6 +102,14 @@ export default function Header() {
             <Link href="/kontakt">
               <Button data-testid="button-get-quote">Angebot einholen</Button>
             </Link>
+            <Link href="/login">
+              <Button 
+                className="bg-[#C00020] hover:bg-[#e31536] text-white font-heading font-bold shadow-[0_0_15px_rgba(192,0,32,0.4)] hover:shadow-[0_0_20px_rgba(192,0,32,0.6)] transition-all"
+                data-testid="button-login"
+              >
+                Log In
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -184,6 +192,15 @@ export default function Header() {
                     data-testid="button-get-quote-mobile"
                   >
                     Angebot einholen
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button 
+                    className="w-full bg-[#C00020] hover:bg-[#e31536] text-white font-heading font-bold"
+                    onClick={() => setMobileMenuOpen(false)} 
+                    data-testid="button-login-mobile"
+                  >
+                    Log In
                   </Button>
                 </Link>
               </div>

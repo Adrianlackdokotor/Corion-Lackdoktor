@@ -94,7 +94,67 @@ A dynamic intelligence system learns from user behavior, personalizes interactio
   - Integration with dynamic intelligence tracking
 - **Note**: PHP endpoint only works on IONOS production server (requires PHP runtime with mail() function)
 
+## Authentication & CRM System
+A complete authentication system for the Corion Lackdoktor Management/CRM application.
+
+### Backend Authentication
+- **Database Schema** (`shared/schema.ts`): Users table with email (unique), hashed password (bcrypt), role, emailVerified, and createdAt fields
+- **Database Connection** (`db/index.ts`): Neon PostgreSQL connection using Drizzle ORM
+- **Storage Layer** (`server/storage.ts`): DatabaseStorage class with getUserByEmail, getUser, and createUser methods
+- **Passport.js Setup** (`server/auth.ts`): Local strategy authentication with session management
+  - Session configuration with 7-day cookie expiration
+  - Password validation using bcrypt
+  - Middleware: `isAuthenticated` and `isAdmin` for route protection
+- **Auth API Routes** (`server/routes/auth.ts`):
+  - `POST /api/auth/login`: Email/password login with session creation
+  - `POST /api/auth/logout`: Session termination
+  - `GET /api/auth/status`: Current authentication status check
+  - `POST /api/auth/register`: User registration (enforces role="user" and emailVerified=false server-side for security)
+
+### Frontend Authentication
+- **Auth Context** (`client/src/hooks/use-auth.tsx`): AuthProvider with useAuth hook
+  - Manages authentication state across the application
+  - Provides login, logout, and user data to components
+  - Automatic authentication status checking with React Query
+- **Login Page** (`/login`): Modern dark-themed form with Corion branding
+  - Email and password inputs with validation
+  - "Remember me" checkbox
+  - "Forgot password" link (placeholder)
+  - Red CTA button matching brand identity (#C00020)
+  - Lock icon in password field for visual clarity
+- **Admin Dashboard** (`/admin`): Protected management interface
+  - Authentication check with automatic redirect to /login
+  - User information display (email, role, verification status)
+  - Logout functionality
+  - Placeholder for CRM features (statistics, settings)
+- **Header Integration**: "Log In" button in header (desktop and mobile)
+  - Red background (#C00020) with white text
+  - Montserrat font (font-heading) with bold weight
+  - Hover glow effect for visual feedback
+
+### Admin Account
+- **Email**: adrianlackdoktor@gmail.com
+- **Temporary Password**: Corion2025!Admin
+- **Role**: admin
+- **Email Verified**: true
+- **Created**: Via seed script (`server/seed.ts`)
+- **Security Note**: User should change password after first login
+
+### Security Features
+- **Password Hashing**: bcrypt with 10 salt rounds
+- **Session Management**: Express session with httpOnly cookies
+- **CSRF Protection**: Credentials included in all requests
+- **Privilege Escalation Prevention**: Registration endpoint enforces role="user" server-side
+- **SQL Injection Prevention**: Drizzle ORM parameterized queries
+- **Sensitive Data Protection**: Passwords never returned in API responses
+
+### Email Notifications
+- **Note**: Email notification system uses existing `send_form.php` which only works on IONOS production server
+- **Admin Login Notification**: Placeholder for sending confirmation email to adrianlackdoktor@gmail.com on first admin login
+- **Implementation**: Will be activated when deployed to IONOS environment with PHP mail() function
+
 ## External Dependencies
 - **Google Fonts**: For typography (Poppins, Open Sans).
 - **Google Business Profile**: For direct linking to customer reviews.
 - **OpenAI API**: GPT-4o-mini for intelligent chat responses (optional, with fallback).
+- **PostgreSQL Database**: Neon-backed PostgreSQL for user management and CRM data.
