@@ -1,0 +1,163 @@
+OBJECTIVE:
+Add a "Log In" button under the main logo that redirects to a new professional login page for the Corion CRM/Management App.
+Create the login page with a modern, user-friendly, and secure interface aligned with Corion Lackdoktor’s branding.
+
+---
+
+### 1️⃣ ADD LOGIN BUTTON UNDER LOGO
+- Add a small but visible **"Log In"** button directly below the header logo.
+- Styling:
+  - Font: Montserrat (bold)
+  - Color: white text, red background (#C00020)
+  - Rounded edges, hover glow
+  - Padding: 10px 20px
+- On click → redirects to `/login` (or `login.html` if using static structure)
+
+---
+
+### 2️⃣ CREATE LOGIN PAGE `/login`
+Build a **modern, clean, and responsive login interface** matching the brand style.
+
+#### ✅ PAGE STRUCTURE
+```html
+<section class="flex flex-col items-center justify-center min-h-screen bg-black text-white p-4">
+  <!-- Logo -->
+  <img src="/assets/logo-corion-lackdoktor.png" alt="Corion Lackdoktor Logo" class="w-40 mb-6"/>
+
+  <!-- Welcome Text -->
+  <h1 class="text-2xl font-bold mb-6 text-center text-[#C00020]">Willkommen bei +1 Corion Management</h1>
+
+  <!-- Login Form -->
+  <form id="loginForm" class="bg-gray-900 rounded-2xl shadow-lg p-8 w-full max-w-sm space-y-4">
+    <div>
+      <label for="email" class="block text-sm font-medium mb-1">E-Mailadresse</label>
+      <input type="email" id="email" name="email" required placeholder="email@example.com"
+             class="w-full px-3 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-[#C00020] focus:outline-none" />
+    </div>
+
+    <div>
+      <label for="password" class="block text-sm font-medium mb-1">Passwort</label>
+      <input type="password" id="password" name="password" required placeholder="********"
+             class="w-full px-3 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-[#C00020] focus:outline-none" />
+    </div>
+
+    <div class="flex items-center justify-between text-sm">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" class="accent-[#C00020]" /> Angemeldet bleiben
+      </label>
+      <a href="#" class="text-[#C00020] hover:underline">Passwort vergessen?</a>
+    </div>
+
+    <!-- Login Button -->
+    <button type="submit"
+            class="w-full bg-[#C00020] hover:bg-[#e31536] text-white font-semibold py-2 rounded transition">
+      Einloggen
+    </button>
+
+    <p class="text-center text-gray-400 text-sm mt-4">
+      Noch kein Konto? <a href="/register" class="text-[#C00020] hover:underline">Jetzt registrieren</a>
+    </p>
+  </form>
+
+  <!-- Optional illustration -->
+  <img src="/assets/login-bg.svg" alt="Digital assistant background" class="opacity-10 absolute bottom-0 right-0 w-1/3 pointer-events-none hidden md:block"/>
+</section>
+
+3️⃣ FUNCTIONALITY
+
+Validation (Client-side): Ensure both fields are filled before submit.
+
+Login handling (Server-side):
+
+On submit → POST /api/login
+
+Backend checks user credentials (email/password)
+
+Sends confirmation email to adrianlackdoktor@gmail.com for CRM access (admin)
+
+Securely store credentials with hashed passwords
+
+Error handling:
+
+Show “E-Mailadresse oder Passwort ist falsch” for invalid credentials.
+
+Do not expose technical details.
+
+4️⃣ SECURITY & ACCESSIBILITY
+
+HTTPS enforced.
+
+Use semantic HTML + ARIA labels.
+
+Detect Caps Lock when typing password.
+
+Add lock icon in password field for visual clarity.
+
+No auto-suggest for password fields.
+
+Use neutral error messages (avoid revealing which field failed).
+
+Track logins and abandonment with analytics hook (Google or internal CRM).
+
+5️⃣ RESPONSIVE DESIGN
+
+On mobile:
+
+Inputs occupy full width
+
+Button always visible (not hidden by keyboard)
+
+Logo shrinks automatically
+
+“Forgot password” and “Register” remain tappable
+
+6️⃣ ADMIN ACCOUNT CREATION
+
+Create admin user in CRM:
+
+Admin Name: Adrian Lackdoktor
+Email: adrianlackdoktor@gmail.com
+Role: Super Admin
+Password: (auto-generated temporary)
+
+
+Send confirmation email:
+Subject: "Corion CRM – Administrator-Zugang bestätigen"
+Body:
+
+Hallo Adrian,
+bitte bestätigen Sie Ihren Administrator-Zugang für das Corion Management System.
+Klicken Sie hier, um sich anzumelden: [Login Link]
+
+Viele Grüße,
+Ihr Corion Lackdoktor Team
+
+
+After confirmation, user redirected to dashboard /admin.
+
+7️⃣ STYLE GUIDE
+
+Use existing Corion brand elements:
+
+Colors:
+
+Red: #C00020
+
+Black: #000000
+
+Gray: #1a1a1a
+
+Font: Montserrat / Open Sans
+
+Button hover glow: subtle red shadow
+
+Rounded corners (16px)
+
+Keep dark mode consistent
+
+GOAL
+
+✅ A fully responsive, brand-consistent, and secure login page integrated into the existing Corion web app.
+✅ Admin account "adrianlackdoktor@gmail.com
+" created and confirmed via email for CRM access.
+✅ Modern user interface that inspires trust and matches the Corion Lackdoktor identity.
