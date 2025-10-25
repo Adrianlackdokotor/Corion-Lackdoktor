@@ -350,4 +350,35 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+
+  /* Hero headline styles */
+  .brand-text {
+    color: #C00020;
+  }
+
+  .shine-effect {
+    position: relative;
+    display: inline-block;
+    color: #FFFFFF;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
 }

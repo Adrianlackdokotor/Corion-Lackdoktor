@@ -42,14 +42,18 @@ export default function Hero() {
 
           {/* Main Title with matching responsive sizing */}
           <motion.h1 
-            className="text-center font-bold leading-tight mt-4 text-[1.8rem] sm:text-[2.4rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] text-white"
+            className="text-center font-bold leading-tight mt-4 text-[1.8rem] sm:text-[2.4rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             data-testid="heading-hero"
           >
-            Präzision trifft Innovation – Ihr Lackdoktor für{" "}
-            <span className="text-[#C00020]">Smart Repair</span> & Gutachten
+            <span className="brand-text">Präzision trifft Innovation – Ihr </span>
+            <span className="shine-effect">Lackdoktor</span>
+            <span className="brand-text"> für </span>
+            <span className="shine-effect">Smart Repair</span>
+            <span className="brand-text"> & </span>
+            <span className="shine-effect">Gutachten</span>
           </motion.h1>
           
           <motion.p 
