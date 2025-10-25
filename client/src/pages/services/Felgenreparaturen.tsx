@@ -1,5 +1,4 @@
 import ServicePage from "../ServicePage";
-import wheelImage from "@assets/felgenreparatur-vorher-nachher-corion-lackdoktor-hofheim_1761382288902.png";
 
 export default function Felgenreparaturen() {
   const benefits = [
@@ -24,7 +23,7 @@ export default function Felgenreparaturen() {
     <ServicePage
       title="Felgenreparaturen"
       description="Professionelle Reparatur und Lackierung von beschädigten Felgen"
-      image={wheelImage}
+      image="/assets/felgenreparatur-vorher-nachher.png"
       benefits={benefits}
       process={process}
       pricing="Preis individuell – senden Sie uns ein Foto für ein kostenloses Angebot."
