@@ -1,5 +1,5 @@
 import ServicePage from "../ServicePage";
-import wheelImage from "@assets/generated_images/Wheel_repair_service_image_878b7e9d.png";
+import wheelImage from "@assets/felgenreparatur-vorher-nachher-corion-lackdoktor-hofheim_1761382288902.png";
 
 export default function Felgenreparaturen() {
   const benefits = [

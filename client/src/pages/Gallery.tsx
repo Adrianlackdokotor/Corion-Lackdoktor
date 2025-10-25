@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import paintImage from "@assets/generated_images/Paint_service_image_68d4cdbf.png";
 import dentImage from "@assets/generated_images/Dent_removal_service_image_b9ce6b23.png";
-import wheelImage from "@assets/generated_images/Wheel_repair_service_image_878b7e9d.png";
+import wheelImage from "@assets/felgenreparatur-vorher-nachher-corion-lackdoktor-hofheim_1761382288902.png";
 import detailImage from "@assets/generated_images/Auto_detailing_service_image_222c746b.png";
 import oldtimerImage from "@assets/generated_images/Classic_car_restoration_image_360d4f59.png";
 import workshopImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
