@@ -3,7 +3,7 @@ import { Phone, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
-import logoImage from "@assets/image007 (1)_1761130943207.png";
+import logoImage from "@assets/logo-final-blacck-8_1761397173620.png";
 
 export default function Hero() {
   return (
@@ -33,12 +33,21 @@ export default function Hero() {
         <img
           src={logoImage}
           alt="Corion Lackdoktor Logo"
-          className="w-32 md:w-48 lg:w-56 h-auto"
+          className="h-auto"
           style={{
+            width: "180px",
+            maxWidth: "90vw",
             filter: "drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.5))"
           }}
           data-testid="img-logo-overlay"
         />
+        <style>{`
+          @media (min-width: 768px) {
+            [data-testid="img-logo-overlay"] {
+              width: 300px !important;
+            }
+          }
+        `}</style>
       </motion.div>
 
       {/* Content */}
