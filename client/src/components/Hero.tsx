@@ -22,6 +22,25 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
       </div>
 
+      {/* Header Overlay Text - Centered at Top */}
+      <motion.div
+        className="absolute top-8 md:top-12 left-0 right-0 z-20 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <h2 
+          className="text-3xl md:text-6xl lg:text-7xl font-black text-white tracking-tight"
+          style={{
+            fontFamily: "'Inter', 'Oswald', system-ui, -apple-system, sans-serif",
+            textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5)"
+          }}
+          data-testid="text-logo-overlay"
+        >
+          +1 Corion Lackdoktor
+        </h2>
+      </motion.div>
+
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-4xl">
