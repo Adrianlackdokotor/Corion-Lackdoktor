@@ -3,6 +3,7 @@ import { Phone, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
+import logoImage from "@assets/image007 (1)_1761130943207.png";
 
 export default function Hero() {
   return (
@@ -22,23 +23,22 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
       </div>
 
-      {/* Header Overlay Text - Centered at Top */}
+      {/* Header Logo Overlay - Centered at Top */}
       <motion.div
-        className="absolute top-8 md:top-12 left-0 right-0 z-20 text-center"
+        className="absolute top-8 md:top-12 left-0 right-0 z-20 flex justify-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <h2 
-          className="text-3xl md:text-6xl lg:text-7xl font-black text-white tracking-tight"
+        <img
+          src={logoImage}
+          alt="Corion Lackdoktor Logo"
+          className="w-32 md:w-48 lg:w-56 h-auto"
           style={{
-            fontFamily: "'Inter', 'Oswald', system-ui, -apple-system, sans-serif",
-            textShadow: "2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5)"
+            filter: "drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.5))"
           }}
-          data-testid="text-logo-overlay"
-        >
-          +1 Corion Lackdoktor
-        </h2>
+          data-testid="img-logo-overlay"
+        />
       </motion.div>
 
       {/* Content */}
