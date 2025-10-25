@@ -3,7 +3,7 @@ import { Phone, Camera } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/generated_images/Professional_workshop_hero_image_5d91be84.png";
-import logoImage from "@assets/logo-final-blacck-8_1761397173620.png";
+import logoImage from "@assets/logo-final-white_1-8_1761397399511.png";
 
 export default function Hero() {
   return (
@@ -23,49 +23,33 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
       </div>
 
-      {/* Header Logo Overlay - Centered at Top */}
-      <motion.div
-        className="absolute top-8 md:top-12 left-0 right-0 z-20 flex justify-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <img
-          src={logoImage}
-          alt="Corion Lackdoktor Logo"
-          className="h-auto"
-          style={{
-            width: "180px",
-            maxWidth: "90vw",
-            filter: "drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.5))"
-          }}
-          data-testid="img-logo-overlay"
-        />
-        <style>{`
-          @media (min-width: 768px) {
-            [data-testid="img-logo-overlay"] {
-              width: 300px !important;
-            }
-          }
-        `}</style>
-      </motion.div>
-
-      {/* Content */}
+      {/* Content - Centered Logo and Title */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-4xl">
-          {/* Main Title with Poppins ExtraBold and highlighted keywords */}
+        <div className="flex flex-col items-center justify-center text-center">
+          {/* Logo with matching height to title */}
+          <motion.img
+            src={logoImage}
+            alt="+1 Corion Lackdoktor Logo"
+            className="mx-auto h-[7rem] sm:h-[8rem] md:h-[10rem] lg:h-[12rem] xl:h-[14rem] w-auto transition-transform duration-500"
+            style={{
+              filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.2))"
+            }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            data-testid="img-logo-overlay"
+          />
+
+          {/* Main Title with matching responsive sizing */}
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-white mb-6 leading-tight"
+            className="text-center font-bold leading-tight mt-4 text-[1.8rem] sm:text-[2.4rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] text-white"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             data-testid="heading-hero"
           >
-            <span className="text-primary">Präzision</span> trifft{" "}
-            <span className="text-primary">Innovation</span> –{" "}
-            Ihr Lackdoktor für{" "}
-            <span className="text-primary">Smart Repair</span> &{" "}
-            <span className="text-primary">Gutachten</span>
+            Präzision trifft Innovation – Ihr Lackdoktor für{" "}
+            <span className="text-[#C00020]">Smart Repair</span> & Gutachten
           </motion.h1>
           
           <motion.p 
