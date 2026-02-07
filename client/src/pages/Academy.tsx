@@ -14,6 +14,7 @@ const COURSES = [
   { id: 4, type: "video", title: "Estimare Daune cu AI", duration: "20 min", thumb: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80" },
   { id: 5, type: "pdf", title: "Ghid Onboarding Germania", pages: "15 pag", thumb: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&q=80" },
   { id: 6, type: "video", title: "Masterclass Polish", duration: "60 min", thumb: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80" },
+  { id: 7, type: "pdf", title: "Anleitung: Mercedes B-Klasse Tür", pages: "Guide", thumb: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80", link: "/academy/course/mercedes-door" },
 ];
 
 export default function Academy() {
@@ -111,7 +112,13 @@ export default function Academy() {
                         <div className="flex items-center gap-2 mb-2">
                             <span className="text-xs text-[#c00000] uppercase font-bold tracking-wider">{course.type}</span>
                         </div>
-                        <h3 className="font-bold text-lg leading-tight text-white group-hover:text-[#c00000] transition-colors">{course.title}</h3>
+                        <h3 className="font-bold text-lg leading-tight text-white group-hover:text-[#c00000] transition-colors">
+                            {course.link ? (
+                                <Link href={course.link}>{course.title}</Link>
+                            ) : (
+                                course.title
+                            )}
+                        </h3>
                     </CardContent>
                 </Card>
             ))}
