@@ -1,6 +1,6 @@
 
-import { db } from "./db"; // Replit often prefers explicit relative imports
-import { users } from "../shared/schema";
+import { db } from "../db"; // CHANGED: Points to root 'db' folder
+import { users } from "@shared/schema";
 import { scrypt, randomBytes } from "crypto";
 import { promisify } from "util";
 
@@ -52,7 +52,6 @@ async function seedMVP() {
 
   try {
       for (const u of usersList) {
-        // Check if user exists (using findFirst safely)
         const existing = await db.query.users.findFirst({
             where: (users, { eq }) => eq(users.email, u.email)
         });
