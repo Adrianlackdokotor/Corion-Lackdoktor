@@ -1,0 +1,63 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+
+# Local runtime state (tokens, OAuth, agent state — never commit)
+.local/
+.local/state/
+.local/google-drive-oauth-token.json
+
+# Task bus queues — runtime only, not source
+.local/corion-bus/in/
+.local/corion-bus/out/
+.local/corion-bus/processed/
+
+# Operational data, internal archives, and local deployment material are not
+# source code and must never be added to the public repository.
+uploads/
+attached_assets/
+Junk/
+ionos-deploy/
+memory/
+MEMORY.md
+LOCAL_CREDENTIALS.md
+AI_INTEGRATION_STATUS.md
+GITHUB_SETUP_GUIDE.md
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Replit
+.replit
+replit.nix
+.breakpoints
+.upm/
+
+# Build artifacts
+build/
+*.tgz

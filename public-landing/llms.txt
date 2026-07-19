@@ -1,0 +1,11 @@
+# Corion
+
+Corion is the modern public intake surface for Corion Lackdoktor.
+
+- Public intake and quote request: https://corion.app/
+- Full business, services, locations and trust content: https://www.corion-lackdoktor.de/
+- Existing user and partner login: https://app.corion.app/login
+- Telephone: +49 176 83458274
+
+Customers can describe vehicle damage, provide contact details and attach photos.
+Successful submissions create a real Corion workshop order and return a reference number.
